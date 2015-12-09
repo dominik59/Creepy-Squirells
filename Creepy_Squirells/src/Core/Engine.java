@@ -2,12 +2,14 @@ package Core;
 import java.io.File;
 
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class Engine extends BasicGame{
+import States.CreditsState;
+import States.MenuState;
+
+public class Engine extends StateBasedGame{
 
 	public Engine() {
 		super("Creepy Squirells");
@@ -28,22 +30,15 @@ public class Engine extends BasicGame{
 		}
 	}
 	
+	
 	@Override
-	public void render(GameContainer gc, Graphics gr) throws SlickException {
+	public void initStatesList(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
+		gc.setAlwaysRender(true);
 		gc.setTargetFrameRate(60);
-	}
-
-	@Override
-	public void init(GameContainer gc) throws SlickException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(GameContainer gc, int alpha) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		gc.setVSync(true);
+		this.addState(new MenuState());
+		this.addState(new CreditsState());
 	}
 	
 	
