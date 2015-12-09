@@ -3,7 +3,10 @@ import java.io.File;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import States.CreditsState;
@@ -39,6 +42,7 @@ public class Engine extends StateBasedGame{
 		gc.setVSync(true);
 		this.addState(new MenuState());
 		this.addState(new CreditsState());
+		this.addState(new States.GameState());
 	}
 	
 	
