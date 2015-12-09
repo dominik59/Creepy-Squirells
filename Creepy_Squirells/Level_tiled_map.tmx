@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Jungle_terrain" tilewidth="32" tileheight="32" tilecount="420">
+  <image source="../../../../Downloads/Jungle_terrain.png" width="896" height="480"/>
+ </tileset>
+ <layer name="Warstwa Kafelków 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2klOG0EYxfHqEwQSNsARgMAGOAJTVgSUBUvGFeOCOzDkDkBuQQbIFYLEzCmYljyLLtlpWTR0m65Pqv9PeqKF5FL5e+12y7ZzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL+tMnOsynO4k9ISqNajnO2Q4w5H18SH0BnK0hd5AxXpCbyBHbH2MhN5Ajt7QG6jYbOgN5BgNvYGKWe9jLvQGKmb9ehVbH7w+bKEPW+jDFvqwhT5soQ9b6MMW+rCFPmyhD1vowxb6sIU+bKEPW7J97CsHLVj3Y+Lcpxb8FiG2PrLfn/9W/qTH3zTPSeVrTqbSTCszaQf0UUz2+yg/xyMdb+jvsrKSk9U0a8qm8iuzzrHyt+D+Yusje73yc7zS8bWypePtnOyk2VXO9Jhz5cL9v85Nwf3RR2uuM1yviqEPW+jDlsY+9lx9jj9e8dhD5WeTNL6flxVjH36uze6LfJrdH5265/fvbM4dfRRV68PP1d8XXbr6fZHPW++P6KMYf726Ve6Ue+VBeSy5rl+nrFj7aNO53J7Uz+uOkuc2r49iGj8v6dP8Piv9ykDJWfp1yoqtj8bPS8Y0v3FlQvlScpZ+nbJi66N2vVpPM6/5LSiLylJS//9b06p1aomtj3/Kd8M5eb+nbtITLjiUiA==
+  </data>
+ </layer>
+</map>
