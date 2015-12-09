@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Core.Resources;
+
 public class MenuState extends BasicGameState{
 
 	@Override
@@ -31,6 +33,7 @@ public class MenuState extends BasicGameState{
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.CREDITS);
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE))sbg.enterState(StatesCodes.GAME);
+		Resources.getImage("tiles").draw();
 	}
 
 	@Override
