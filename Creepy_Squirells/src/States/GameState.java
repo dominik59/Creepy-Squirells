@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Core.Resources;
+
 public class GameState extends BasicGameState{
 
 	@Override
@@ -22,7 +24,8 @@ public class GameState extends BasicGameState{
 		g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
 		g.setColor(Color.red);
 		
-		g.setBackground(Color.cyan);
+		g.drawImage(Resources.getImage("tiles"), 0, 0, 800, 600, 0, 0, 998, 881);
+		
 	}
 
 	@Override

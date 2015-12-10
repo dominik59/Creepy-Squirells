@@ -10,5 +10,5 @@ package States;
 public class StatesCodes {
 	public static int MENU = 0;
 	public static int CREDITS = 1;
-	public static int GAME = 1;
+	public static int GAME = 2;
 }
