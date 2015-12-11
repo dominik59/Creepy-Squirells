@@ -20,7 +20,7 @@ public class Resources {
 		sounds= new HashMap<String,Sound>();
 		
 		try {
-			images.put("tiles", loadImage("/Level_tiled_map.png"));
+			spritesheets.put("tiles", new SpriteSheet(loadImage("/Level_tiled_map.png"), 32, 32) );
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,10 +31,13 @@ public class Resources {
 		// TODO Auto-generated method stub
 		return new Image(path,false,Image.FILTER_NEAREST);
 	}
-	public static Image getImage(String rodzaj)
+	public static Image getImage(String type)
 	{
-		return images.get(rodzaj);
+		return images.get(type);
 	}
-	
+	public static SpriteSheet getSpritesheet(String type)
+	{
+		return spritesheets.get(type);
+	}
 	
 }

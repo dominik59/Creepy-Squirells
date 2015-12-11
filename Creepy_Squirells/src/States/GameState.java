@@ -23,8 +23,10 @@ public class GameState extends BasicGameState{
 		// TODO Auto-generated method stub
 		g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
 		g.setColor(Color.red);
-		
-		g.drawImage(Resources.getImage("tiles"), 0, 0, 800, 600, 0, 0, 998, 881);
+		/**
+		 * funkcja pozwalaj¹ca wyœiwtlaæ fragment obrazka
+		 */
+		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,100,100),0,0);
 		
 	}
 

@@ -10,5 +10,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="D:/Users/User/programy informatyka/Biblioteki/LWJGL + Slick/jar/slick.jar"/>
+	<classpathentry kind="lib" path="D:/Users/User/programy informatyka/Biblioteki/LWJGL + Slick/jar/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
