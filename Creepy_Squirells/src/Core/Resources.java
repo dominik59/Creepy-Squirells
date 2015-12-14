@@ -20,7 +20,8 @@ public class Resources {
 		sounds= new HashMap<String,Sound>();
 		
 		try {
-			spritesheets.put("tiles", new SpriteSheet(loadImage("/Level_tiled_map.png"), 32, 32) );
+			spritesheets.put("tiles", new SpriteSheet(loadImage("/Level_tiled_map.png"), 32, 32 ));
+			spritesheets.put("sqi", new SpriteSheet(loadImage("/sqi.png"), 32, 32 ));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
