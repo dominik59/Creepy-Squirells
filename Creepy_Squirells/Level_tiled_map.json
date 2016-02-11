@@ -2,12 +2,24 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzt2klOG0EYxfHqEwQSNsARgMAGOAJTVgSUBUvGFeOCOzDkDkBuQQbIFYLEzCmYljyLLtlpWTR0m65Pqv9PeqKF5FL5e+12y7ZzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL+tMnOsynO4k9ISqNajnO2Q4w5H18SH0BnK0hd5AxXpCbyBHbH2MhN5Ajt7QG6jYbOgN5BgNvYGKWe9jLvQGKmb9ehVbH7w+bKEPW+jDFvqwhT5soQ9b6MMW+rCFPmyhD1vowxb6sIU+bKEPW7J97CsHLVj3Y+Lcpxb8FiG2PrLfn\/9W\/qTH3zTPSeVrTqbSTCszaQf0UUz2+yg\/xyMdb+jvsrKSk9U0a8qm8iuzzrHyt+D+Yusje73yc7zS8bWypePtnOyk2VXO9Jhz5cL9v85Nwf3RR2uuM1yviqEPW+jDlsY+9lx9jj9e8dhD5WeTNL6flxVjH36uze6LfJrdH5265\/fvbM4dfRRV68PP1d8XXbr6fZHPW++P6KMYf726Ve6Ue+VBeSy5rl+nrFj7aNO53J7Uz+uOkuc2r49iGj8v6dP8Piv9ykDJWfp1yoqtj8bPS8Y0v3FlQvlScpZ+nbJi66N2vVpPM6\/5LSiLylJS\/\/9b06p1aomtj3\/Kd8M5eb+nbtITLjiUiA==",
+         "data":"eJzt2UtOFEEcx\/HqE\/DcIEcQ0Q14BAVZgYYFS1BcgY+Fd5DHHZT3GRQUriAJD8FTKLDkN5muzNCZ0NDddv2T+n6SX7ozyVRq6tdT05l2DgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4HYDiXMPDGcwCb1C9RrR5x01nKeR9dEVegI5ukNPoGYPQ08gR2x9PAs9gRxDoSdQs9nQE8jxPPQEama9j7nQE6iZ9f0qtj74fthCH7bQhy30YQt92EIfttCHLfRhC33YQh+20Ict9GELfdjSqY+NCp5Zb1b03Dv2Pr4qaxWM26s++iroJLY+ss\/P95Qf6fm01nNSmcrJyzSvlJm0A\/ooJvs8yq\/jT51\/1HFBWczJuzTvlU\/KbmacLR0PCs4vtj6y+5VfxzOdnyufdb6Uk+U0K8qx3nOinLqb4\/wpOD\/6qGafYb8qhj5soQ9b2vv44lrruH6H935Tvis7SfPo0\/57XlaMfTTWdafDfdG2jvuumU73R0eu+fudzYmjj6Iaffh19fdFv13rvsjnvvdH9FGM36\/+Kv+UC+VSuSo5rh+nrFj76Na13JO0ruv+ktc2349i2v8veaT1G1YeK09KrqUfp6zY+mj\/v2RM6zeuvFAmSq6lH6es2Ppo7Fcf0rzW+r1R5pW3Sev1+6aqcRqJrY9fyqrhHP6\/j27SNVuRlYA=",
          "encoding":"base64",
          "height":100,
-         "name":"Warstwa Kafelk\u00f3w 1",
+         "name":"Map",
          "opacity":1,
          "type":"tilelayer",
+         "visible":true,
+         "width":100,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":100,
+         "name":"Spawn",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
          "visible":true,
          "width":100,
          "x":0,
@@ -35,6 +47,22 @@
             },
          "spacing":0,
          "tilecount":420,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "firstgid":421,
+         "image":"tileset.png",
+         "imageheight":320,
+         "imagewidth":320,
+         "margin":0,
+         "name":"tileset",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":100,
          "tileheight":32,
          "tilewidth":32
         }],
