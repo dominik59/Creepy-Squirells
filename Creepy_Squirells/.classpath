@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/Dominik/Documents/GitHub/Creepy-Squirells/Creepy_Squirells/lib/jogg-0.0.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Dominik/Documents/GitHub/Creepy-Squirells/Creepy_Squirells/lib/jorbis-0.0.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Dominik/Documents/GitHub/Creepy-Squirells/Creepy_Squirells/lib/lwjgl.jar">
+	<classpathentry kind="lib" path="/Users/Irio/slick2d/jar/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="/Users/Irio/slick2d/jar/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="/Users/Irio/slick2d/jar/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Dominik/Documents/GitHub/Creepy-Squirells/Creepy_Squirells/lib/native/windows"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/Irio/slick2d/native/macosx"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Dominik/Documents/GitHub/Creepy-Squirells/Creepy_Squirells/lib/slick.jar"/>
+	<classpathentry kind="lib" path="/Users/Irio/slick2d/jar/slick.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

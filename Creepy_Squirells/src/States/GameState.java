@@ -4,21 +4,32 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import Core.Resources;
+import States.MenuState;
 
 public class GameState extends BasicGameState{
 	private Integer first_player_x=320;
 	private Integer first_player_y=358;
 	private String first_player_picture="sqi_r";
 	
+	private Sound sound;
+	private boolean playing;
+	
+	MenuState menustate = new MenuState();
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		
+		sound = new Sound("/inception.wav");
+	
+
 		
 	}
 
@@ -35,6 +46,12 @@ public class GameState extends BasicGameState{
 		g.setBackground(Color.black);
 		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
 		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(1,1,32,32),first_player_x,first_player_y);
+		
+		
+		if(menustate.gamemusic)
+		{
+			sound.play();
+		}
 		
 		
 		
