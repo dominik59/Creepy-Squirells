@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -20,11 +21,15 @@ import Core.Resources;
 
 public class MenuState extends BasicGameState{
 	private TrueTypeFont menuFont;
+	private Audio menuAudio;
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 	     menuFont = new TrueTypeFont(awtFont, false);
+	     Audio menuAudio=Resources.getAudio("menuSound");
+	     menuAudio.playAsMusic(1.0f, 1.0f, true);
 	}
 
 	@Override
@@ -43,7 +48,11 @@ public class MenuState extends BasicGameState{
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
-		if(gc.getInput().isKeyPressed(Input.KEY_1))sbg.enterState(StatesCodes.GAME);
+		if(gc.getInput().isKeyPressed(Input.KEY_1))
+			{
+				//menuAudio.stop();
+				sbg.enterState(StatesCodes.GAME);
+			}
 		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);		
 		//Resources.getImage("tiles").draw();
 	}
