@@ -11,7 +11,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import Core.Resources;
 
 public class GameState extends BasicGameState{
-
+	private Integer first_player_x=320;
+	private Integer first_player_y=358;
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
@@ -28,7 +30,8 @@ public class GameState extends BasicGameState{
 		 */
 		g.setBackground(Color.black);
 		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
-		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1,1,32,32),320,358);
+		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1,1,32,32),first_player_x,first_player_y);
+		
 		
 		
 	}
@@ -37,6 +40,10 @@ public class GameState extends BasicGameState{
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.MENU);
+		if(gc.getInput().isKeyDown(Input.KEY_RIGHT))first_player_x++;
+		if(gc.getInput().isKeyDown(Input.KEY_LEFT))first_player_x--;
+		if(gc.getInput().isKeyDown(Input.KEY_UP))first_player_y--;
+		if(gc.getInput().isKeyDown(Input.KEY_DOWN))first_player_y++;
 	}
 
 	@Override
