@@ -21,15 +21,15 @@ import Core.Resources;
 
 public class MenuState extends BasicGameState{
 	private TrueTypeFont menuFont;
-	private Audio menuAudio;
+	private Audio menuAudio=Resources.getAudio("menuSound");
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 	     menuFont = new TrueTypeFont(awtFont, false);
-	     Audio menuAudio=Resources.getAudio("menuSound");
-	     menuAudio.playAsMusic(1.0f, 1.0f, true);
+	     menuAudio.playAsMusic(1.0f, 1.0f, false);
+	     
 	}
 
 	@Override
@@ -50,7 +50,11 @@ public class MenuState extends BasicGameState{
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_1))
 			{
-				//menuAudio.stop();
+				if(menuAudio.isPlaying())
+				{
+					menuAudio.stop();
+				}
+				
 				sbg.enterState(StatesCodes.GAME);
 			}
 		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);		
