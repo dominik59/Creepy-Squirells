@@ -11,6 +11,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -20,16 +22,23 @@ import Core.Window;
 import Core.Resources;
 
 public class MenuState extends BasicGameState{
-	private TrueTypeFont menuFont;
+	private UnicodeFont menuFont;
 	private Audio menuAudio=Resources.getAudio("menuSound");
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
-	     menuFont = new TrueTypeFont(awtFont, false);
-	     menuAudio.playAsMusic(1.0f, 1.0f, false);
-	     
+		/**
+		 * To wszystko trzeba doda膰 aby uruchomi膰 polskie znaki
+		 */
+		menuFont = new UnicodeFont(new java.awt.Font("Arial", Font.BOLD, 20));
+		menuFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+		menuFont.addGlyphs("膮膰艂贸臋偶藕艅艣"); // szczeg贸lnie wa偶na jest ta linijka bo
+											// to ona dodaje polskie znaki
+		menuFont.addNeheGlyphs();
+		menuFont.loadGlyphs();
+		menuAudio.playAsMusic(1.0f, 1.0f, false);
+
 	}
 
 	@Override
@@ -39,7 +48,7 @@ public class MenuState extends BasicGameState{
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
 		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 150);
-		g.drawString("2.Wy渨ietlenie tw髍c體", Window.width/2-10, 185);
+		g.drawString("2.Wy艣wietlenie tw贸rc贸w", Window.width/2-10, 185);
 		g.setColor(Color.white);
 		
 		g.setBackground(Color.gray);
