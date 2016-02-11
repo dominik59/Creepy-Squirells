@@ -1,4 +1,6 @@
 package States;
+
+
 /**
  * Ta klasa posiada kody poszczególnych okien tzn. 
  * MENU- id okna pod nazw¹ menu
