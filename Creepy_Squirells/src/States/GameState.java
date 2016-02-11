@@ -13,7 +13,7 @@ import Core.Resources;
 public class GameState extends BasicGameState{
 	private Integer first_player_x=320;
 	private Integer first_player_y=358;
-	private String first_player_picture="";
+	private String first_player_picture="sqi_r";
 	
 	
 	@Override
@@ -43,6 +43,8 @@ public class GameState extends BasicGameState{
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.MENU);
 		if(gc.getInput().isKeyDown(Input.KEY_RIGHT))first_player_x++;
+		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))first_player_picture="sqi_r";
+		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))first_player_picture="sqi_l";
 		if(gc.getInput().isKeyDown(Input.KEY_LEFT))first_player_x--;
 		if(gc.getInput().isKeyDown(Input.KEY_UP))first_player_y--;
 		if(gc.getInput().isKeyDown(Input.KEY_DOWN))first_player_y++;
