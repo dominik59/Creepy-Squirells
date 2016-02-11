@@ -25,8 +25,8 @@ public class GameState extends BasicGameState{
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
-		g.setColor(Color.red);
+		//g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
+		//g.setColor(Color.red);
 		/**
 		 * funkcja pozwalaj�ca wy�iwtla� fragment obrazka
 		 */
