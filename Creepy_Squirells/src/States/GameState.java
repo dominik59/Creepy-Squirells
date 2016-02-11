@@ -29,7 +29,6 @@ public class GameState extends BasicGameState{
 		//g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
 		//g.setColor(Color.red);
 
-
 		/**
 		 * funkcja pozwalaj�ca wy�iwtla� fragment obrazka
 		 */

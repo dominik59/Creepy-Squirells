@@ -22,6 +22,7 @@ public class Resources {
 		sounds= new HashMap<String,Sound>();
 		
 		try {
+			images.put("button_play",loadImage("/button_graj.png"));
 			spritesheets.put("tiles", new SpriteSheet(loadImage("/Level_tiled_map.png"), 32, 32 ));
 			spritesheets.put("sqi_r", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
 			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));

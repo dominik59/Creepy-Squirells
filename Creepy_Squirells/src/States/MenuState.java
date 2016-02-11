@@ -2,31 +2,42 @@ package States;
 
 
 
+
+import java.awt.Font;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import Core.Window;
-public class MenuState extends BasicGameState{
 
+import Core.Window;
+import Core.Resources;
+
+public class MenuState extends BasicGameState{
+	private TrueTypeFont menuFont;
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
+	     menuFont = new TrueTypeFont(awtFont, false);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		g.drawString("1.Uruchomienie gry", Window.width/2, 50);
-		g.drawString("2.Wyœwietlenie twórców", Window.width/2, 100);
-		g.setColor(Color.red);
+		g.setFont(menuFont);
+		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
+		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
+		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 150);
+		g.drawString("2.Wyœwietlenie twórców", Window.width/2-10, 185);
+		g.setColor(Color.white);
 		
-		g.setBackground(Color.cyan);
+		g.setBackground(Color.gray);
 	}
 
 	@Override
