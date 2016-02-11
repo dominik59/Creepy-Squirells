@@ -18,9 +18,9 @@ import Core.Window;
 
 public class CreditsState extends BasicGameState{
 	private UnicodeFont creditsFont;
-	private Integer dominik_y = 0;
-	private Integer krzychu_y = -100;
-	private Integer grzesiek_y = -200;
+	private Integer dominik_y = -100;
+	private Integer krzychu_y = -200;
+	private Integer grzesiek_y = -300;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -50,9 +50,9 @@ public class CreditsState extends BasicGameState{
 		krzychu_y++;
 		grzesiek_y++;
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
-			dominik_y = 0;
-			krzychu_y = -100;
-			grzesiek_y = -200;
+			dominik_y = -100;
+			krzychu_y = -200;
+			grzesiek_y = -300;
 			sbg.enterState(StatesCodes.MENU);
 		}
 	}

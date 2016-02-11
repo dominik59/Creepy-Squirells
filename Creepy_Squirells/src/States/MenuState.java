@@ -25,6 +25,9 @@ public class MenuState extends BasicGameState{
 	private UnicodeFont menuFont;
 	private Audio menuAudio=Resources.getAudio("menuSound");
 	
+	public boolean gamemusic;
+	
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
@@ -48,7 +51,9 @@ public class MenuState extends BasicGameState{
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
 		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 150);
+
 		g.drawString("2.Wyświetlenie twórców", Window.width/2-10, 185);
+
 		g.setColor(Color.white);
 		
 		g.setBackground(Color.gray);
@@ -65,6 +70,7 @@ public class MenuState extends BasicGameState{
 				}
 				
 				sbg.enterState(StatesCodes.GAME);
+				gamemusic = true;
 			}
 		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);		
 		//Resources.getImage("tiles").draw();
