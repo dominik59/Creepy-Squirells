@@ -22,14 +22,13 @@ public class GameState extends BasicGameState{
 	private boolean playing;
 	
 	MenuState menustate = new MenuState();
+	//private boolean toplayornottoplay = menustate.gamemusic;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		
 		sound = new Sound("/inception.wav");
-	
-
 		
 	}
 
@@ -47,11 +46,7 @@ public class GameState extends BasicGameState{
 		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
 		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(1,1,32,32),first_player_x,first_player_y);
 		
-		
-		if(menustate.gamemusic)
-		{
-			sound.play();
-		}
+
 		
 		
 		
@@ -67,6 +62,14 @@ public class GameState extends BasicGameState{
 		if(gc.getInput().isKeyDown(Input.KEY_LEFT))first_player_x--;
 		if(gc.getInput().isKeyDown(Input.KEY_UP))first_player_y--;
 		if(gc.getInput().isKeyDown(Input.KEY_DOWN))first_player_y++;
+				
+		if(menustate.gamemusic)
+		{
+			sound.play();
+			menustate.gamemusic = false;
+			
+		}
+		
 	}
 
 	@Override

@@ -25,8 +25,7 @@ public class MenuState extends BasicGameState{
 	private UnicodeFont menuFont;
 	private Audio menuAudio=Resources.getAudio("menuSound");
 	
-	public boolean gamemusic;
-	
+	public static boolean gamemusic;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -69,8 +68,11 @@ public class MenuState extends BasicGameState{
 					menuAudio.stop();
 				}
 				
-				sbg.enterState(StatesCodes.GAME);
 				gamemusic = true;
+				System.out.println("gamemusic status: " + gamemusic); //tak sobie debuguje
+				
+				sbg.enterState(StatesCodes.GAME);
+				
 			}
 		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);		
 		//Resources.getImage("tiles").draw();
