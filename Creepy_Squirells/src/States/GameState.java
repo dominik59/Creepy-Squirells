@@ -24,9 +24,12 @@ public class GameState extends BasicGameState{
 		g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
 		g.setColor(Color.red);
 		/**
-		 * funkcja pozwalaj¹ca wyœiwtlaæ fragment obrazka
+		 * funkcja pozwalajï¿½ca wyï¿½iwtlaï¿½ fragment obrazka
 		 */
-		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,100,100),0,0);
+		g.setBackground(Color.black);
+		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,1000,1000),0,0);
+		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1, 1,500,250),30,315);
+		
 		
 	}
 
