@@ -23,7 +23,8 @@ public class Resources {
 		
 		try {
 			spritesheets.put("tiles", new SpriteSheet(loadImage("/Level_tiled_map.png"), 32, 32 ));
-			spritesheets.put("sqi", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
+			spritesheets.put("sqi_r", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
+			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

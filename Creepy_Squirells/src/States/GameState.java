@@ -13,6 +13,8 @@ import Core.Resources;
 public class GameState extends BasicGameState{
 	private Integer first_player_x=320;
 	private Integer first_player_y=358;
+	private String first_player_picture="";
+	
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -30,7 +32,7 @@ public class GameState extends BasicGameState{
 		 */
 		g.setBackground(Color.black);
 		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
-		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1,1,32,32),first_player_x,first_player_y);
+		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(1,1,32,32),first_player_x,first_player_y);
 		
 		
 		
