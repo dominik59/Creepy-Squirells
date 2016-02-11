@@ -27,8 +27,8 @@ public class GameState extends BasicGameState{
 		 * funkcja pozwalaj�ca wy�iwtla� fragment obrazka
 		 */
 		g.setBackground(Color.black);
-		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,1000,1000),0,0);
-		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1, 1,500,250),30,315);
+		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
+		g.drawImage(Resources.getSpritesheet("sqi").getSubImage(1,1,32,32),303,323);
 		
 		
 	}
