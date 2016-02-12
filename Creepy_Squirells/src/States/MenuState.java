@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -25,6 +26,8 @@ import Core.Resources;
 public class MenuState extends BasicGameState{
 	private UnicodeFont menuFont;
 	private Music menuAudio=Resources.getAudio("menuSound");
+	private Sound click_sound;
+	private Long timer=new Long(0);
 	private boolean menuAudio_playing=false;
 	public static boolean gamemusic;
 	
@@ -41,7 +44,7 @@ public class MenuState extends BasicGameState{
 		menuFont.addNeheGlyphs();
 		menuFont.loadGlyphs();
 		
-
+		click_sound=new Sound("/click_sound.wav");
 		menuAudio.play();
 		menuAudio.setVolume(0.2f);
 		menuAudio_playing=true;
@@ -65,13 +68,14 @@ public class MenuState extends BasicGameState{
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_1))
 			{
 				if(menuAudio_playing)
 				{
 					menuAudio.stop();
+					click_sound.play();
 					menuAudio_playing=false;
 				}
 				
@@ -81,8 +85,14 @@ public class MenuState extends BasicGameState{
 				sbg.enterState(StatesCodes.GAME);
 				
 			}
-		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);
-		if(gc.getInput().isKeyPressed(Input.KEY_3))gc.exit();
+		if (gc.getInput().isKeyPressed(Input.KEY_2)) {
+			click_sound.play();
+			sbg.enterState(StatesCodes.CREDITS);
+		}
+		if (gc.getInput().isKeyPressed(Input.KEY_3)) {
+			click_sound.play();
+			gc.exit();
+		}
 		//Resources.getImage("tiles").draw();
 	}
 
