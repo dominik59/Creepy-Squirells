@@ -34,6 +34,7 @@ public class Resources {
 			sounds.put("menuSound", new Music("/pink_panter.wav"));
 			sounds.put("level1_music", new Music("/inception.wav"));
 			sounds.put("level1_sound", new Music("/hehe.ogg"));
+			sounds.put("click_sound", new Music("/click_sound.wav"));
 			images.put("button_play",loadImage("/button_graj.png"));
 			spritesheets.put("sqi_r", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
 			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));
