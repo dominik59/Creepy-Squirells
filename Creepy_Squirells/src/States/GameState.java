@@ -7,6 +7,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
@@ -19,7 +20,7 @@ public class GameState extends BasicGameState{
 	private Integer first_player_y;
 	private String first_player_picture="sqi_r";
 	
-	private Sound sound;
+	private Music sound;
 	private Music music;
 	
 	private TiledMap mapa;
@@ -29,10 +30,10 @@ public class GameState extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		mapa = new TiledMap("/level1.tmx");
+		mapa = Resources.getMap("level1");
 		
-		sound = new Sound("/inception.wav");
-		music = new Music("/hehe.ogg");
+		sound = Resources.getAudio("level1_music");
+		music = Resources.getAudio("level1_sound");
 		
 		first_player_x=11;
 		first_player_y=18;
@@ -65,11 +66,15 @@ public class GameState extends BasicGameState{
 		{
 			music.play();
 			music.setVolume(0.2f);
-			menustate.gamemusic = false;
-			
+			menustate.gamemusic = false;			
 		}
 		
-		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.MENU);
+		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))
+			{
+				music.stop();
+				menustate.play_menu_music();
+				sbg.enterState(StatesCodes.MENU);
+			}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 		{
