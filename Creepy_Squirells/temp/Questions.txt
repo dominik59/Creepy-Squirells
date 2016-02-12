@@ -1,0 +1,25 @@
+4
+1. Wybierz liczby z przedzialu <10,20> ?
+a)   1
+b)   11
+c)   19
+d)   100
+bcd
+2. Wybierz liczby wiêksze ni¿ 10 ?
+a)   1
+b)   2
+c)   3
+d)   100
+d
+3. Wybierz liczby mniejsze ni¿ 50 ?
+a)   49
+b)   59
+c)   69
+d)   48
+ad
+4. Wybierz liczby naturalne ?
+a)   4+2i
+b)   5,66
+c)   60
+d)   10
+cd
