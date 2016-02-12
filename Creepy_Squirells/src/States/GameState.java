@@ -50,7 +50,7 @@ public class GameState extends BasicGameState{
 		//g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
 		
 		mapa.render(0,0);
-		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(0,0,32,32),first_player_x,first_player_y);
+		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(0,0,32,32),first_player_x*32,first_player_y*32);
 
 	}
 
@@ -76,7 +76,7 @@ public class GameState extends BasicGameState{
 				sbg.enterState(StatesCodes.MENU);
 			}
 		
-		if(gc.getInput().isKeyDown(Input.KEY_RIGHT))
+		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 		{
 			first_player_picture="sqi_r";
 			
@@ -88,7 +88,7 @@ public class GameState extends BasicGameState{
 		}
 		
 		
-		if(gc.getInput().isKeyDown(Input.KEY_LEFT))
+		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
 		{	
 			first_player_picture="sqi_l";
 			
@@ -99,7 +99,7 @@ public class GameState extends BasicGameState{
 				
 		}
 			
-		if(gc.getInput().isKeyDown(Input.KEY_UP))
+		if(gc.getInput().isKeyPressed(Input.KEY_UP))
 		{
 			if(mapa.getTileId(first_player_x, first_player_y-1, kolizje)==0)
 			{
@@ -107,7 +107,7 @@ public class GameState extends BasicGameState{
 			}
 				
 		}
-		if(gc.getInput().isKeyDown(Input.KEY_DOWN))
+		if(gc.getInput().isKeyPressed(Input.KEY_DOWN))
 		{
 			if(mapa.getTileId(first_player_x, first_player_y+1, kolizje)==0)
 			{
