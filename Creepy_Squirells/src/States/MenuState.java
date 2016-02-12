@@ -53,12 +53,14 @@ public class MenuState extends BasicGameState{
 		g.setFont(menuFont);
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
 		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
+		
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 150);
-
 		g.drawString("2.Wyświetlenie twórców", Window.width/2-10, 185);
 
-		g.setColor(Color.white);
+		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 250);
+		g.drawString("3.Wyjdź z gry", Window.width/2-10, 285);
 		
+		g.setColor(Color.white);
 		g.setBackground(Color.gray);
 	}
 
@@ -79,7 +81,8 @@ public class MenuState extends BasicGameState{
 				sbg.enterState(StatesCodes.GAME);
 				
 			}
-		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);		
+		if(gc.getInput().isKeyPressed(Input.KEY_2))sbg.enterState(StatesCodes.CREDITS);
+		if(gc.getInput().isKeyPressed(Input.KEY_3))gc.exit();
 		//Resources.getImage("tiles").draw();
 	}
 
