@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="rLJjmOe" tilewidth="32" tileheight="32" tilecount="420">
+  <image source="rLJjmOe.png" width="896" height="480"/>
+ </tileset>
+ <layer name="Mapa" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA7WVyw2CQBCGhxa0D+xD6/BxEETLQKvQk9qCj3hQO/AtPagHoyd/ApsgLvvAZZMvS4bZfJmZbNYhon7MAJQsojLwE/F/aAOPvhdzqK4hGAn+uwYcC7DM6Vjh28Hugg7wYrqgB2YUEeY/czjO2C8gAL71yx7xAziCE+Vz6PRKp45k7UU40rWLHDuOQ5Qvm3maG7iDhwEHm/mVQ2CwDtWVVfcLvMnczHl1s3rzzJzn0L0f1QLvR/KMzDGPUcnnOWzJGdZX1d5m9aqi0Stbkp/lqGk4ZPnMMQYTUEduAzRBy4piImT509gRvq9rsCmALUVv9gdXrhbg0AcAAA==
+  </data>
+ </layer>
+ <layer name="Kolizje" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA7WOSw4AIQxCvf8pelSXGmIp/UhCMpOCj7WO7JNvmfPtSclHDMUdRlYVholWGNkO28QYUX+CcZvdMKcy2L+nKYYFzuaxy3axja87vpvpY8YS7jCijNKpbKowPE0y0NMM1mcMNLt18j8Vsae8AfxUba7QBwAA
+  </data>
+ </layer>
+</map>

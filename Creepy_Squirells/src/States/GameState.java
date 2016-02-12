@@ -9,26 +9,34 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
 
 import Core.Resources;
 import States.MenuState;
 
 public class GameState extends BasicGameState{
-	private Integer first_player_x=320;
-	private Integer first_player_y=358;
+	private Integer first_player_x;
+	private Integer first_player_y;
 	private String first_player_picture="sqi_r";
 	
 	private Sound sound;
-	private boolean playing;
+	private Music music;
+	
+	private TiledMap mapa;
 	
 	MenuState menustate = new MenuState();
-	//private boolean toplayornottoplay = menustate.gamemusic;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		mapa = new TiledMap("/level1.tmx");
 		
 		sound = new Sound("/inception.wav");
+		music = new Music("/hehe.ogg");
+		
+		first_player_x=11;
+		first_player_y=18;
+		
 		
 	}
 
@@ -36,39 +44,73 @@ public class GameState extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 
-		//g.drawString("Siema eniu jestes w grze, wiem, nie tak to sobie wyobrazales ;), \nnacisnij enter by wyjsc", 50, 50);
-		//g.setColor(Color.red);
 
-		/**
-		 * funkcja pozwalaj�ca wy�iwtla� fragment obrazka
-		 */
 		g.setBackground(Color.black);
-		g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
-		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(1,1,32,32),first_player_x,first_player_y);
+		//g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
 		
+		mapa.render(0,0);
+		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(1,1,32,32),first_player_x*32,first_player_y*32);
 
-		
-		
-		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
-		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.MENU);
-		if(gc.getInput().isKeyDown(Input.KEY_RIGHT))first_player_x++;
-		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))first_player_picture="sqi_r";
-		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))first_player_picture="sqi_l";
-		if(gc.getInput().isKeyDown(Input.KEY_LEFT))first_player_x--;
-		if(gc.getInput().isKeyDown(Input.KEY_UP))first_player_y--;
-		if(gc.getInput().isKeyDown(Input.KEY_DOWN))first_player_y++;
-				
+		
+		int kolizje = mapa.getLayerIndex("Kolizje");
+		mapa.getTileId(0, 0, kolizje);
+		
+		
 		if(menustate.gamemusic)
 		{
-			sound.play();
+			music.play();
+			music.setVolume(0.2f);
 			menustate.gamemusic = false;
 			
 		}
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))sbg.enterState(StatesCodes.MENU);
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
+		{
+			first_player_picture="sqi_r";
+			
+			if(mapa.getTileId(first_player_x+1, first_player_y, kolizje)==0)
+			{
+				first_player_x++;
+			}
+				
+		}
+		
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
+		{	
+			first_player_picture="sqi_l";
+			
+			if(mapa.getTileId(first_player_x-1, first_player_y, kolizje)==0)
+			{
+				first_player_x--;
+			}
+				
+		}
+			
+		if(gc.getInput().isKeyPressed(Input.KEY_UP))
+		{
+			if(mapa.getTileId(first_player_x, first_player_y-1, kolizje)==0)
+			{
+				first_player_y--;
+			}
+				
+		}
+		if(gc.getInput().isKeyPressed(Input.KEY_DOWN))
+		{
+			if(mapa.getTileId(first_player_x, first_player_y+1, kolizje)==0)
+			{
+				first_player_y++;
+			}
+				
+		}
+		
 		
 	}
 

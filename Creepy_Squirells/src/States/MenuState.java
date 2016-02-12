@@ -39,6 +39,8 @@ public class MenuState extends BasicGameState{
 											// to ona dodaje polskie znaki
 		menuFont.addNeheGlyphs();
 		menuFont.loadGlyphs();
+		
+
 		menuAudio.playAsMusic(1.0f, 1.0f, false);
 
 	}
