@@ -65,7 +65,7 @@ public class GameState extends BasicGameState{
 		if(menustate.gamemusic)
 		{
 			music.play();
-			music.setVolume(0.2f);
+			music.setVolume(0.1f);
 			menustate.gamemusic = false;			
 		}
 		
