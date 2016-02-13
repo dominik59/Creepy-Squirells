@@ -17,20 +17,37 @@ import Core.Resources;
 
 public class Shooting {
 	
-	private Vector2f position;
-	private Vector2f speed;
+	protected Vector2f position;
+	protected Vector2f direction;
 	private static int actual_life = 0;
-	private static int max_life = 1000; //czas zycia pocisku - 2000ms
+	private static int max_life = 2000; //czas zycia pocisku - 2000ms
 	private boolean is_active = true;
+	private int radius_squared = 100;
+	
+	private int damage = 1;
 	
 	private String bullet_1="bullet_1";
+	private String bullet_2="bullet_2";
+
 
 	
-	public Shooting(Vector2f position, Vector2f speed){
+	public Shooting(Vector2f position, Vector2f direction){
 		
 		this.position = position;
-		this.speed = speed;
+		this.direction = direction;
 		
+		direction.scale(500);
+		
+	}
+	
+	public Shooting init( Vector2f position, Vector2f direction)
+	{
+		this.position = position;
+		this.direction = direction;
+		
+		direction.scale(500);
+		setActive(true);
+		return this;
 	}
 	
 	public Shooting(){
@@ -45,8 +62,8 @@ public class Shooting {
 		
 		if(is_active){
 			
-			Vector2f actual_speed = speed.copy();
-			actual_speed.scale((time/1000.0f));
+			Vector2f actual_speed = direction.copy();
+			actual_speed.scale((time/10000.0f));
 			position.add(actual_speed);
 			
 			actual_life = actual_life + time;
@@ -67,11 +84,22 @@ public class Shooting {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		if(is_active){
-			g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX(),position.getY());
+			g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
 
 		}
 		//g.fillOval(position.getX(),position.getY(), 20, 20);
 	}
+	
+//	public boolean collission (Vector2f other_position, int other_radius_squared)
+//	{
+//		int distance = (int) other_position.copy().sub(position).lengthSquared();
+//		
+//		if( distance < ( other_radius_squared + radius_squared ) )
+//		{
+//			return true;
+//		}
+//		return false;
+//	}
 
 	public boolean BulletState(){
 		
@@ -85,4 +113,11 @@ public class Shooting {
 	public void setActive(boolean active){
 		this.is_active = active;
 	}
+		public int getDamage(){
+		
+		return damage;
+	}
+	
 }
+
+

@@ -2,7 +2,7 @@ package States;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
+import java.util.Vector;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -29,6 +29,10 @@ public class GameState extends BasicGameState{
 	private Integer posx;
 	private Integer posy;
 	
+	private Integer pos_player_x;
+	private Integer pos_player_y;
+	
+	
 	private Music sound;
 	private Music music;
 	
@@ -40,6 +44,12 @@ public class GameState extends BasicGameState{
 	private static int fire_rate = 100;
 	private int actual_bullet = 0;
 	public int delta = 0;
+	protected Vector2f position_of_player;
+	private int radius_squared;
+	protected Vector2f position;
+	
+	private int lives = 3;
+	private boolean is_alive = true;
 	
 	private boolean flag_r;
 	private boolean flag_l;
@@ -76,6 +86,7 @@ public class GameState extends BasicGameState{
 		flag_u = false;
 		flag_d = false;
 		
+
 				
 	}
 
@@ -102,28 +113,32 @@ public class GameState extends BasicGameState{
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
-		
 		//zmienna od strzalow
+		
+
+		
 		delta = delta + alpha;
-		if(delta > fire_rate && gc.getInput().isKeyPressed(Input.KEY_SPACE))
-		{
-			
-			shoots[actual_bullet] = new Shooting(new Vector2f(1,1), new Vector2f(500,200));
-			//shoots[actual_bullet].setActive(true);
-			//shoots[actual_bullet].setActual(0);
-
-
-			actual_bullet++;
-			
-			if(actual_bullet >= shoots.length){
-				
-				actual_bullet = 0;
-				shoots[actual_bullet].setActual(0);
-			}
-			
-			delta = 0;
-			
-		}
+//		if(delta > fire_rate && gc.getInput().isKeyPressed(Input.KEY_SPACE))
+//		{
+//			
+//			fireBullet(new Vector2f(position.getX(),gc.getInput().getMouseY()), new Shooting());
+//
+//			//shoots[actual_bullet] = new Shooting(new Vector2f(0,50), new Vector2f(500,200));
+//			//shoots[actual_bullet].setActive(true);
+//			//shoots[actual_bullet].setActual(0);
+//
+//
+//			actual_bullet++;
+//			
+//			if(actual_bullet >= shoots.length){
+//				
+//				actual_bullet = 0;
+//				shoots[actual_bullet].setActual(0);
+//			}
+//			
+//			delta = 0;
+//			
+//		}
 		
 		for(Shooting s : shoots){
 			
@@ -162,7 +177,6 @@ public class GameState extends BasicGameState{
 			}
 				
 		}
-		
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
 		{	
@@ -222,58 +236,113 @@ public class GameState extends BasicGameState{
 //			
 //		}
 		
-	
-		
-		
-//		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
-//			
-//			if(flag_r){
-//				
-//				for(int a=0;a<200;a++){
-//					posx = first_player_x + a;
-//					posy = first_player_y;
-//					
-//				}
-//			}
-//				
-//			if(flag_l){
-//					
-//				for(int a=0;a<200;a++){
-//					posx = first_player_x - a;
-//					posy = first_player_y;					
-//						
-//				}
-//			}
-//
-//			if(flag_u){
-//				
-//				for(int a=0;a<200;a++){
-//					posx = first_player_x;
-//					posy = first_player_y + a;						
-//				}
-//			}
-//					
-//			if(flag_d){
-//						
-//				for(int a=0;a<200;a++){
-//					posx = first_player_x;
-//					posy = first_player_y - a;							
-//				}
-//			}
-//			
-//				
-//				
-////			shoot.add(new Shooting( new Vector2f(posx,posy).normalise(), new Vector2f(300,100)));
-//
-//				
-//			}
-//			
 
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
+			
+			if(flag_r){
+				
+				posx = first_player_x + 1;
+				posy = first_player_y;
+				
+				pos_player_x = first_player_x + 32;
+				pos_player_y = first_player_y;
+
+				
+				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
+				setPosition(new Vector2f(posx,posy));
+				fireBullet( new Vector2f(position_of_player), new Shooting());
+			}
+				
+			if(flag_l){
+					
+				posx = first_player_x - 1;
+				posy = first_player_y;
+				
+				pos_player_x = first_player_x - 32;
+				pos_player_y = first_player_y;
+
+				
+				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
+				setPosition(new Vector2f(posx,posy));
+				fireBullet( new Vector2f(position_of_player), new Shooting());
+			}
+
+			if(flag_u){
+				
+				posx = first_player_x;
+				posy = first_player_y - 1;
+				
+				pos_player_x = first_player_x;
+				pos_player_y = first_player_y - 32;
+
+				
+				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
+				setPosition(new Vector2f(posx,posy));
+				fireBullet( new Vector2f(position_of_player), new Shooting());
+			}
+					
+			if(flag_d){
+						
+				posx = first_player_x;
+				posy = first_player_y + 1;
+				
+				pos_player_x = first_player_x;
+				pos_player_y = first_player_y + 32;
+
+				
+				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
+				setPosition(new Vector2f(posx,posy));
+				fireBullet( new Vector2f(position_of_player), new Shooting());
+			}
+			
+				
+		}
+			
+
+	}
+	
+	public void checkShootingCollision ( Shooting[] shoots )
+	{
+		for( Shooting s : shoots )
+		{
+//			if ( s.BulletState() && s.collission(position_of_player, radius_squared) )
+			if ( s.BulletState() )
+			{
+				s.setActive(false);
+				lives -= s.getDamage();
+				if( lives < 1 && is_alive) die();
+			}	
+		}
+	}
+		
+		public void die(){
+			is_alive = false;
 		}
 		
 		
+		public void fireBullet(Vector2f vector , Shooting s)
+		{
+			delta = 0;
 
+			vector.sub(position);
+			vector.normalise();
+			shoots[actual_bullet] = s.init(position.copy(),vector);
+			actual_bullet++; 
+			if( actual_bullet >= shoots.length ) actual_bullet = 0;
+		}
 		
+		
+		public void setPositionofPlayer(Vector2f vector){
+			
+			this.position_of_player=vector;
+			
+		}
+		public void setPosition(Vector2f vector){
+			
+			this.position=vector;
+			
+		}
 	
 
 	@Override

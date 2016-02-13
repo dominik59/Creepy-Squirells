@@ -38,6 +38,7 @@ public class Resources {
 			images.put("button_play",loadImage("/button_graj.png"));
 			images.put("menu_background",loadImage("/menu_background.png"));
 			spritesheets.put("bullet_1", new SpriteSheet(loadImage("/bullet_1.png"), 32, 32 ));
+			spritesheets.put("bullet_2", new SpriteSheet(loadImage("/bullet_2.png"), 32, 32 ));
 			spritesheets.put("sqi_r", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
 			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));
 		} catch (SlickException e) {
