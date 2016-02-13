@@ -28,7 +28,6 @@ public class GameState extends BasicGameState{
 	
 	private Integer posx;
 	private Integer posy;
-
 	
 	private Music sound;
 	private Music music;
