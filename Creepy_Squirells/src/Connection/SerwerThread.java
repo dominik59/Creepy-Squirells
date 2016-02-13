@@ -1,4 +1,4 @@
-package src;
+package Connection;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,7 +30,7 @@ public class SerwerThread implements Runnable {
 			PrintWriter out = new PrintWriter(mySocket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
 			String odp[]=new String[4];
-			out.println("##Klient ANSWEAR## Nawi�zano polaczenie");
+			out.println("##Klient ANSWEAR## Nawiązano połaczenie");
 			while(true)
 				{
 					if(in.ready())
