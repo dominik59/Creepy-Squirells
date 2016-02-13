@@ -1,5 +1,9 @@
 package States;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -7,6 +11,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -14,16 +19,34 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import Core.Resources;
 import States.MenuState;
+import States.Shooting;
 
 public class GameState extends BasicGameState{
 	private Integer first_player_x;
 	private Integer first_player_y;
 	private String first_player_picture="sqi_r";
 	
+	private Integer posx;
+	private Integer posy;
+
+	
 	private Music sound;
 	private Music music;
 	
 	private TiledMap mapa;
+	
+	//private Shooting shoot;
+//	private LinkedList<Shooting> shoot;
+	private Shooting[] shoots;
+	private static int fire_rate = 100;
+	private int actual_bullet = 0;
+	public int delta = 0;
+	
+	private boolean flag_r;
+	private boolean flag_l;
+	private boolean flag_u;
+	private boolean flag_d;
+		
 	
 	MenuState menustate = new MenuState();
 	
@@ -39,24 +62,74 @@ public class GameState extends BasicGameState{
 		first_player_y=18;
 		//10,18
 		
+		//shoot = new Shooting(new Vector2f(0,100), new Vector2f(200,100));
+//		shoot = new LinkedList<Shooting>();
+		
+		shoots = new Shooting[20];
+		
+		for(int i=0;i<shoots.length;i++)
+		{
+			shoots[i] = new Shooting();
+		}
+		
+		flag_r = false;
+		flag_l = false;
+		flag_u = false;
+		flag_d = false;
+		
+				
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException  {
 		// TODO Auto-generated method stub
 
 
 		g.setBackground(Color.black);
-		//g.drawImage(Resources.getSpritesheet("tiles").getSubImage(1, 1,800,600),0,0);
-		
+
 		mapa.render(0,0);
 		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(0,0,32,32),first_player_x*32,first_player_y*32);
 
+//		s.render(gc, sbg, g);
+		
+		for(Shooting s : shoots){
+			
+			s.render(gc, sbg, g);
+		}
+		
+		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
+		
+		//zmienna od strzalow
+		delta = delta + alpha;
+		if(delta > fire_rate && gc.getInput().isKeyPressed(Input.KEY_SPACE))
+		{
+			
+			shoots[actual_bullet] = new Shooting(new Vector2f(1,1), new Vector2f(500,200));
+			//shoots[actual_bullet].setActive(true);
+			//shoots[actual_bullet].setActual(0);
+
+
+			actual_bullet++;
+			
+			if(actual_bullet >= shoots.length){
+				
+				actual_bullet = 0;
+				shoots[actual_bullet].setActual(0);
+			}
+			
+			delta = 0;
+			
+		}
+		
+		for(Shooting s : shoots){
+			
+			s.update(alpha);
+		}
 		
 		int kolizje = mapa.getLayerIndex("Kolizje");
 		mapa.getTileId(0, 0, kolizje);
@@ -79,6 +152,10 @@ public class GameState extends BasicGameState{
 		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 		{
 			first_player_picture="sqi_r";
+			flag_r = true;
+			flag_l = false;
+			flag_u = false;
+			flag_d = false;
 			
 			if(mapa.getTileId(first_player_x+1, first_player_y, kolizje)==0)
 			{
@@ -91,6 +168,10 @@ public class GameState extends BasicGameState{
 		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
 		{	
 			first_player_picture="sqi_l";
+			flag_r = false;
+			flag_l = true;
+			flag_u = false;
+			flag_d = false;
 			
 			if(mapa.getTileId(first_player_x-1, first_player_y, kolizje)==0)
 			{
@@ -101,6 +182,10 @@ public class GameState extends BasicGameState{
 			
 		if(gc.getInput().isKeyPressed(Input.KEY_UP))
 		{
+			flag_r = false;
+			flag_l = false;
+			flag_u = true;
+			flag_d = false;
 			if(mapa.getTileId(first_player_x, first_player_y-1, kolizje)==0)
 			{
 				first_player_y--;
@@ -109,6 +194,10 @@ public class GameState extends BasicGameState{
 		}
 		if(gc.getInput().isKeyPressed(Input.KEY_DOWN))
 		{
+			flag_r = false;
+			flag_l = false;
+			flag_u = false;
+			flag_d = true;
 			if(mapa.getTileId(first_player_x, first_player_y+1, kolizje)==0)
 			{
 				first_player_y++;
@@ -116,8 +205,77 @@ public class GameState extends BasicGameState{
 				
 		}
 		
+		//shoot.update(alpha);
+//		Iterator<Shooting> i = shoot.iterator();
+//		
+//		while(i.hasNext()){
+//			
+//			Shooting s = i.next();
+//			if(s.BulletState()){
+//				
+//				s.update(alpha);
+//			}
+//			else{
+//				
+//				i.remove();
+//				s.setActual(0);
+//			}
+//			
+//		}
 		
-	}
+	
+		
+		
+//		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
+//			
+//			if(flag_r){
+//				
+//				for(int a=0;a<200;a++){
+//					posx = first_player_x + a;
+//					posy = first_player_y;
+//					
+//				}
+//			}
+//				
+//			if(flag_l){
+//					
+//				for(int a=0;a<200;a++){
+//					posx = first_player_x - a;
+//					posy = first_player_y;					
+//						
+//				}
+//			}
+//
+//			if(flag_u){
+//				
+//				for(int a=0;a<200;a++){
+//					posx = first_player_x;
+//					posy = first_player_y + a;						
+//				}
+//			}
+//					
+//			if(flag_d){
+//						
+//				for(int a=0;a<200;a++){
+//					posx = first_player_x;
+//					posy = first_player_y - a;							
+//				}
+//			}
+//			
+//				
+//				
+////			shoot.add(new Shooting( new Vector2f(posx,posy).normalise(), new Vector2f(300,100)));
+//
+//				
+//			}
+//			
+
+		}
+		
+		
+
+		
+	
 
 	@Override
 	public int getID() {
