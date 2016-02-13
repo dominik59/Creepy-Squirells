@@ -1,0 +1,3 @@
+Numer indeksu 123 bcd d ad cd
+Numer indeksu 123 d d 34 cd
+Numer indeksu ads bcd d ad cd
