@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Mapa" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA7WVyw2CQBCGhxa0D+xD6/BxEETLQKvQk9qCj3hQO/AtPagHoyd/ApsgLvvAZZMvS4bZfJmZbNYhon7MAJQsojLwE/F/aAOPvhdzqK4hGAn+uwYcC7DM6Vjh28Hugg7wYrqgB2YUEeY/czjO2C8gAL71yx7xAziCE+Vz6PRKp45k7UU40rWLHDuOQ5Qvm3maG7iDhwEHm/mVQ2CwDtWVVfcLvMnczHl1s3rzzJzn0L0f1QLvR/KMzDGPUcnnOWzJGdZX1d5m9aqi0Stbkp/lqGk4ZPnMMQYTUEduAzRBy4piImT509gRvq9rsCmALUVv9gdXrhbg0AcAAA==
+   H4sIAAAAAAAAA7WVSw6CMBCGhyvoPfAeeg4fC0H0GOgpdKVewUdcqDfwLXdQF0ZX/gSaVCwtrdDkS8kwzZeZSVOHiPoxA1CyiMrA5+L/0AYefS/myLqGYCT57+bgWICloWOFbwe7CzrAi+mCHphRRJj/NHCcsV9AAHzrlz3iB3AEJzJz6PRKpw6+9iIcydpljp3AIctXzTzJDdzBIwcHm/lVQJBjHVlXWt0v8Kb8Zi6qm9VrMnORQ/d+VAu8H/wZlWPOYTJzW3GG9TVrb9N6VdHola3IT3PUNByqfOYYgwmoI7cBmqBlRTEZqvxp7Ajf1zXYFMCWojf7A5HbL0LQBwAA
   </data>
  </layer>
  <layer name="Kolizje" width="25" height="20">
