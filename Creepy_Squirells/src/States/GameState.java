@@ -17,6 +17,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import Core.ClassesInstances;
 import Core.Resources;
 import States.MenuState;
 import States.Shooting;
@@ -61,11 +62,12 @@ public class GameState extends BasicGameState{
 	public static boolean select_2 = false;
 		
 	
-	MenuState menustate = new MenuState();
+	MenuState menustate = ClassesInstances.menuState;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		mapa = Resources.getMap("level1");
 		
 		sound = Resources.getAudio("level1_music");

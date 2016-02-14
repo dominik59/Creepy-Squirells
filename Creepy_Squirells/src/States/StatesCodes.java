@@ -2,10 +2,11 @@ package States;
 
 
 /**
- * Ta klasa posiada kody poszczególnych okien tzn. 
- * MENU- id okna pod nazw¹ menu
- * CREDITS - id okna pod nazw¹ credits
- * GAME -id okna pod nazw¹ game
+ * Ta klasa posiada kody poszczegï¿½lnych okien tzn. 
+ * MENU- id okna pod nazwï¿½ menu
+ * CREDITS - id okna pod nazwï¿½ credits
+ * GAME -id okna pod nazwï¿½ game
+ * SERVERCLIENT - id okna w ktÃ³rym odbywa siÄ™ wybÃ³r pomiÄ™dzy klientem a serwerem
  * @author Dominik
  *
  */
@@ -13,4 +14,5 @@ public class StatesCodes {
 	public static int MENU = 0;
 	public static int CREDITS = 1;
 	public static int GAME = 2;
+	public static int SERVERCLIENT = 3;
 }

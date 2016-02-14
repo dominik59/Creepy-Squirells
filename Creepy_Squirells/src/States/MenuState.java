@@ -21,6 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 import Core.Window;
+import Core.ClassesInstances;
 import Core.Resources;
 
 public class MenuState extends BasicGameState{
@@ -28,12 +29,13 @@ public class MenuState extends BasicGameState{
 	private Music menuAudio=Resources.getAudio("menuSound");
 	private Sound click_sound;
 	private Long timer=new Long(0);
-	private boolean menuAudio_playing=false;
+	private boolean is_menuAudio_playing=false;
 	public static boolean gamemusic;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		/**
 		 * To wszystko trzeba dodać aby uruchomić polskie znaki
 		 */
@@ -47,7 +49,7 @@ public class MenuState extends BasicGameState{
 		click_sound=new Sound("/click_sound.wav");
 		menuAudio.play();
 		menuAudio.setVolume(0.2f);
-		menuAudio_playing=true;
+		is_menuAudio_playing=true;
 	}
 	
 	@Override
@@ -72,17 +74,17 @@ public class MenuState extends BasicGameState{
 		// TODO Auto-generated method stub
 		if(gc.getInput().isKeyPressed(Input.KEY_1))
 			{
-				if(menuAudio_playing)
+				if(is_menuAudio_playing)
 				{
 					menuAudio.stop();
 					click_sound.play();
-					menuAudio_playing=false;
+					is_menuAudio_playing=false;
 				}
 				
 				gamemusic = true;
 				System.out.println("gamemusic status: " + gamemusic); //tak sobie debuguje
 				
-				sbg.enterState(StatesCodes.GAME);
+				sbg.enterState(StatesCodes.SERVERCLIENT);
 				
 			}
 		if (gc.getInput().isKeyPressed(Input.KEY_2)) {
@@ -105,7 +107,8 @@ public class MenuState extends BasicGameState{
 	public void play_menu_music() {
 		// TODO Auto-generated method stub
 		menuAudio.play();
-		menuAudio_playing=true;
+		menuAudio.setVolume(0.2f);
+		is_menuAudio_playing=true;
 	}
 
 }

@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import States.CreditsState;
 import States.MenuState;
+import States.ServerClientState;
 
 public class Engine extends StateBasedGame{
 
@@ -42,10 +43,15 @@ public class Engine extends StateBasedGame{
 		gc.setTargetFrameRate(60);
 		gc.setVSync(true);
 		new Resources();
+		ClassesInstances.menuState=new MenuState();
+		ClassesInstances.creditsState=new CreditsState();
+		ClassesInstances.serverClientState=new ServerClientState();
+		ClassesInstances.gameState=new States.GameState();
 		
-		this.addState(new MenuState());
-		this.addState(new CreditsState());
-		this.addState(new States.GameState());
+		this.addState(ClassesInstances.menuState);
+		this.addState(ClassesInstances.creditsState);
+		this.addState(ClassesInstances.serverClientState);
+		this.addState(ClassesInstances.gameState);
 	}
 	
 	

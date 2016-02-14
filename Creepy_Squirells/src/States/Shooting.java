@@ -13,6 +13,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import Core.ClassesInstances;
 import Core.Resources;
 
 public class Shooting {
@@ -29,7 +30,7 @@ public class Shooting {
 	private String bullet_1="bullet_1";
 	private String bullet_2="bullet_2";
 
-	GameState gamestate = new GameState();
+	GameState gamestate = (GameState) ClassesInstances.gameState;
 
 	
 	public Shooting(Vector2f position, Vector2f direction){

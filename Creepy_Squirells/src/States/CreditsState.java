@@ -14,6 +14,7 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Core.ClassesInstances;
 import Core.Window;
 
 public class CreditsState extends BasicGameState{
@@ -25,6 +26,7 @@ public class CreditsState extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		creditsFont = new UnicodeFont(new java.awt.Font("Times New Roman", Font.BOLD, 50));
 		creditsFont.getEffects().add(new ColorEffect(java.awt.Color.white));
 		creditsFont.addGlyphs("ąćłóężźńś"); // szczególnie ważna jest ta linijka bo
