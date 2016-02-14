@@ -164,6 +164,8 @@ public class GameState extends BasicGameState{
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))
 			{
+				ClassesInstances.clientTCP.interrupt();
+				ClassesInstances.serverTCP.interrupt();
 				music.stop();
 				menustate.play_menu_music();
 				sbg.enterState(StatesCodes.MENU);

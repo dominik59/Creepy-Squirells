@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.*;
 
-public class SerwerThread implements Runnable {
+public class SerwerThread extends Thread {
 	Socket mySocket;
 	private int liczba_punktow=0;
 	private int liczba_pytan=0;
@@ -22,7 +22,7 @@ public class SerwerThread implements Runnable {
 		mySocket = clientSocket;
 	}
 
-	public void run() 
+	public void run()
 	{
 		try {
 			String zmienna[] = new String[24];
@@ -83,6 +83,7 @@ public class SerwerThread implements Runnable {
 		{
 			System.err.println(e);
 		}
+		
 	}
 	private String[] wczytaj() throws IOException
 	{

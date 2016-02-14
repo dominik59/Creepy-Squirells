@@ -12,27 +12,27 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Connection.ClientTCP;
+import Connection.ServerTCP;
 import Core.ClassesInstances;
 import Core.Resources;
 import Core.Window;
 
 public class ServerClientState extends BasicGameState {
 	private UnicodeFont menuFont;
-	private boolean menu_active;
 	private Sound click_sound;
 	private MenuState menustate = ClassesInstances.menuState;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		
+
 		menuFont = new UnicodeFont(new java.awt.Font("Arial", Font.BOLD, 20));
 		menuFont.getEffects().add(new ColorEffect(java.awt.Color.white));
 		menuFont.addGlyphs("ąćłóężźńś"); // szczególnie ważna jest ta linijka bo
 											// to ona dodaje polskie znaki
 		menuFont.addNeheGlyphs();
 		menuFont.loadGlyphs();
-		menu_active = true;
 
 		click_sound = new Sound("/click_sound.wav");
 	}
@@ -54,23 +54,28 @@ public class ServerClientState extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
-		if (menu_active) {
-			if (gc.getInput().isKeyPressed(Input.KEY_1)) {
-				click_sound.play();
-				// sbg.enterState(StatesCodes.CREDITS);
-			}
-			if (gc.getInput().isKeyPressed(Input.KEY_2)) {
-				click_sound.play();
-				sbg.enterState(StatesCodes.GAME);
-				// gc.exit();
-			}
-			if (gc.getInput().isKeyPressed(Input.KEY_3)) {
-				click_sound.play();
-				menustate.play_menu_music();
-				
-				sbg.enterState(StatesCodes.MENU);
-			}
+
+		if (gc.getInput().isKeyPressed(Input.KEY_1)) {
+			click_sound.play();
+			ClassesInstances.serverTCP = new ServerTCP();
+			ClassesInstances.serverTCP.start();
+			//serverTCP.main(null);
+			// sbg.enterState(StatesCodes.CREDITS);
 		}
+		if (gc.getInput().isKeyPressed(Input.KEY_2)) {
+			click_sound.play();
+			ClassesInstances.clientTCP = new ClientTCP();
+			ClassesInstances.clientTCP.start();
+			sbg.enterState(StatesCodes.GAME);
+
+		}
+		if (gc.getInput().isKeyPressed(Input.KEY_3)) {
+			click_sound.play();
+			menustate.play_menu_music();
+
+			sbg.enterState(StatesCodes.MENU);
+		}
+
 	}
 
 	@Override
