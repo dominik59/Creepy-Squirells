@@ -4,6 +4,7 @@ import org.newdawn.slick.state.GameState;
 
 import Connection.ClientTCP;
 import Connection.ServerTCP;
+
 import States.CreditsState;
 import States.MenuState;
 import States.ServerClientState;
@@ -14,7 +15,11 @@ public class ClassesInstances {
 	public static GameState gameState;
 	public static MenuState menuState;
 	public static ServerClientState serverClientState;
+
 	public static ServerTCP serverTCP;
 	public static ClientTCP clientTCP;
 	
+
+
+
 }

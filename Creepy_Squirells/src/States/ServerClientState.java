@@ -12,14 +12,19 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+
 import Connection.ClientTCP;
 import Connection.ServerTCP;
+
 import Core.ClassesInstances;
 import Core.Resources;
 import Core.Window;
 
 public class ServerClientState extends BasicGameState {
 	private UnicodeFont menuFont;
+
+	private boolean menu_active;
+
 	private Sound click_sound;
 	private MenuState menustate = ClassesInstances.menuState;
 
@@ -33,6 +38,9 @@ public class ServerClientState extends BasicGameState {
 											// to ona dodaje polskie znaki
 		menuFont.addNeheGlyphs();
 		menuFont.loadGlyphs();
+
+		menu_active = true;
+
 
 		click_sound = new Sound("/click_sound.wav");
 	}
@@ -55,6 +63,7 @@ public class ServerClientState extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 
+
 		if (gc.getInput().isKeyPressed(Input.KEY_1)) {
 			click_sound.play();
 			ClassesInstances.serverTCP = new ServerTCP();
@@ -75,6 +84,7 @@ public class ServerClientState extends BasicGameState {
 
 			sbg.enterState(StatesCodes.MENU);
 		}
+
 
 	}
 
