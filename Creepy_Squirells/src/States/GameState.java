@@ -47,6 +47,7 @@ public class GameState extends BasicGameState{
 	protected Vector2f position_of_player;
 	private int radius_squared;
 	protected Vector2f position;
+	private boolean set_position = true;
 	
 	private int lives = 3;
 	private boolean is_alive = true;
@@ -55,6 +56,9 @@ public class GameState extends BasicGameState{
 	private boolean flag_l;
 	private boolean flag_u;
 	private boolean flag_d;
+	
+	public static boolean select_1 = true;
+	public static boolean select_2 = false;
 		
 	
 	MenuState menustate = new MenuState();
@@ -163,7 +167,7 @@ public class GameState extends BasicGameState{
 				sbg.enterState(StatesCodes.MENU);
 			}
 		
-		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
+		if(gc.getInput().isKeyPressed(Input.KEY_D) || gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 		{
 			first_player_picture="sqi_r";
 			flag_r = true;
@@ -178,7 +182,7 @@ public class GameState extends BasicGameState{
 				
 		}
 		
-		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
+		if(gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT))
 		{	
 			first_player_picture="sqi_l";
 			flag_r = false;
@@ -193,7 +197,7 @@ public class GameState extends BasicGameState{
 				
 		}
 			
-		if(gc.getInput().isKeyPressed(Input.KEY_UP))
+		if(gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP))
 		{
 			flag_r = false;
 			flag_l = false;
@@ -205,7 +209,7 @@ public class GameState extends BasicGameState{
 			}
 				
 		}
-		if(gc.getInput().isKeyPressed(Input.KEY_DOWN))
+		if(gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN))
 		{
 			flag_r = false;
 			flag_l = false;
@@ -236,67 +240,170 @@ public class GameState extends BasicGameState{
 //			
 //		}
 		
+		if (gc.getInput().isKeyPressed(Input.KEY_1)) {
+			select_1 = true;
+			select_2 = false;
+		}
+		else if (gc.getInput().isKeyPressed(Input.KEY_2)){
+			select_1 = false;
+			select_2 = true;
+		}
+
 
 		
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
+		
+		if (select_1) {
+
+			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
+
+				if (flag_r) {
+
+					posx = first_player_x + 1;
+					posy = first_player_y;
+
+					pos_player_x = first_player_x + 32;
+					pos_player_y = first_player_y;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+				}
+
+				if (flag_l) {
+
+					posx = first_player_x - 1;
+					posy = first_player_y;
+
+					pos_player_x = first_player_x - 32;
+					pos_player_y = first_player_y;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+				}
+
+				if (flag_u) {
+
+					posx = first_player_x;
+					posy = first_player_y - 1;
+
+					pos_player_x = first_player_x;
+					pos_player_y = first_player_y - 32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+				}
+
+				if (flag_d) {
+
+					posx = first_player_x;
+					posy = first_player_y + 1;
+
+					pos_player_x = first_player_x;
+					pos_player_y = first_player_y + 32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+				}
+
+			}
+		}
+		
+		float deltaLenght = (float)alpha/5;
+		
+		if(select_2){
 			
-			if(flag_r){
+			if(set_position){
 				
-				posx = first_player_x + 1;
-				posy = first_player_y;
-				
-				pos_player_x = first_player_x + 32;
-				pos_player_y = first_player_y;
+				setPosition(new Vector2f(first_player_x, first_player_y));
+				set_position = false;
+			}
+
+			
+			if( gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
+			{
+				fireBullet(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
 
 				
-				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
-				setPosition(new Vector2f(posx,posy));
-				fireBullet( new Vector2f(position_of_player), new Shooting());
-			}
-				
-			if(flag_l){
+				if (flag_r) {
 					
-				posx = first_player_x - 1;
-				posy = first_player_y;
-				
-				pos_player_x = first_player_x - 32;
-				pos_player_y = first_player_y;
-
-				
-				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
-				setPosition(new Vector2f(posx,posy));
-				fireBullet( new Vector2f(position_of_player), new Shooting());
-			}
-
-			if(flag_u){
-				
-				posx = first_player_x;
-				posy = first_player_y - 1;
-				
-				pos_player_x = first_player_x;
-				pos_player_y = first_player_y - 32;
-
-				
-				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
-				setPosition(new Vector2f(posx,posy));
-				fireBullet( new Vector2f(position_of_player), new Shooting());
-			}
-					
-			if(flag_d){
+					if(position.getX() < 800){
 						
-				posx = first_player_x;
-				posy = first_player_y + 1;
-				
-				pos_player_x = first_player_x;
-				pos_player_y = first_player_y + 32;
+						setPosition(new Vector2f(first_player_x + 1, first_player_y));
+						position.add( new Vector2f(deltaLenght,0) );
 
+					}
+				}
+
+				if (flag_l) {
+
+					if(position.getX() > -20){
+						
+						setPosition(new Vector2f(first_player_x - 1, first_player_y));
+						position.add( new Vector2f(-deltaLenght,0) );
+
+					}
+				}
+
+				if (flag_u) {
+
+					if(position.getY() < 640){
+						
+						setPosition(new Vector2f(first_player_x, first_player_y - 1));
+						position.add( new Vector2f(0,deltaLenght) );
+
+					}
+				}
+
+				if (flag_d) {
+
+					if(position.getY() < -20){
+						
+						setPosition(new Vector2f(first_player_x, first_player_y + 1));
+						position.add( new Vector2f(0,-deltaLenght) );
+
+					}
 				
-				setPositionofPlayer(new Vector2f(pos_player_x,pos_player_y));
-				setPosition(new Vector2f(posx,posy));
-				fireBullet( new Vector2f(position_of_player), new Shooting());
-			}
+				
+				
+				
+				
+				
+				
+//				setPositionofPlayer(new Vector2f(first_player_x, first_player_y));
+//				setPosition(new Vector2f(position_of_player));
+//				fireBullet(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
+			}	
 			
-				
+			
+//			float deltaLenght = (float)alpha/5;
+//			
+//			if( ( gc.getInput().isKeyDown(Input.KEY_RIGHT) || gc.getInput().isKeyDown(Input.KEY_D) ) && 
+//					position.getX() < 800  )
+//			{
+//				position.add( new Vector2f(deltaLenght,0) );
+//			}
+//			if( ( gc.getInput().isKeyDown(Input.KEY_LEFT) || gc.getInput().isKeyDown(Input.KEY_A) ) && 
+//					position.getX() > 0  )
+//			{
+//				position.add( new Vector2f(-deltaLenght,0) );
+//			}
+//			if( ( gc.getInput().isKeyDown(Input.KEY_DOWN) || gc.getInput().isKeyDown(Input.KEY_S) ) && 
+//					position.getY() < 640  )
+//			{
+//				position.add( new Vector2f(0,deltaLenght) );
+//			}
+//			if( ( gc.getInput().isKeyDown(Input.KEY_UP) || gc.getInput().isKeyDown(Input.KEY_W) ) && 
+//					position.getY() > 0  )
+//			{
+//				position.add( new Vector2f(0,-deltaLenght) );
+//			}
+			
+			
+			
+		}
 		}
 			
 
@@ -342,6 +449,13 @@ public class GameState extends BasicGameState{
 			
 			this.position=vector;
 			
+		}
+		
+		public boolean getSelect1(){
+			return select_1;
+		}
+		public boolean getSelect2(){
+			return select_2;
 		}
 	
 

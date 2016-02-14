@@ -29,6 +29,7 @@ public class Shooting {
 	private String bullet_1="bullet_1";
 	private String bullet_2="bullet_2";
 
+	GameState gamestate = new GameState();
 
 	
 	public Shooting(Vector2f position, Vector2f direction){
@@ -67,8 +68,8 @@ public class Shooting {
 			position.add(actual_speed);
 			
 			actual_life = actual_life + time;
-			System.out.println("BulletState: " + BulletState());
-			System.out.println("Actual life: " + actual_life);
+			//System.out.println("BulletState: " + BulletState());
+			//System.out.println("Actual life: " + actual_life);
 
 
 			if(actual_life > max_life){
@@ -84,7 +85,15 @@ public class Shooting {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		if(is_active){
-			g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
+			
+			if(gamestate.getSelect1()){
+				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
+
+			}
+			else if(gamestate.getSelect2()){
+				g.drawImage(Resources.getSpritesheet(bullet_2).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
+
+			}
 
 		}
 		//g.fillOval(position.getX(),position.getY(), 20, 20);
