@@ -39,6 +39,7 @@ public class Resources {
 			music.put("level1_sound", new Music("/hehe.ogg"));
 			music.put("click_sound", new Music("/click_sound.wav"));	
 			sound.put("wood_step", new Sound("/wood_step.wav"));
+			sound.put("grass_step", new Sound("/grass_step.wav"));
 			images.put("button_play",loadImage("/button_graj.png"));
 			images.put("menu_background",loadImage("/menu_background.png"));
 			spritesheets.put("bullet_1", new SpriteSheet(loadImage("/bullet_1.png"), 32, 32 ));

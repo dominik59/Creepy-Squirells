@@ -41,6 +41,7 @@ public class ServerGameState extends BasicGameState {
 	protected Music sound;
 	protected Music music;
 	protected Sound wood_step;
+	protected Sound grass_step;
 
 	protected TiledMap mapa;
 
@@ -80,6 +81,7 @@ public class ServerGameState extends BasicGameState {
 		sound = Resources.getAudio("level1_music");
 		music = Resources.getAudio("level1_sound");
 		wood_step = Resources.getSound("wood_step");
+		grass_step = Resources.getSound("grass_step");
 		
 		
 		first_player_x = 2;
@@ -175,6 +177,10 @@ public class ServerGameState extends BasicGameState {
 			{
 				wood_step.play();				
 			}
+			else
+			{
+				grass_step.play();
+			}
 		}
 
 		if (gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
@@ -191,6 +197,10 @@ public class ServerGameState extends BasicGameState {
 			{
 				wood_step.play();
 			}
+			else
+			{
+				grass_step.play();
+			}
 		}
 
 		if (gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP)) {
@@ -206,6 +216,10 @@ public class ServerGameState extends BasicGameState {
 			{
 				wood_step.play();
 			}
+			else
+			{
+				grass_step.play();
+			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			first_player_picture = "sqi_f";
@@ -219,6 +233,10 @@ public class ServerGameState extends BasicGameState {
 			if(first_player_y<18)
 			{
 				wood_step.play();
+			}
+			else
+			{
+				grass_step.play();
 			}
 		}
 
