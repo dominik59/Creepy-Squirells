@@ -34,9 +34,14 @@ public class ServerGameState extends BasicGameState {
 
 	protected Integer posx;
 	protected Integer posy;
+	protected Integer second_posx;
+	protected Integer second_posy;
+	
 
 	protected Integer pos_player_x;
 	protected Integer pos_player_y;
+	protected Integer second_pos_player_x;
+	protected Integer second_pos_player_y;
 
 	protected Music sound;
 	protected Music music;
@@ -51,10 +56,18 @@ public class ServerGameState extends BasicGameState {
 	protected static int fire_rate = 100;
 	protected int actual_bullet = 0;
 	public int delta = 0;
-	protected Vector2f position_of_player;
 	protected int radius_squared;
-	protected Vector2f position;
+	
 	protected Boolean set_position = true;
+	protected Boolean set_position_2 = true;
+
+	
+	protected Vector2f position_of_player;
+	protected Vector2f position;
+	protected Vector2f second_position_of_player;
+	protected Vector2f second_position;
+
+
 
 	protected int lives = 3;
 	protected Boolean is_alive = true;
@@ -63,9 +76,17 @@ public class ServerGameState extends BasicGameState {
 	protected Boolean flag_l;
 	protected Boolean flag_u;
 	protected Boolean flag_d;
+	
+	protected Boolean flag_r_2;
+	protected Boolean flag_l_2;
+	protected Boolean flag_u_2;
+	protected Boolean flag_d_2;
 
 	protected static Boolean select_1 = true;
 	protected static Boolean select_2 = false;
+	
+	protected static Boolean select_1_2 = true;
+	protected static Boolean select_2_2 = false;
 
 	protected Boolean did_first_player_fired = false;
 	protected Boolean did_second_player_fired = false;

@@ -59,10 +59,10 @@ public class ClientGameState extends ServerGameState {
 				if(gc.getInput().isKeyPressed(Input.KEY_D) || gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 				{
 					second_player_picture="sqi_r";
-					flag_r = true;
-					flag_l = false;
-					flag_u = false;
-					flag_d = false;
+					flag_r_2 = true;
+					flag_l_2 = false;
+					flag_u_2 = false;
+					flag_d_2 = false;
 					
 					if(mapa.getTileId(second_player_x+1, second_player_y, kolizje)==0)
 					{
@@ -77,10 +77,10 @@ public class ClientGameState extends ServerGameState {
 				if(gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT))
 				{	
 					second_player_picture="sqi_l";
-					flag_r = false;
-					flag_l = true;
-					flag_u = false;
-					flag_d = false;
+					flag_r_2 = false;
+					flag_l_2 = true;
+					flag_u_2 = false;
+					flag_d_2 = false;
 					
 					if(mapa.getTileId(second_player_x-1, second_player_y, kolizje)==0)
 					{
@@ -95,10 +95,10 @@ public class ClientGameState extends ServerGameState {
 				if(gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP))
 				{
 					second_player_picture="sqi_b";
-					flag_r = false;
-					flag_l = false;
-					flag_u = true;
-					flag_d = false;
+					flag_r_2 = false;
+					flag_l_2 = false;
+					flag_u_2 = true;
+					flag_d_2 = false;
 					if(mapa.getTileId(second_player_x, second_player_y-1, kolizje)==0)
 					{
 						second_player_y--;
@@ -111,10 +111,10 @@ public class ClientGameState extends ServerGameState {
 				if(gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN))
 				{
 					second_player_picture="sqi_f";
-					flag_r = false;
-					flag_l = false;
-					flag_u = false;
-					flag_d = true;
+					flag_r_2 = false;
+					flag_l_2 = false;
+					flag_u_2 = false;
+					flag_d_2 = true;
 					if(mapa.getTileId(second_player_x, second_player_y+1, kolizje)==0)
 					{
 						second_player_y++;
@@ -127,12 +127,12 @@ public class ClientGameState extends ServerGameState {
 				
 				
 				if (gc.getInput().isKeyPressed(Input.KEY_1)) {
-					select_1 = true;
-					select_2 = false;
+					select_1_2 = true;
+					select_2_2 = false;
 				}
 				else if (gc.getInput().isKeyPressed(Input.KEY_2)){
-					select_1 = false;
-					select_2 = true;
+					select_1_2= false;
+					select_2_2 = true;
 				}
 
 
@@ -142,56 +142,56 @@ public class ClientGameState extends ServerGameState {
 
 					if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 
-						if (flag_r) {
+						if (flag_r_2) {
 
-							posx = second_player_x + 1;
-							posy = second_player_y;
+							second_posx = second_player_x + 1;
+							second_posy = second_player_y;
 
-							pos_player_x = second_player_x + 32;
-							pos_player_y = second_player_y;
+							second_pos_player_x = second_player_x + 32;
+							second_pos_player_y = second_player_y;
 
-							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
-							setPosition(new Vector2f(posx, posy));
-							fireBullet(new Vector2f(position_of_player), new Shooting());
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPosition_2(new Vector2f(second_posx, second_posy));
+							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
 
-						if (flag_l) {
+						if (flag_l_2) {
 
-							posx = second_player_x - 1;
-							posy = second_player_y;
+							second_posx = second_player_x - 1;
+							second_posy = second_player_y;
 
-							pos_player_x = second_player_x - 32;
-							pos_player_y = second_player_y;
+							second_pos_player_x = second_player_x - 32;
+							second_pos_player_y = second_player_y;
 
-							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
-							setPosition(new Vector2f(posx, posy));
-							fireBullet(new Vector2f(position_of_player), new Shooting());
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPosition_2(new Vector2f(second_posx, second_posy));
+							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
 
-						if (flag_u) {
+						if (flag_u_2) {
 
-							posx = second_player_x;
-							posy = second_player_y - 1;
+							second_posx = second_player_x;
+							second_posy = second_player_y - 1;
 
-							pos_player_x = second_player_x;
-							pos_player_y = second_player_y - 32;
+							second_pos_player_x = second_player_x;
+							second_pos_player_y = second_player_y - 32;
 
-							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
-							setPosition(new Vector2f(posx, posy));
-							fireBullet(new Vector2f(position_of_player), new Shooting());
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPosition_2(new Vector2f(second_posx, second_posy));
+							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
 
-						if (flag_d) {
+						if (flag_d_2) {
 
-							posx = second_player_x;
-							posy = second_player_y + 1;
+							second_posx = second_player_x;
+							second_posy = second_player_y + 1;
 
-							pos_player_x = second_player_x;
-							pos_player_y = second_player_y + 32;
+							second_pos_player_x = second_player_x;
+							second_pos_player_y = second_player_y + 32;
 
-							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
-							setPosition(new Vector2f(posx, posy));
-							fireBullet(new Vector2f(position_of_player), new Shooting());
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPosition_2(new Vector2f(second_posx, second_posy));
+							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
 
 					}
@@ -201,10 +201,10 @@ public class ClientGameState extends ServerGameState {
 				
 				if(select_2){
 					
-					if(set_position){
+					if(set_position_2){
 						
 						setPosition(new Vector2f(second_player_x, second_player_y));
-						set_position = false;
+						set_position_2 = false;
 					}
 
 					
@@ -213,42 +213,42 @@ public class ClientGameState extends ServerGameState {
 						fireBullet(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
 
 						
-						if (flag_r) {
+						if (flag_r_2) {
 							
-							if(position.getX() < 800){
+							if(second_position.getX() < 800){
 								
 								setPosition(new Vector2f(second_player_x + 1, second_player_y));
-								position.add( new Vector2f(deltaLenght,0) );
+								second_position.add( new Vector2f(deltaLenght,0) );
 
 							}
 						}
 
-						if (flag_l) {
+						if (flag_l_2) {
 
-							if(position.getX() > -20){
+							if(second_position.getX() > -20){
 								
 								setPosition(new Vector2f(second_player_x - 1, second_player_y));
-								position.add( new Vector2f(-deltaLenght,0) );
+								second_position.add( new Vector2f(-deltaLenght,0) );
 
 							}
 						}
 
-						if (flag_u) {
+						if (flag_u_2) {
 
-							if(position.getY() < 640){
+							if(second_position.getY() < 640){
 								
 								setPosition(new Vector2f(second_player_x, second_player_y - 1));
-								position.add( new Vector2f(0,deltaLenght) );
+								second_position.add( new Vector2f(0,deltaLenght) );
 
 							}
 						}
 
-						if (flag_d) {
+						if (flag_d_2) {
 
-							if(position.getY() < -20){
+							if(second_position.getY() < -20){
 								
 								setPosition(new Vector2f(second_player_x, second_player_y + 1));
-								position.add( new Vector2f(0,-deltaLenght) );
+								second_position.add( new Vector2f(0,-deltaLenght) );
 
 							}
 						
@@ -297,6 +297,18 @@ public class ClientGameState extends ServerGameState {
 	public int getID() {
 		// TODO Auto-generated method stub
 		return StatesCodes.CLIENT_GAME;
+	}
+	
+	public void setPositionofPlayer_2(Vector2f vector) {
+
+		this.second_position_of_player = vector;
+
+	}
+
+	public void setPosition_2(Vector2f vector) {
+
+		this.second_position = vector;
+
 	}
 	
 	public Integer get_player_2_x_position()
