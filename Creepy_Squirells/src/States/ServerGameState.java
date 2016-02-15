@@ -69,7 +69,7 @@ public class ServerGameState extends BasicGameState {
 
 
 
-	protected int lives = 3;
+	protected Integer lives = 3;
 	protected Boolean is_alive = true;
 
 	protected Boolean flag_r;
