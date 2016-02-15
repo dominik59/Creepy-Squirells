@@ -88,6 +88,7 @@ public class ClientGameState extends ServerGameState {
 					
 				if(gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP))
 				{
+					second_player_picture="sqi_b";
 					flag_r = false;
 					flag_l = false;
 					flag_u = true;
@@ -100,6 +101,7 @@ public class ClientGameState extends ServerGameState {
 				}
 				if(gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN))
 				{
+					second_player_picture="sqi_f";
 					flag_r = false;
 					flag_l = false;
 					flag_u = false;
