@@ -152,7 +152,7 @@ public class ClientGameState extends ServerGameState {
 
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
-							fireBullet(new Vector2f(second_position_of_player), new Shooting());
+							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
 						}
 
 						if (flag_l_2) {
@@ -165,7 +165,7 @@ public class ClientGameState extends ServerGameState {
 
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
-							fireBullet(new Vector2f(second_position_of_player), new Shooting());
+							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
 						}
 
 						if (flag_u_2) {
@@ -178,7 +178,7 @@ public class ClientGameState extends ServerGameState {
 
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
-							fireBullet(new Vector2f(second_position_of_player), new Shooting());
+							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
 						}
 
 						if (flag_d_2) {
@@ -191,7 +191,7 @@ public class ClientGameState extends ServerGameState {
 
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
-							fireBullet(new Vector2f(second_position_of_player), new Shooting());
+							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
 						}
 
 					}
@@ -210,7 +210,7 @@ public class ClientGameState extends ServerGameState {
 					
 					if( gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
 					{
-						fireBullet(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
+						fireBullet_2(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
 
 						
 						if (flag_r_2) {

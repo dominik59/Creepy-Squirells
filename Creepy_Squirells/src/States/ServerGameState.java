@@ -125,6 +125,11 @@ public class ServerGameState extends BasicGameState {
 		flag_l = false;
 		flag_u = false;
 		flag_d = false;
+		
+		flag_r_2 = false;
+		flag_l_2 = false;
+		flag_u_2 = false;
+		flag_d_2 = false;
 
 	}
 
@@ -461,6 +466,17 @@ public class ServerGameState extends BasicGameState {
 		vector.sub(position);
 		vector.normalise();
 		shoots[actual_bullet] = s.init(position.copy(), vector);
+		actual_bullet++;
+		if (actual_bullet >= shoots.length)
+			actual_bullet = 0;
+	}
+	
+	public void fireBullet_2(Vector2f vector, Shooting s) {
+		delta = 0;
+
+		vector.sub(second_position);
+		vector.normalise();
+		shoots[actual_bullet] = s.init(second_position.copy(), vector);
 		actual_bullet++;
 		if (actual_bullet >= shoots.length)
 			actual_bullet = 0;
