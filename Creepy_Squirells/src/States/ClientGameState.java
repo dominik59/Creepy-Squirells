@@ -138,7 +138,7 @@ public class ClientGameState extends ServerGameState {
 
 				
 				
-				if (select_1) {
+				if (select_1_2) {
 
 					if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 
@@ -199,7 +199,7 @@ public class ClientGameState extends ServerGameState {
 				
 				float deltaLenght = (float)alpha/5;
 				
-				if(select_2){
+				if(select_2_2){
 					
 					if(set_position_2){
 						
