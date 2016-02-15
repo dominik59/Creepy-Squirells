@@ -18,35 +18,11 @@ public class ClientGameState extends ServerGameState {
 	
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-				//zmienna od strzalow
+	
 				
 
 				
 				delta = delta + alpha;
-//				if(delta > fire_rate && gc.getInput().isKeyPressed(Input.KEY_SPACE))
-//				{
-//					
-//					fireBullet(new Vector2f(position.getX(),gc.getInput().getMouseY()), new Shooting());
-		//
-//					//shoots[actual_bullet] = new Shooting(new Vector2f(0,50), new Vector2f(500,200));
-//					//shoots[actual_bullet].setActive(true);
-//					//shoots[actual_bullet].setActual(0);
-		//
-		//
-//					actual_bullet++;
-//					
-//					if(actual_bullet >= shoots.length){
-//						
-//						actual_bullet = 0;
-//						shoots[actual_bullet].setActual(0);
-//					}
-//					
-//					delta = 0;
-//					
-//				}
-				
 				for(Shooting s : shoots){
 					
 					s.update(alpha);
@@ -82,30 +58,30 @@ public class ClientGameState extends ServerGameState {
 				
 				if(gc.getInput().isKeyPressed(Input.KEY_D) || gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 				{
-					first_player_picture="sqi_r";
+					second_player_picture="sqi_r";
 					flag_r = true;
 					flag_l = false;
 					flag_u = false;
 					flag_d = false;
 					
-					if(mapa.getTileId(first_player_x+1, first_player_y, kolizje)==0)
+					if(mapa.getTileId(second_player_x+1, second_player_y, kolizje)==0)
 					{
-						first_player_x++;
+						second_player_x++;
 					}
 						
 				}
 				
 				if(gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT))
 				{	
-					first_player_picture="sqi_l";
+					second_player_picture="sqi_l";
 					flag_r = false;
 					flag_l = true;
 					flag_u = false;
 					flag_d = false;
 					
-					if(mapa.getTileId(first_player_x-1, first_player_y, kolizje)==0)
+					if(mapa.getTileId(second_player_x-1, second_player_y, kolizje)==0)
 					{
-						first_player_x--;
+						second_player_x--;
 					}
 						
 				}
@@ -116,9 +92,9 @@ public class ClientGameState extends ServerGameState {
 					flag_l = false;
 					flag_u = true;
 					flag_d = false;
-					if(mapa.getTileId(first_player_x, first_player_y-1, kolizje)==0)
+					if(mapa.getTileId(second_player_x, second_player_y-1, kolizje)==0)
 					{
-						first_player_y--;
+						second_player_y--;
 					}
 						
 				}
@@ -128,30 +104,13 @@ public class ClientGameState extends ServerGameState {
 					flag_l = false;
 					flag_u = false;
 					flag_d = true;
-					if(mapa.getTileId(first_player_x, first_player_y+1, kolizje)==0)
+					if(mapa.getTileId(second_player_x, second_player_y+1, kolizje)==0)
 					{
-						first_player_y++;
+						second_player_y++;
 					}
 						
 				}
 				
-				//shoot.update(alpha);
-//				Iterator<Shooting> i = shoot.iterator();
-//				
-//				while(i.hasNext()){
-//					
-//					Shooting s = i.next();
-//					if(s.BulletState()){
-//						
-//						s.update(alpha);
-//					}
-//					else{
-//						
-//						i.remove();
-//						s.setActual(0);
-//					}
-//					
-//				}
 				
 				if (gc.getInput().isKeyPressed(Input.KEY_1)) {
 					select_1 = true;
@@ -171,11 +130,11 @@ public class ClientGameState extends ServerGameState {
 
 						if (flag_r) {
 
-							posx = first_player_x + 1;
-							posy = first_player_y;
+							posx = second_player_x + 1;
+							posy = second_player_y;
 
-							pos_player_x = first_player_x + 32;
-							pos_player_y = first_player_y;
+							pos_player_x = second_player_x + 32;
+							pos_player_y = second_player_y;
 
 							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 							setPosition(new Vector2f(posx, posy));
@@ -184,11 +143,11 @@ public class ClientGameState extends ServerGameState {
 
 						if (flag_l) {
 
-							posx = first_player_x - 1;
-							posy = first_player_y;
+							posx = second_player_x - 1;
+							posy = second_player_y;
 
-							pos_player_x = first_player_x - 32;
-							pos_player_y = first_player_y;
+							pos_player_x = second_player_x - 32;
+							pos_player_y = second_player_y;
 
 							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 							setPosition(new Vector2f(posx, posy));
@@ -197,11 +156,11 @@ public class ClientGameState extends ServerGameState {
 
 						if (flag_u) {
 
-							posx = first_player_x;
-							posy = first_player_y - 1;
+							posx = second_player_x;
+							posy = second_player_y - 1;
 
-							pos_player_x = first_player_x;
-							pos_player_y = first_player_y - 32;
+							pos_player_x = second_player_x;
+							pos_player_y = second_player_y - 32;
 
 							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 							setPosition(new Vector2f(posx, posy));
@@ -210,11 +169,11 @@ public class ClientGameState extends ServerGameState {
 
 						if (flag_d) {
 
-							posx = first_player_x;
-							posy = first_player_y + 1;
+							posx = second_player_x;
+							posy = second_player_y + 1;
 
-							pos_player_x = first_player_x;
-							pos_player_y = first_player_y + 32;
+							pos_player_x = second_player_x;
+							pos_player_y = second_player_y + 32;
 
 							setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 							setPosition(new Vector2f(posx, posy));
@@ -230,7 +189,7 @@ public class ClientGameState extends ServerGameState {
 					
 					if(set_position){
 						
-						setPosition(new Vector2f(first_player_x, first_player_y));
+						setPosition(new Vector2f(second_player_x, second_player_y));
 						set_position = false;
 					}
 
@@ -244,7 +203,7 @@ public class ClientGameState extends ServerGameState {
 							
 							if(position.getX() < 800){
 								
-								setPosition(new Vector2f(first_player_x + 1, first_player_y));
+								setPosition(new Vector2f(second_player_x + 1, second_player_y));
 								position.add( new Vector2f(deltaLenght,0) );
 
 							}
@@ -254,7 +213,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(position.getX() > -20){
 								
-								setPosition(new Vector2f(first_player_x - 1, first_player_y));
+								setPosition(new Vector2f(second_player_x - 1, second_player_y));
 								position.add( new Vector2f(-deltaLenght,0) );
 
 							}
@@ -264,7 +223,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(position.getY() < 640){
 								
-								setPosition(new Vector2f(first_player_x, first_player_y - 1));
+								setPosition(new Vector2f(second_player_x, second_player_y - 1));
 								position.add( new Vector2f(0,deltaLenght) );
 
 							}
@@ -274,7 +233,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(position.getY() < -20){
 								
-								setPosition(new Vector2f(first_player_x, first_player_y + 1));
+								setPosition(new Vector2f(second_player_x, second_player_y + 1));
 								position.add( new Vector2f(0,-deltaLenght) );
 
 							}
@@ -285,7 +244,7 @@ public class ClientGameState extends ServerGameState {
 						
 						
 						
-//						setPositionofPlayer(new Vector2f(first_player_x, first_player_y));
+//						setPositionofPlayer(new Vector2f(second_player_x, second_player_y));
 //						setPosition(new Vector2f(position_of_player));
 //						fireBullet(new Vector2f(gc.getInput().getMouseX(),gc.getInput().getMouseY()), new Shooting());
 					}	

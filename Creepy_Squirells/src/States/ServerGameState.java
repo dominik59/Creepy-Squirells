@@ -25,7 +25,11 @@ import States.Shooting;
 public class ServerGameState extends BasicGameState{
 	protected Integer first_player_x;
 	protected Integer first_player_y;
+	protected Integer second_player_x;
+	protected Integer second_player_y;
+	
 	protected String first_player_picture="sqi_r";
+	protected String second_player_picture="sqi_l";
 	
 	protected Integer posx;
 	protected Integer posy;
@@ -73,8 +77,11 @@ public class ServerGameState extends BasicGameState{
 		sound = Resources.getAudio("level1_music");
 		music = Resources.getAudio("level1_sound");
 		
-		first_player_x=10;
+		first_player_x=2;
 		first_player_y=18;
+		
+		second_player_x=22;
+		second_player_y=18;
 		//10,18
 		
 		//shoot = new Shooting(new Vector2f(0,100), new Vector2f(200,100));
@@ -105,7 +112,7 @@ public class ServerGameState extends BasicGameState{
 
 		mapa.render(0,0);
 		g.drawImage(Resources.getSpritesheet(first_player_picture).getSubImage(0,0,32,32),first_player_x*32,first_player_y*32);
-
+		g.drawImage(Resources.getSpritesheet(second_player_picture).getSubImage(0,0,32,32),second_player_x*32,second_player_y*32);
 //		s.render(gc, sbg, g);
 		
 		for(Shooting s : shoots){

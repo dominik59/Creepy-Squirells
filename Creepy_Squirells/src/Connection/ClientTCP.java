@@ -25,7 +25,7 @@ public class ClientTCP extends Thread {
 																									// wej�ciowy
 			int i = 0;
 			Scanner klawiatura = new Scanner(System.in);
-			System.out.println("##SERWER INFO## \nOCZEKIWANIE NA PO��CZENIE");
+			System.out.println("##KLIENT INFO## \nOCZEKIWANIE NA POŁĄCZENIE");
 			while (true) {
 				if(Thread.currentThread().isInterrupted())
 				{
@@ -34,13 +34,13 @@ public class ClientTCP extends Thread {
 					return;
 				}
 				if (in.ready() == true) {
-					System.out.println(in.readLine());
+					System.out.println(in.readLine()); //pierwsze przyjęcie
 					break;
 				}
 			}
 
-			System.out.print("\nPodaj swoj identyfikator\n");
-			out.println(klawiatura.nextLine());
+			out.println("##CLIENT MESSAGE## \nNawiązano połaczenie z serwerem");//pierwsze wysłanie
+			
 			String tekst = "";
 			while (true) {
 				
@@ -50,19 +50,10 @@ public class ClientTCP extends Thread {
 					klawiatura.close();
 					return;
 				}
-				if (in.ready() == true) {
-					tekst = in.readLine();
-					System.out.println(tekst);
-					i++;
-					if (i == 5) {
-
-						out.println(klawiatura.nextLine());
-						i = 0;
-					}
-				}
-				sleep(200);
-
+				
+				
 				if (tekst.equals("koniec")) {
+					System.out.println("Zakończenie działania klienta");
 					out.println("koniec");
 					break;
 				}
