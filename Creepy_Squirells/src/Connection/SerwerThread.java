@@ -49,20 +49,62 @@ public class SerwerThread extends Thread {
 			{
 				out.println(String.valueOf(serverGameState.get_player_1_x_position()));
 				out.println(String.valueOf(serverGameState.get_player_1_y_position()));
+				out.println(String.valueOf(serverGameState.get_first_player_picture()));
 				
-				while(!Thread.currentThread().isInterrupted())
-				{
-					if(in.ready())
-					{
+				out.println(String.valueOf(serverGameState.get_flag_r()));
+				out.println(String.valueOf(serverGameState.get_flag_l()));
+				out.println(String.valueOf(serverGameState.get_flag_u()));
+				out.println(String.valueOf(serverGameState.get_flag_d()));
+				
+				out.println(String.valueOf(serverGameState.get_player_1_fire_status()));
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
 						serverGameState.set_player_2_x_position(Integer.valueOf(in.readLine()));
 						break;
 					}
 				}
-				while(!Thread.currentThread().isInterrupted())
-				{
-					if(in.ready())
-					{
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
 						serverGameState.set_player_2_y_position(Integer.valueOf(in.readLine()));
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_second_player_picture(in.readLine());
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_flag_r(Boolean.parseBoolean(in.readLine()));
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_flag_l(Boolean.parseBoolean(in.readLine()));
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_flag_u(Boolean.parseBoolean(in.readLine()));
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_flag_d(Boolean.parseBoolean(in.readLine()));
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_player_2_fire_status(Boolean.parseBoolean(in.readLine()));
 						break;
 					}
 				}

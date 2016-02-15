@@ -301,6 +301,13 @@ public class ClientGameState extends ServerGameState {
 	{
 		first_player_y=y;			
 	}
+	public Boolean get_player_2_fire_status() {
+		return did_second_player_fired;
+	}
+
+	public void set_player_1_fire_status(Boolean status) {
+		did_first_player_fired=status;
+	}
 	
 
 }

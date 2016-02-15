@@ -73,8 +73,53 @@ public class ClientTCP extends Thread {
 							break;
 						}
 					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_first_player_picture(in.readLine());
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_flag_r(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_flag_l(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_flag_u(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_flag_d(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
+					
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_player_1_fire_status(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
 					out.println(String.valueOf(clientGameState.get_player_2_x_position()));
 					out.println(String.valueOf(clientGameState.get_player_2_y_position()));
+					out.println(String.valueOf(clientGameState.get_second_player_picture()));
+					
+					out.println(String.valueOf(clientGameState.get_flag_r()));
+					out.println(String.valueOf(clientGameState.get_flag_l()));
+					out.println(String.valueOf(clientGameState.get_flag_u()));
+					out.println(String.valueOf(clientGameState.get_flag_d()));
+					
+					out.println(String.valueOf(clientGameState.get_player_2_fire_status()));
 				}
 
 				if (tekst.equals("koniec")) {
