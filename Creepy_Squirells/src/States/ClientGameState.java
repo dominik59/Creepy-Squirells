@@ -284,5 +284,23 @@ public class ClientGameState extends ServerGameState {
 		// TODO Auto-generated method stub
 		return StatesCodes.CLIENT_GAME;
 	}
+	
+	public Integer get_player_2_x_position()
+	{
+		return second_player_x;			
+	}
+	public Integer get_player_2_y_position()
+	{
+		return second_player_y;			
+	}
+	public void set_player_1_x_position(Integer x)
+	{
+		first_player_x=x;			
+	}
+	public void set_player_1_y_position(Integer y)
+	{
+		first_player_y=y;			
+	}
+	
 
 }

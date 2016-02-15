@@ -477,7 +477,22 @@ public class ServerGameState extends BasicGameState{
 			return select_2;
 		}
 	
-
+		public Integer get_player_1_x_position()
+		{
+			return first_player_x;			
+		}
+		public Integer get_player_1_y_position()
+		{
+			return first_player_y;			
+		}
+		public void set_player_2_x_position(Integer x)
+		{
+			second_player_x=x;			
+		}
+		public void set_player_2_y_position(Integer y)
+		{
+			second_player_y=y;			
+		}
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub

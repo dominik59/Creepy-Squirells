@@ -6,8 +6,18 @@ import java.io.PrintWriter;
 import java.net.*;
 import java.util.Scanner;
 
-public class ClientTCP extends Thread {
+import org.newdawn.slick.state.GameState;
 
+import Core.ClassesInstances;
+import States.ClientGameState;
+
+public class ClientTCP extends Thread {
+	private ClientGameState clientGameState;
+	
+	public ClientTCP() {
+		// TODO Auto-generated constructor stub
+		clientGameState = (ClientGameState) ClassesInstances.clientGameState;
+	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -39,25 +49,40 @@ public class ClientTCP extends Thread {
 				}
 			}
 
-			out.println("##CLIENT MESSAGE## \nNawiązano połaczenie z serwerem");//pierwsze wysłanie
+			out.println("##CLIENT MESSAGE## Nawiązano połaczenie z serwerem");//pierwsze wysłanie
 			
 			String tekst = "";
 			while (true) {
-				
-				if(Thread.currentThread().isInterrupted())
-				{
+
+				if (Thread.currentThread().isInterrupted()) {
 					socket.close();
 					klawiatura.close();
 					return;
 				}
-				
-				
+
+				while (!Thread.currentThread().isInterrupted()) {
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_player_1_x_position(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_player_1_y_position(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					out.println(String.valueOf(clientGameState.get_player_2_x_position()));
+					out.println(String.valueOf(clientGameState.get_player_2_y_position()));
+				}
+
 				if (tekst.equals("koniec")) {
 					System.out.println("Zakończenie działania klienta");
 					out.println("koniec");
 					break;
 				}
-				
+
 			}
 
 			socket.close();

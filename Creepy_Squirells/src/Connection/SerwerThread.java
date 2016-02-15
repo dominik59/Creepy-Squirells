@@ -10,16 +10,23 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.*;
 
+import org.newdawn.slick.state.GameState;
+
+import Core.ClassesInstances;
+import States.ServerGameState;
+
 public class SerwerThread extends Thread {
 	Socket mySocket;
 	private int liczba_punktow=0;
 	private int liczba_pytan=0;
 	private String identifier;
+	private ServerGameState serverGameState;
 	
 	public SerwerThread(Socket clientSocket) {
 		// TODO Auto-generated constructor stub
 		super(); 
 		mySocket = clientSocket;
+		serverGameState=(ServerGameState) ClassesInstances.serverGameState;
 	}
 
 	public void run()
@@ -29,18 +36,36 @@ public class SerwerThread extends Thread {
 			PrintWriter out = new PrintWriter(mySocket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
 
-			out.println("##SERWER MESSAGE## \nNawiązano połaczenie z klientem"); // pierwsze wysłanie
+			out.println("##SERWER MESSAGE## Nawiązano połaczenie z klientem"); // pierwsze wysłanie
 			while(true)
 				{
 					if(in.ready())
 					{
-						identifier=in.readLine();//pierwsze przyjęcie
+						System.out.println(in.readLine());//pierwsze przyjęcie
 						break;
 					}
 				}
 			while(!Thread.currentThread().isInterrupted())
 			{
+				out.println(String.valueOf(serverGameState.get_player_1_x_position()));
+				out.println(String.valueOf(serverGameState.get_player_1_y_position()));
 				
+				while(!Thread.currentThread().isInterrupted())
+				{
+					if(in.ready())
+					{
+						serverGameState.set_player_2_x_position(Integer.valueOf(in.readLine()));
+						break;
+					}
+				}
+				while(!Thread.currentThread().isInterrupted())
+				{
+					if(in.ready())
+					{
+						serverGameState.set_player_2_y_position(Integer.valueOf(in.readLine()));
+						break;
+					}
+				}
 			}
 			
 			
