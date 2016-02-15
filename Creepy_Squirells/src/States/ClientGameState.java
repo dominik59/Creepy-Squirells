@@ -71,7 +71,11 @@ public class ClientGameState extends ServerGameState {
 					if(second_player_y<18)
 					{
 						wood_step.play();
-					}	
+					}
+					else
+					{
+						grass_step.play();
+					}
 				}
 				
 				if(gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT))
@@ -89,7 +93,11 @@ public class ClientGameState extends ServerGameState {
 					if(second_player_y<18)
 					{
 						wood_step.play();
-					}		
+					}	
+					else
+					{
+						grass_step.play();
+					}
 				}
 					
 				if(gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP))
@@ -106,7 +114,11 @@ public class ClientGameState extends ServerGameState {
 					if(second_player_y<18)
 					{
 						wood_step.play();
-					}	
+					}
+					else
+					{
+						grass_step.play();
+					}
 				}
 				if(gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN))
 				{
@@ -122,7 +134,11 @@ public class ClientGameState extends ServerGameState {
 					if(second_player_y<18)
 					{
 						wood_step.play();
-					}	
+					}
+					else
+					{
+						grass_step.play();
+					}
 				}
 				
 				
