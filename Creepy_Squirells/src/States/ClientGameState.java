@@ -35,7 +35,7 @@ public class ClientGameState extends ServerGameState {
 				if(menustate.gamemusic)
 				{
 					music.play();
-					music.setVolume(0.008f);
+					music.loop(1.0f, 0.008f);
 					menustate.gamemusic = false;			
 				}
 				
