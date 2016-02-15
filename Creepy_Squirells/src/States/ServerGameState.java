@@ -40,6 +40,7 @@ public class ServerGameState extends BasicGameState {
 
 	protected Music sound;
 	protected Music music;
+	protected Sound wood_step;
 
 	protected TiledMap mapa;
 
@@ -78,7 +79,9 @@ public class ServerGameState extends BasicGameState {
 
 		sound = Resources.getAudio("level1_music");
 		music = Resources.getAudio("level1_sound");
-
+		wood_step = Resources.getSound("wood_step");
+		
+		
 		first_player_x = 2;
 		first_player_y = 18;
 
@@ -128,35 +131,14 @@ public class ServerGameState extends BasicGameState {
 		// zmienna od strzalow
 
 		delta = delta + alpha;
-		// if(delta > fire_rate && gc.getInput().isKeyPressed(Input.KEY_SPACE))
-		// {
-		//
-		// fireBullet(new Vector2f(position.getX(),gc.getInput().getMouseY()),
-		// new Shooting());
-		//
-		// //shoots[actual_bullet] = new Shooting(new Vector2f(0,50), new
-		// Vector2f(500,200));
-		// //shoots[actual_bullet].setActive(true);
-		// //shoots[actual_bullet].setActual(0);
-		//
-		//
-		// actual_bullet++;
-		//
-		// if(actual_bullet >= shoots.length){
-		//
-		// actual_bullet = 0;
-		// shoots[actual_bullet].setActual(0);
-		// }
-		//
-		// delta = 0;
-		//
-		// }
-
+		
 		for (Shooting s : shoots) {
 
 			s.update(alpha);
 		}
-
+		
+		
+		
 		int kolizje = mapa.getLayerIndex("Kolizje");
 		mapa.getTileId(0, 0, kolizje);
 
@@ -189,7 +171,10 @@ public class ServerGameState extends BasicGameState {
 			if (mapa.getTileId(first_player_x + 1, first_player_y, kolizje) == 0) {
 				first_player_x++;
 			}
-
+			if(first_player_y<18)
+			{
+				wood_step.play();				
+			}
 		}
 
 		if (gc.getInput().isKeyPressed(Input.KEY_A) || gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
@@ -202,7 +187,10 @@ public class ServerGameState extends BasicGameState {
 			if (mapa.getTileId(first_player_x - 1, first_player_y, kolizje) == 0) {
 				first_player_x--;
 			}
-
+			if(first_player_y<18)
+			{
+				wood_step.play();
+			}
 		}
 
 		if (gc.getInput().isKeyPressed(Input.KEY_W) || gc.getInput().isKeyPressed(Input.KEY_UP)) {
@@ -214,7 +202,10 @@ public class ServerGameState extends BasicGameState {
 			if (mapa.getTileId(first_player_x, first_player_y - 1, kolizje) == 0) {
 				first_player_y--;
 			}
-
+			if(first_player_y<18)
+			{
+				wood_step.play();
+			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_S) || gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			first_player_picture = "sqi_f";
@@ -225,7 +216,10 @@ public class ServerGameState extends BasicGameState {
 			if (mapa.getTileId(first_player_x, first_player_y + 1, kolizje) == 0) {
 				first_player_y++;
 			}
-
+			if(first_player_y<18)
+			{
+				wood_step.play();
+			}
 		}
 
 		// shoot.update(alpha);

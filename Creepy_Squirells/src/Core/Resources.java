@@ -19,7 +19,8 @@ import org.newdawn.slick.Sound;
 public class Resources {
 	private static Map<String, Image> images;
 	private static Map<String, SpriteSheet> spritesheets;
-	private static Map<String, Music> sounds;
+	private static Map<String, Music> music;
+	private static Map<String, Sound> sound;
 	private static Map<String, TiledMap> maps;
 	
 	public Resources()
@@ -27,14 +28,17 @@ public class Resources {
 		images = new HashMap<String, Image>();
 		maps=new HashMap<String,TiledMap>();
 		spritesheets = new HashMap<String, SpriteSheet>();
-		sounds= new HashMap<String,Music>();
+		music= new HashMap<String,Music>();
+		sound = new HashMap<String,Sound>();
+		
 		
 		try {
 			maps.put("level1", new TiledMap("/level1.tmx"));
-			sounds.put("menuSound", new Music("/pink_panter.wav"));
-			sounds.put("level1_music", new Music("/inception.wav"));
-			sounds.put("level1_sound", new Music("/hehe.ogg"));
-			sounds.put("click_sound", new Music("/click_sound.wav"));
+			music.put("menuSound", new Music("/pink_panter.wav"));
+			music.put("level1_music", new Music("/inception.wav"));
+			music.put("level1_sound", new Music("/hehe.ogg"));
+			music.put("click_sound", new Music("/click_sound.wav"));	
+			sound.put("wood_step", new Sound("/wood_step.wav"));
 			images.put("button_play",loadImage("/button_graj.png"));
 			images.put("menu_background",loadImage("/menu_background.png"));
 			spritesheets.put("bullet_1", new SpriteSheet(loadImage("/bullet_1.png"), 32, 32 ));
@@ -63,7 +67,11 @@ public class Resources {
 	}
 	public static Music getAudio(String name)
 	{
-		return sounds.get(name);
+		return music.get(name);
+	}
+	public static Sound getSound(String name)
+	{
+		return sound.get(name);
 	}
 	public static TiledMap getMap(String name)
 	{
