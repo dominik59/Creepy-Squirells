@@ -22,7 +22,7 @@ public class ClientTCP extends Thread {
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
-			Socket socket = new Socket(InetAddress.getByName("25.149.245.97"), 4012);
+			Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 4012);
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // zwraca
 																				// strumie�
 																				// wyj�ciowy
@@ -79,27 +79,16 @@ public class ClientTCP extends Thread {
 							break;
 						}
 					}
+					
 					while (!Thread.currentThread().isInterrupted()) {
 						if (in.ready()) {
-							clientGameState.set_flag_r(Boolean.parseBoolean(in.readLine()));
+							clientGameState.set_posx(Integer.valueOf(in.readLine()));
 							break;
 						}
 					}
 					while (!Thread.currentThread().isInterrupted()) {
 						if (in.ready()) {
-							clientGameState.set_flag_l(Boolean.parseBoolean(in.readLine()));
-							break;
-						}
-					}
-					while (!Thread.currentThread().isInterrupted()) {
-						if (in.ready()) {
-							clientGameState.set_flag_u(Boolean.parseBoolean(in.readLine()));
-							break;
-						}
-					}
-					while (!Thread.currentThread().isInterrupted()) {
-						if (in.ready()) {
-							clientGameState.set_flag_d(Boolean.parseBoolean(in.readLine()));
+							clientGameState.set_posy(Integer.valueOf(in.readLine()));
 							break;
 						}
 					}
@@ -114,10 +103,8 @@ public class ClientTCP extends Thread {
 					out.println(String.valueOf(clientGameState.get_player_2_y_position()));
 					out.println(String.valueOf(clientGameState.get_second_player_picture()));
 					
-					out.println(String.valueOf(clientGameState.get_flag_r()));
-					out.println(String.valueOf(clientGameState.get_flag_l()));
-					out.println(String.valueOf(clientGameState.get_flag_u()));
-					out.println(String.valueOf(clientGameState.get_flag_d()));
+					out.println(String.valueOf(clientGameState.get_second_posx()));
+					out.println(String.valueOf(clientGameState.get_second_posy()));
 					
 					out.println(String.valueOf(clientGameState.get_player_2_fire_status()));
 				}

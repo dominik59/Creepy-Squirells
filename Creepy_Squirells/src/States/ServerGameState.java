@@ -32,10 +32,10 @@ public class ServerGameState extends BasicGameState {
 	protected String first_player_picture = "sqi_r";
 	protected String second_player_picture = "sqi_l";
 
-	protected Integer posx;
-	protected Integer posy;
-	protected Integer second_posx;
-	protected Integer second_posy;
+	protected static Integer posx=0;
+	protected static Integer posy=0;
+	protected static Integer second_posx=0;
+	protected static Integer second_posy=0;
 	
 
 	protected Integer pos_player_x;
@@ -549,43 +549,8 @@ public class ServerGameState extends BasicGameState {
 
 	public void set_player_2_fire_status(Boolean status) {
 		did_second_player_fired=status;
-	}
+	}	
 	
-	public Boolean get_flag_r()
-	{
-		return flag_r;
-	}
-	public void set_flag_r(Boolean flag)
-	{
-		flag_r=flag;
-	}
-	
-	public Boolean get_flag_l()
-	{
-		return flag_l;
-	}
-	public void set_flag_l(Boolean flag)
-	{
-		flag_l=flag;
-	}
-	
-	public Boolean get_flag_u()
-	{
-		return flag_u;
-	}
-	public void set_flag_u(Boolean flag)
-	{
-		flag_u=flag;
-	}
-	
-	public Boolean get_flag_d()
-	{
-		return flag_d;
-	}
-	public void set_flag_d(Boolean flag)
-	{
-		flag_d=flag;
-	}
 	public String get_first_player_picture()
 	{
 		return first_player_picture;
@@ -601,6 +566,39 @@ public class ServerGameState extends BasicGameState {
 	public void set_second_player_picture(String name)
 	{
 		second_player_picture=name;
+	}
+	
+	public Integer get_posx()
+	{
+		return posx;
+	}
+	public void set_posx(Integer value)
+	{
+		posx=value;
+	}
+	public Integer get_posy()
+	{
+		return posy;
+	}
+	public void set_posy(Integer value)
+	{
+		posy=value;
+	}
+	public Integer get_second_posx()
+	{
+		return second_posx;
+	}
+	public void set_second_posx(Integer value)
+	{
+		second_posx=value;
+	}
+	public Integer get_second_posy()
+	{
+		return second_posx;
+	}
+	public void set_second_posy(Integer value)
+	{
+		second_posy=value;
 	}
 
 	@Override

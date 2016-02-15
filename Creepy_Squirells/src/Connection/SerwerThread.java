@@ -51,10 +51,8 @@ public class SerwerThread extends Thread {
 				out.println(String.valueOf(serverGameState.get_player_1_y_position()));
 				out.println(String.valueOf(serverGameState.get_first_player_picture()));
 				
-				out.println(String.valueOf(serverGameState.get_flag_r()));
-				out.println(String.valueOf(serverGameState.get_flag_l()));
-				out.println(String.valueOf(serverGameState.get_flag_u()));
-				out.println(String.valueOf(serverGameState.get_flag_d()));
+				out.println(String.valueOf(serverGameState.get_posx()));
+				out.println(String.valueOf(serverGameState.get_posy()));
 				
 				out.println(String.valueOf(serverGameState.get_player_1_fire_status()));
 				
@@ -79,25 +77,13 @@ public class SerwerThread extends Thread {
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_flag_r(Boolean.parseBoolean(in.readLine()));
+						serverGameState.set_second_posx(Integer.valueOf(in.readLine()));
 						break;
 					}
 				}
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_flag_l(Boolean.parseBoolean(in.readLine()));
-						break;
-					}
-				}
-				while (!Thread.currentThread().isInterrupted()) {
-					if (in.ready()) {
-						serverGameState.set_flag_u(Boolean.parseBoolean(in.readLine()));
-						break;
-					}
-				}
-				while (!Thread.currentThread().isInterrupted()) {
-					if (in.ready()) {
-						serverGameState.set_flag_d(Boolean.parseBoolean(in.readLine()));
+						serverGameState.set_second_posy(Integer.valueOf(in.readLine()));
 						break;
 					}
 				}
