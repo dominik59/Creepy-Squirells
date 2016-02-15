@@ -69,8 +69,8 @@ public class ServerGameState extends BasicGameState {
 
 
 
-	protected Integer lives = 3;
-	protected Integer lives_second = 3;
+	protected Integer lives;
+	protected Integer lives_second;
 	
 	protected Boolean is_alive = true;
 
@@ -114,6 +114,8 @@ public class ServerGameState extends BasicGameState {
 		second_player_y = 18;
 		// 10,18
 
+		lives=3;
+		lives_second=3;
 		// shoot = new Shooting(new Vector2f(0,100), new Vector2f(200,100));
 		// shoot = new LinkedList<Shooting>();
 
@@ -600,6 +602,23 @@ public class ServerGameState extends BasicGameState {
 	{
 		second_posy=value;
 	}
+	public Integer get_lives()
+	{
+		return lives;
+	}
+	public void set_lives(Integer how_many)
+	{
+		lives=how_many;
+	}
+	public Integer get_lives_second()
+	{
+		return lives_second;
+	}
+	public void set_lives_second(Integer how_many)
+	{
+		lives_second=how_many;
+	}
+	
 
 	@Override
 	public int getID() {

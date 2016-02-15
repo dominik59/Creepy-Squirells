@@ -95,6 +95,13 @@ public class ClientTCP extends Thread {
 					
 					while (!Thread.currentThread().isInterrupted()) {
 						if (in.ready()) {
+							clientGameState.set_lives(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
 							clientGameState.set_player_1_fire_status(Boolean.parseBoolean(in.readLine()));
 							break;
 						}
@@ -105,6 +112,8 @@ public class ClientTCP extends Thread {
 					
 					out.println(String.valueOf(clientGameState.get_second_posx()));
 					out.println(String.valueOf(clientGameState.get_second_posy()));
+					
+					out.println(String.valueOf(clientGameState.get_lives_second()));
 					
 					out.println(String.valueOf(clientGameState.get_player_2_fire_status()));
 				}
