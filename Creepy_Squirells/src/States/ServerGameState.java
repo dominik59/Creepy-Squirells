@@ -443,6 +443,8 @@ public class ServerGameState extends BasicGameState {
 		
 		if(did_second_player_fired){
 			
+			setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
+			setPosition_2(new Vector2f(second_posx, second_posy));
 			fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
 			did_second_player_fired = false;
 		}
@@ -498,6 +500,18 @@ public class ServerGameState extends BasicGameState {
 	public void setPosition(Vector2f vector) {
 
 		this.position = vector;
+
+	}
+	
+	public void setPositionofPlayer_2(Vector2f vector) {
+
+		this.second_position_of_player = vector;
+
+	}
+
+	public void setPosition_2(Vector2f vector) {
+
+		this.second_position = vector;
 
 	}
 	
