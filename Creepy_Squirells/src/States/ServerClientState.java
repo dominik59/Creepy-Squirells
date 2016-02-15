@@ -68,6 +68,7 @@ public class ServerClientState extends BasicGameState {
 			click_sound.play();
 			ClassesInstances.serverTCP = new ServerTCP();
 			ClassesInstances.serverTCP.start();
+			sbg.enterState(StatesCodes.SERVER_GAME);
 			//serverTCP.main(null);
 			// sbg.enterState(StatesCodes.CREDITS);
 		}
@@ -75,7 +76,7 @@ public class ServerClientState extends BasicGameState {
 			click_sound.play();
 			ClassesInstances.clientTCP = new ClientTCP();
 			ClassesInstances.clientTCP.start();
-			sbg.enterState(StatesCodes.GAME);
+			sbg.enterState(StatesCodes.CLIENT_GAME);
 
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_3)) {
@@ -91,7 +92,7 @@ public class ServerClientState extends BasicGameState {
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 3;
+		return StatesCodes.SERVERCLIENT;
 	}
 
 }

@@ -46,12 +46,14 @@ public class Engine extends StateBasedGame{
 		ClassesInstances.menuState=new MenuState();
 		ClassesInstances.creditsState=new CreditsState();
 		ClassesInstances.serverClientState=new ServerClientState();
-		ClassesInstances.gameState=new States.GameState();
+		ClassesInstances.serverGameState=new States.ServerGameState();
+		ClassesInstances.clientGameState=new States.ClientGameState();
 		
 		this.addState(ClassesInstances.menuState);
 		this.addState(ClassesInstances.creditsState);
 		this.addState(ClassesInstances.serverClientState);
-		this.addState(ClassesInstances.gameState);
+		this.addState(ClassesInstances.serverGameState);
+		this.addState(ClassesInstances.clientGameState);
 	}
 	
 	

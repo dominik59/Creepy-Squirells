@@ -30,7 +30,7 @@ public class Shooting {
 	private String bullet_1="bullet_1";
 	private String bullet_2="bullet_2";
 
-	GameState gamestate = (GameState) ClassesInstances.gameState;
+	ServerGameState gamestate = (ServerGameState) ClassesInstances.serverGameState;
 
 	
 	public Shooting(Vector2f position, Vector2f direction){

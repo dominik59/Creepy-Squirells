@@ -12,7 +12,8 @@ import States.Shooting;
 
 public class ClassesInstances {
 	public static CreditsState creditsState;
-	public static GameState gameState;
+	public static GameState serverGameState;
+	public static GameState clientGameState;
 	public static MenuState menuState;
 	public static ServerClientState serverClientState;
 

@@ -22,44 +22,44 @@ import Core.Resources;
 import States.MenuState;
 import States.Shooting;
 
-public class GameState extends BasicGameState{
-	private Integer first_player_x;
-	private Integer first_player_y;
-	private String first_player_picture="sqi_r";
+public class ServerGameState extends BasicGameState{
+	protected Integer first_player_x;
+	protected Integer first_player_y;
+	protected String first_player_picture="sqi_r";
 	
-	private Integer posx;
-	private Integer posy;
+	protected Integer posx;
+	protected Integer posy;
 	
-	private Integer pos_player_x;
-	private Integer pos_player_y;
+	protected Integer pos_player_x;
+	protected Integer pos_player_y;
 	
 	
-	private Music sound;
-	private Music music;
+	protected Music sound;
+	protected Music music;
 	
-	private TiledMap mapa;
+	protected TiledMap mapa;
 	
 	//private Shooting shoot;
 //	private LinkedList<Shooting> shoot;
-	private Shooting[] shoots;
-	private static int fire_rate = 100;
-	private int actual_bullet = 0;
+	protected Shooting[] shoots;
+	protected static int fire_rate = 100;
+	protected int actual_bullet = 0;
 	public int delta = 0;
 	protected Vector2f position_of_player;
-	private int radius_squared;
+	protected int radius_squared;
 	protected Vector2f position;
-	private boolean set_position = true;
+	protected boolean set_position = true;
 	
-	private int lives = 3;
-	private boolean is_alive = true;
+	protected int lives = 3;
+	protected boolean is_alive = true;
 	
-	private boolean flag_r;
-	private boolean flag_l;
-	private boolean flag_u;
-	private boolean flag_d;
+	protected boolean flag_r;
+	protected boolean flag_l;
+	protected boolean flag_u;
+	protected boolean flag_d;
 	
-	public static boolean select_1 = true;
-	public static boolean select_2 = false;
+	protected static boolean select_1 = true;
+	protected static boolean select_2 = false;
 		
 	
 	MenuState menustate = ClassesInstances.menuState;
@@ -158,15 +158,21 @@ public class GameState extends BasicGameState{
 		if(menustate.gamemusic)
 		{
 			music.play();
-			music.setVolume(0.1f);
+			music.setVolume(0.008f);
 			menustate.gamemusic = false;			
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_ENTER))
 			{
-
-				ClassesInstances.clientTCP.interrupt();
-				ClassesInstances.serverTCP.interrupt();
+				if(ClassesInstances.clientTCP!=null)
+				{
+					ClassesInstances.clientTCP.interrupt();
+				}
+				if(ClassesInstances.serverTCP!=null)
+				{
+					ClassesInstances.serverTCP.interrupt();
+				}
+				
 
 				music.stop();
 				menustate.play_menu_music();
@@ -468,7 +474,7 @@ public class GameState extends BasicGameState{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return StatesCodes.GAME;
+		return StatesCodes.SERVER_GAME;
 	}
 
 }
