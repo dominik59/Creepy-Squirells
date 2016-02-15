@@ -440,6 +440,12 @@ public class ServerGameState extends BasicGameState {
 
 			}
 		}
+		
+		if(did_second_player_fired){
+			
+			fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+			did_second_player_fired = false;
+		}
 
 	}
 
@@ -481,6 +487,7 @@ public class ServerGameState extends BasicGameState {
 		if (actual_bullet >= shoots.length)
 			actual_bullet = 0;
 	}
+	
 
 	public void setPositionofPlayer(Vector2f vector) {
 
@@ -493,6 +500,8 @@ public class ServerGameState extends BasicGameState {
 		this.position = vector;
 
 	}
+	
+	
 
 	public boolean getSelect1() {
 		return select_1;

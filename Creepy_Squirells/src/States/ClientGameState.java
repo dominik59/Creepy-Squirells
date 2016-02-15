@@ -153,6 +153,8 @@ public class ClientGameState extends ServerGameState {
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+							did_second_player_fired = true;
+
 						}
 
 						if (flag_l_2) {
@@ -166,6 +168,8 @@ public class ClientGameState extends ServerGameState {
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+							did_second_player_fired = true;
+
 						}
 
 						if (flag_u_2) {
@@ -179,6 +183,8 @@ public class ClientGameState extends ServerGameState {
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+							did_second_player_fired = true;
+
 						}
 
 						if (flag_d_2) {
@@ -192,6 +198,8 @@ public class ClientGameState extends ServerGameState {
 							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+							did_second_player_fired = true;
+
 						}
 
 					}
@@ -203,7 +211,7 @@ public class ClientGameState extends ServerGameState {
 					
 					if(set_position_2){
 						
-						setPosition(new Vector2f(second_player_x, second_player_y));
+						setPosition_2(new Vector2f(second_player_x, second_player_y));
 						set_position_2 = false;
 					}
 
@@ -217,7 +225,7 @@ public class ClientGameState extends ServerGameState {
 							
 							if(second_position.getX() < 800){
 								
-								setPosition(new Vector2f(second_player_x + 1, second_player_y));
+								setPosition_2(new Vector2f(second_player_x + 1, second_player_y));
 								second_position.add( new Vector2f(deltaLenght,0) );
 
 							}
@@ -227,7 +235,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(second_position.getX() > -20){
 								
-								setPosition(new Vector2f(second_player_x - 1, second_player_y));
+								setPosition_2(new Vector2f(second_player_x - 1, second_player_y));
 								second_position.add( new Vector2f(-deltaLenght,0) );
 
 							}
@@ -237,7 +245,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(second_position.getY() < 640){
 								
-								setPosition(new Vector2f(second_player_x, second_player_y - 1));
+								setPosition_2(new Vector2f(second_player_x, second_player_y - 1));
 								second_position.add( new Vector2f(0,deltaLenght) );
 
 							}
@@ -247,7 +255,7 @@ public class ClientGameState extends ServerGameState {
 
 							if(second_position.getY() < -20){
 								
-								setPosition(new Vector2f(second_player_x, second_player_y + 1));
+								setPosition_2(new Vector2f(second_player_x, second_player_y + 1));
 								second_position.add( new Vector2f(0,-deltaLenght) );
 
 							}
