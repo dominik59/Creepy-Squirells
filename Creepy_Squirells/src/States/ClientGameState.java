@@ -150,7 +150,7 @@ public class ClientGameState extends ServerGameState {
 							second_pos_player_x = second_player_x + 32;
 							second_pos_player_y = second_player_y;
 
-							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
@@ -163,7 +163,7 @@ public class ClientGameState extends ServerGameState {
 							second_pos_player_x = second_player_x - 32;
 							second_pos_player_y = second_player_y;
 
-							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
@@ -176,7 +176,7 @@ public class ClientGameState extends ServerGameState {
 							second_pos_player_x = second_player_x;
 							second_pos_player_y = second_player_y - 32;
 
-							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
@@ -189,7 +189,7 @@ public class ClientGameState extends ServerGameState {
 							second_pos_player_x = second_player_x;
 							second_pos_player_y = second_player_y + 32;
 
-							setPositionofPlayer_2(new Vector2f(second_pos_player_x, pos_player_y));
+							setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 							setPosition_2(new Vector2f(second_posx, second_posy));
 							fireBullet(new Vector2f(second_position_of_player), new Shooting());
 						}
