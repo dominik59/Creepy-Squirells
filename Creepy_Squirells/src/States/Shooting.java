@@ -31,12 +31,15 @@ public class Shooting {
 	private String bullet_2="bullet_2";
 
 	ServerGameState gamestate = (ServerGameState) ClassesInstances.serverGameState;
+	
+	private PhysicalInfluence physicalInfluence;
 
 	
 	public Shooting(Vector2f position, Vector2f direction){
 		
 		this.position = position;
 		this.direction = direction;
+		physicalInfluence = new PhysicalInfluence();
 		
 		direction.scale(500);
 		
@@ -46,6 +49,7 @@ public class Shooting {
 	{
 		this.position = position;
 		this.direction = direction;
+		physicalInfluence = new PhysicalInfluence();
 		
 		direction.scale(500);
 		setActive(true);
@@ -92,6 +96,7 @@ public class Shooting {
 			Vector2f actual_speed = direction.copy();
 			actual_speed.scale((time/2000.0f));
 			position.add(actual_speed);
+			position.add(physicalInfluence.EffectOnFlight(actual_speed, 10.0d));
 			
 			actual_life = actual_life + time;
 			//System.out.println("BulletState: " + BulletState());
