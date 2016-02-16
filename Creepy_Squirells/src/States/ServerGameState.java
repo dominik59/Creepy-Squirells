@@ -766,7 +766,7 @@ public class ServerGameState extends BasicGameState {
 	}
 
 	public void set_second_pos_player_x(Integer value) {
-		second_pos_player_x = value;
+		System.out.println(second_pos_player_x = value);
 	}
 
 	public Integer get_second_pos_player_y() {
