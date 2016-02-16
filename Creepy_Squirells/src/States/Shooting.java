@@ -23,7 +23,7 @@ public class Shooting {
 	private static int actual_life = 0;
 	private static int max_life = 2000; //czas zycia pocisku - 2000ms
 	private boolean is_active = true;
-	private int radius_squared = 100;
+	private int radius_squared = 1000 ;
 	
 	private int damage = 1;
 	
@@ -129,9 +129,9 @@ public class Shooting {
 	
 	public boolean collission(Vector2f other_position, int other_radius_squared)
 	{
-		int distance = (int) other_position.copy().sub(position).lengthSquared();
+		int distance = (int)other_position.copy().sub(position).lengthSquared();
 		
-		if( distance < ( other_radius_squared + radius_squared ) )
+		if(distance<(other_radius_squared+radius_squared))
 		{
 			return true;
 		}
@@ -154,7 +154,15 @@ public class Shooting {
 		
 		return damage;
 	}
+		
+		
+	public Vector2f getShootPosition(){
+		return position;
+		
+	}
+		
 	
 }
+
 
 

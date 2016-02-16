@@ -12,7 +12,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
-import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.geom.*;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -20,6 +20,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import Core.ClassesInstances;
 import Core.Resources;
+import Core.Window;
 import States.MenuState;
 import States.Shooting;
 
@@ -92,6 +93,8 @@ public class ServerGameState extends BasicGameState {
 
 	protected Boolean did_first_player_fired = false;
 	protected Boolean did_second_player_fired = false;
+	
+	private Shape enemy,shoot;
 
 	MenuState menustate = ClassesInstances.menuState;
 
@@ -135,9 +138,12 @@ public class ServerGameState extends BasicGameState {
 		flag_u_2 = false;
 		flag_d_2 = false;
 		
-		
+		enemy = new Rectangle(second_player_x*32 + 1,second_player_y*32 + 1,32,32);
+		shoot = new Rectangle(1,1,32,32);
+
 
 	}
+
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -152,6 +158,36 @@ public class ServerGameState extends BasicGameState {
 				second_player_y * 32);
 		// s.render(gc, sbg, g);
 
+		//do debudowania postaci przeciwnika
+		drawDebugLines(g,32);
+		g.setColor(Color.cyan); 
+		g.draw(enemy);
+		g.setColor(Color.yellow); 
+		g.draw(shoot);
+		
+		if(lives == 3){
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);		
+		}
+		else if(lives == 2){
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+		}
+		else if(lives == 1){
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+		
+		}
+		else{
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+		}
+		
+		
 		for (Shooting s : shoots) {
 
 			s.render(gc, sbg, g);
@@ -159,17 +195,50 @@ public class ServerGameState extends BasicGameState {
 
 	}
 
+	private void drawDebugLines(Graphics g, int i) {
+		
+		int resolution = 800;
+		g.setColor(Color.red);
+		for(int a = 0;a<resolution;a=a+i){
+			g.drawLine(a, 0, a, resolution);
+			g.drawLine(0, a, resolution, a);
+		}	
+		
+	}
+
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 		// zmienna od strzalow
 
+		//aktualizuje wspolrzedne przeciwnika
+		enemy.setLocation(second_player_x*32 + 1,second_player_y*32 + 1);
+		for (Shooting s : shoots) {
+			
+			if(s.BulletState()){
+				if(select_1){
+				
+					shoot.setLocation(s.getShootPosition().getX()*32 + 1,s.getShootPosition().getY()*32 + 1);
+
+				}
+				else if(select_2){
+					
+					shoot.setLocation(s.getShootPosition().getX() + 1,s.getShootPosition().getY() + 1);
+
+				}
+			}
+
+		}
+
+		
 		delta = delta + alpha;
 		
 		for (Shooting s : shoots) {
 
 			s.update(alpha);
 		}
+		
+	
 		
 		
 		
@@ -377,6 +446,9 @@ public class ServerGameState extends BasicGameState {
 
 			
 		}
+
+			checkShootingCollision(getShoots());
+			
 //
 //			if (gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
 //				fireBullet(new Vector2f(gc.getInput().getMouseX(), gc.getInput().getMouseY()), new Shooting());
@@ -474,7 +546,7 @@ public class ServerGameState extends BasicGameState {
 
 	public void checkShootingCollision(Shooting[] shoots) {
 		for (Shooting s : shoots) {
-			 if ( s.BulletState() && s.collission(new Vector2f(second_player_x,second_player_y),radius_squared) )
+			 if ( s.BulletState() && s.collission(new Vector2f(second_player_x*32,second_player_y*32),radius_squared) )
 			if (s.BulletState()) {
 				s.setActive(false);
 				lives = lives - s.getDamage();
@@ -483,6 +555,11 @@ public class ServerGameState extends BasicGameState {
 					die();
 			}
 		}
+	}
+	
+	public Shooting[] getShoots ()
+	{
+		return shoots;
 	}
 	
 

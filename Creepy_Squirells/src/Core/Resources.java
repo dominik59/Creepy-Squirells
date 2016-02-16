@@ -44,6 +44,8 @@ public class Resources {
 			images.put("menu_background",loadImage("/menu_background.png"));
 			spritesheets.put("bullet_1", new SpriteSheet(loadImage("/bullet_1.png"), 32, 32 ));
 			spritesheets.put("bullet_2", new SpriteSheet(loadImage("/bullet_2.png"), 32, 32 ));
+			spritesheets.put("player_hp", new SpriteSheet(loadImage("/player_hp.png"), 32, 28 ));
+			spritesheets.put("gray_hp", new SpriteSheet(loadImage("/gray_hp.png"), 32, 28 ));	
 			spritesheets.put("sqi_r", new SpriteSheet(loadImage("/sqi1.png"), 32, 32 ));
 			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));
 			spritesheets.put("sqi_f", new SpriteSheet(loadImage("/sqi3.png"), 32, 32 ));
