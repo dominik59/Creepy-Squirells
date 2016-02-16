@@ -451,13 +451,13 @@ public class ServerGameState extends BasicGameState {
 
 
 		
-		if(did_second_player_fired){
-			
-			setPositionofPlayer_2(new Vector2f(second_player_x, second_player_y));
-			setPosition_2(new Vector2f(second_posx, second_posy));
-			fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-			did_second_player_fired = false;
-		}
+//		if(did_second_player_fired){
+//			
+//			setPositionofPlayer_2(new Vector2f(second_player_x, second_player_y));
+//			setPosition_2(new Vector2f(second_posx, second_posy));
+//			fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
+//			did_second_player_fired = false;
+//		}
 		}
 
 	}
