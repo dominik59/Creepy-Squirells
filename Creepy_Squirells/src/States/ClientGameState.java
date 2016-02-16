@@ -201,9 +201,12 @@ public class ClientGameState extends ServerGameState {
 				did_second_player_fired = true;
 
 			}
+			checkShootingCollision_2(getShoots());
+
 		}
 		
-	
+		checkShootingCollision_2(getShoots());
+
 
 
 
@@ -219,6 +222,20 @@ public class ClientGameState extends ServerGameState {
 		did_second_player_fired = false;
 
 
+	}
+	
+	public void checkShootingCollision_2(Shooting[] shoots) {
+		for (Shooting s : shoots) {
+			if (s.BulletState()
+					&& (s.collission(new Vector2f(first_player_x * 32, first_player_y * 32), radius_squared) || s.collission(new Vector2f(second_player_x, second_player_y), radius_squared)))
+				if (s.BulletState()) {
+					s.setActive(false);
+					lives = lives - s.getDamage();
+					get_lives();
+					if (lives < 1 && is_alive_second)
+						die_first();
+				}
+		}
 	}
 
 	@Override
