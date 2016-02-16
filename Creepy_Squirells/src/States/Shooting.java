@@ -96,7 +96,8 @@ public class Shooting {
 			Vector2f actual_speed = direction.copy();
 			actual_speed.scale((time/2000.0f));
 			position.add(actual_speed);
-			position.add(physicalInfluence.EffectOnFlight(actual_speed, 10.0d));
+			position.add(physicalInfluence.airResistanceEffect(actual_speed, 1.0d));
+			position.add(physicalInfluence.gravityEffect(1.0d));
 			
 			actual_life = actual_life + time;
 			//System.out.println("BulletState: " + BulletState());
