@@ -65,11 +65,7 @@ public class Shooting {
 	
 	
 	public void update(int time){
-		
-		
-	
-		
-		
+
 		if(is_active){
 			
 			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
