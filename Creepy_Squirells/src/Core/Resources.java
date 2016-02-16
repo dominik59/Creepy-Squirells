@@ -50,6 +50,7 @@ public class Resources {
 			spritesheets.put("sqi_l", new SpriteSheet(loadImage("/sqi2.png"), 32, 32 ));
 			spritesheets.put("sqi_f", new SpriteSheet(loadImage("/sqi3.png"), 32, 32 ));
 			spritesheets.put("sqi_b", new SpriteSheet(loadImage("/sqi4.png"), 32, 32 ));
+			spritesheets.put("dead", new SpriteSheet(loadImage("/dead.png"), 32, 32 ));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
