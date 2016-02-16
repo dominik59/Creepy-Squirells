@@ -39,10 +39,10 @@ public class ServerGameState extends BasicGameState {
 	protected static Integer second_posy=0;
 	
 
-	protected Integer pos_player_x;
-	protected Integer pos_player_y;
-	protected Integer second_pos_player_x;
-	protected Integer second_pos_player_y;
+	protected static Integer pos_player_x=0;
+	protected static Integer pos_player_y=0;
+	protected static Integer second_pos_player_x=0;
+	protected static Integer second_pos_player_y=0;
 
 	protected Music sound;
 	protected Music music;
@@ -94,7 +94,8 @@ public class ServerGameState extends BasicGameState {
 	protected Boolean did_first_player_fired = false;
 	protected Boolean did_second_player_fired = false;
 	
-	private Shape enemy,shoot;
+	protected Shape enemy;
+	protected Shape shoot;
 
 	MenuState menustate = ClassesInstances.menuState;
 
@@ -165,28 +166,56 @@ public class ServerGameState extends BasicGameState {
 		g.setColor(Color.yellow); 
 		g.draw(shoot);
 		
+		/**
+		 * życie pierwszej postaci
+		 */
 		if(lives == 3){
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);		
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 100, 10);		
 		}
 		else if(lives == 2){
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 100, 10);
 		}
 		else if(lives == 1){
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
-			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), 0 + 100, 10);
 		
 		}
 		else{
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 20, 10);
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 60, 10);
-			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width/2 + 100, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 60, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), 0 + 100, 10);
 		}
 		
+		
+		/**
+		 * życie drugiej postaci
+		 */
+		if(lives_second == 3){
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 100, 10);		
+		}
+		else if(lives_second == 2){
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 20, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 100, 10);
+		}
+		else if(lives_second == 1){
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 60, 10);
+			g.drawImage(Resources.getSpritesheet("player_hp").getSubImage(0,0,32,28), Window.width + 100, 10);
+		
+		}
+		else{
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 20, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 60, 10);
+			g.drawImage(Resources.getSpritesheet("gray_hp").getSubImage(0,0,32,28), Window.width + 100, 10);
+		}
 		
 		for (Shooting s : shoots) {
 
@@ -195,7 +224,7 @@ public class ServerGameState extends BasicGameState {
 
 	}
 
-	private void drawDebugLines(Graphics g, int i) {
+	protected void drawDebugLines(Graphics g, int i) {
 		
 		int resolution = 800;
 		g.setColor(Color.red);
@@ -549,9 +578,9 @@ public class ServerGameState extends BasicGameState {
 			 if ( s.BulletState() && s.collission(new Vector2f(second_player_x*32,second_player_y*32),radius_squared) )
 			if (s.BulletState()) {
 				s.setActive(false);
-				lives = lives - s.getDamage();
+				lives_second = lives_second - s.getDamage();
 				get_lives();
-				if (lives < 1 && is_alive)
+				if (lives_second < 1 && is_alive)
 					die();
 			}
 		}
@@ -720,6 +749,34 @@ public class ServerGameState extends BasicGameState {
 	public void set_lives_second(Integer how_many)
 	{
 		lives_second=how_many;
+	}
+	public Integer get_pos_player_x()
+	{
+		return pos_player_x;
+	}
+	public void set_pos_player_x(Integer value){
+		pos_player_x=value;
+	}
+	public Integer get_pos_player_y()
+	{
+		return pos_player_y;
+	}
+	public void set_pos_player_y(Integer value){
+		pos_player_y=value;
+	}
+	public Integer get_second_pos_player_x()
+	{
+		return second_pos_player_x;
+	}
+	public void set_second_pos_player_x(Integer value){
+		second_pos_player_x=value;
+	}
+	public Integer get_second_pos_player_y()
+	{
+		return second_pos_player_y;
+	}
+	public void set_second_pos_player_y(Integer value){
+		second_pos_player_y=value;
 	}
 	
 

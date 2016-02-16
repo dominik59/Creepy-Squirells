@@ -53,8 +53,10 @@ public class SerwerThread extends Thread {
 				
 				out.println(String.valueOf(serverGameState.get_posx()));
 				out.println(String.valueOf(serverGameState.get_posy()));
+				out.println(String.valueOf(serverGameState.get_pos_player_x()));
+				out.println(String.valueOf(serverGameState.get_pos_player_y()));
 				
-				out.println(String.valueOf(serverGameState.get_lives()));
+				out.println(String.valueOf(serverGameState.get_lives_second()));
 				
 				out.println(String.valueOf(serverGameState.get_player_1_fire_status()));
 				
@@ -92,7 +94,21 @@ public class SerwerThread extends Thread {
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_lives_second(Integer.valueOf(in.readLine()));
+						serverGameState.set_second_pos_player_x(Integer.valueOf(in.readLine()));
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_second_pos_player_y(Integer.valueOf(in.readLine()));
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_lives(Integer.valueOf(in.readLine()));
 						break;
 					}
 				}
