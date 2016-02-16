@@ -474,11 +474,11 @@ public class ServerGameState extends BasicGameState {
 
 	public void checkShootingCollision(Shooting[] shoots) {
 		for (Shooting s : shoots) {
-			// if ( s.BulletState() && s.collission(position_of_player,
-			// radius_squared) )
+			 if ( s.BulletState() && s.collission(new Vector2f(second_player_x,second_player_y),radius_squared) )
 			if (s.BulletState()) {
 				s.setActive(false);
-				lives -= s.getDamage();
+				lives = lives - s.getDamage();
+				get_lives();
 				if (lives < 1 && is_alive)
 					die();
 			}

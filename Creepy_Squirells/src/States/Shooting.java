@@ -127,16 +127,16 @@ public class Shooting {
 		//g.fillOval(position.getX(),position.getY(), 20, 20);
 	}
 	
-//	public boolean collission (Vector2f other_position, int other_radius_squared)
-//	{
-//		int distance = (int) other_position.copy().sub(position).lengthSquared();
-//		
-//		if( distance < ( other_radius_squared + radius_squared ) )
-//		{
-//			return true;
-//		}
-//		return false;
-//	}
+	public boolean collission(Vector2f other_position, int other_radius_squared)
+	{
+		int distance = (int) other_position.copy().sub(position).lengthSquared();
+		
+		if( distance < ( other_radius_squared + radius_squared ) )
+		{
+			return true;
+		}
+		return false;
+	}
 
 	public boolean BulletState(){
 		
