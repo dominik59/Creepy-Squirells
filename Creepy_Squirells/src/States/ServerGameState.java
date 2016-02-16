@@ -531,8 +531,8 @@ public class ServerGameState extends BasicGameState {
 
 			 if(did_second_player_fired){
 			
-			 setPositionofPlayer_2(new Vector2f(second_player_x,
-			 second_player_y));
+			 setPositionofPlayer_2(new Vector2f(second_pos_player_x,
+			 second_pos_player_y));
 			 setPosition_2(new Vector2f(second_posx, second_posy));
 			 fireBullet_2(new Vector2f(second_position_of_player), new
 			 Shooting());
