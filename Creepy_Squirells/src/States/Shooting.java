@@ -23,7 +23,7 @@ public class Shooting {
 	private static int actual_life = 0;
 	private static int max_life = 2000; //czas zycia pocisku - 2000ms
 	private boolean is_active = true;
-	private int radius_squared = 100 ;
+	private int radius_squared = 1000 ;
 	
 	private int damage = 1;
 	
