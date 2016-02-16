@@ -62,10 +62,16 @@ public class Shooting {
 	
 	public void update(int time){
 		
+		
+	
+		
+		
 		if(is_active){
 			
+			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
+			
 			Vector2f actual_speed = direction.copy();
-			actual_speed.scale((time/10000.0f));
+			actual_speed.scale((time/20000.0f));
 			position.add(actual_speed);
 			
 			actual_life = actual_life + time;
@@ -81,18 +87,39 @@ public class Shooting {
 					
 		}
 		
+		if(gamestate.getSelect2() || gamestate.getSelect2_2()){
+			
+			Vector2f actual_speed = direction.copy();
+			actual_speed.scale((time/2000.0f));
+			position.add(actual_speed);
+			
+			actual_life = actual_life + time;
+			//System.out.println("BulletState: " + BulletState());
+			//System.out.println("Actual life: " + actual_life);
+
+
+			if(actual_life > max_life){
+				
+				is_active = false;
+				actual_life = 0;
+			}
+					
+		}
+			
+		}
+		
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		if(is_active){
 			
-			if(gamestate.getSelect1()){
+			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
 				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
 
 			}
-			else if(gamestate.getSelect2()){
-				g.drawImage(Resources.getSpritesheet(bullet_2).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
+			else if(gamestate.getSelect2() || gamestate.getSelect2_2()){
+				g.drawImage(Resources.getSpritesheet(bullet_2).getSubImage(0,0,32,32),position.getX(), position.getY());
 
 			}
 
