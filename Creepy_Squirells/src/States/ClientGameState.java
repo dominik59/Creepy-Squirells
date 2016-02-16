@@ -202,14 +202,19 @@ public class ClientGameState extends ServerGameState {
 
 			}
 		}
+		
+		did_second_player_fired = false;
 
-		 if(did_first_player_fired){
+
+		 if(get_player_2_fire_status()){
 		
 		 setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 		 setPosition(new Vector2f(posx, posy));
 		 fireBullet(new Vector2f(position_of_player), new Shooting());
 		 did_first_player_fired = false;
 		 }
+		 did_first_player_fired = false;
+
 	}
 
 	@Override

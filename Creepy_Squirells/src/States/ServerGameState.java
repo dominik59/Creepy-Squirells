@@ -463,6 +463,8 @@ public class ServerGameState extends BasicGameState {
 				did_first_player_fired = true;
 
 			}
+			
+			did_first_player_fired = false;
 
 			checkShootingCollision(getShoots());
 
