@@ -1,6 +1,7 @@
 
 package States;
 
+import java.awt.Font;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -12,6 +13,8 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.geom.*;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
@@ -25,6 +28,9 @@ import States.MenuState;
 import States.Shooting;
 
 public class ServerGameState extends BasicGameState {
+	
+	protected UnicodeFont gameFont;
+	
 	protected Integer first_player_x;
 	protected Integer first_player_y;
 	protected Integer second_player_x;
@@ -99,7 +105,13 @@ public class ServerGameState extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-
+		gameFont = new UnicodeFont(new java.awt.Font("Arial", Font.BOLD, 50));
+		gameFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+		gameFont.addGlyphs("ąćłóężźńś"); // szczególnie ważna jest ta linijka bo
+											// to ona dodaje polskie znaki
+		gameFont.addNeheGlyphs();
+		gameFont.loadGlyphs();
+		
 		mapa = Resources.getMap("level1");
 
 		sound = Resources.getAudio("level1_music");
@@ -143,7 +155,8 @@ public class ServerGameState extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-
+		g.setFont(gameFont);
+		
 		g.setBackground(Color.black);
 
 		mapa.render(0, 0);
@@ -208,7 +221,10 @@ public class ServerGameState extends BasicGameState {
 
 			s.render(gc, sbg, g);
 		}
-
+		if(!(is_alive_first && is_alive_second))
+		{
+			g.drawString("KONIEC GRY", Window.width/2-80, Window.height/2-120);
+		}
 	}
 
 	protected void drawDebugLines(Graphics g, int i) {
