@@ -49,73 +49,73 @@ public class SerwerThread extends Thread {
 			{
 				out.println(String.valueOf(serverGameState.get_player_1_x_position()));
 				out.println(String.valueOf(serverGameState.get_player_1_y_position()));
-				out.println(String.valueOf(serverGameState.get_first_player_picture()));
+				out.println(String.valueOf(serverGameState.get_first_player_picture())); //rysunek gracza pierwszego
 				
-				out.println(String.valueOf(serverGameState.get_posx()));
-				out.println(String.valueOf(serverGameState.get_posy()));
-				out.println(String.valueOf(serverGameState.get_pos_player_x()));
-				out.println(String.valueOf(serverGameState.get_pos_player_y()));
+				out.println(String.valueOf(serverGameState.get_posx())); //pozycja gracza *32 i albo + albo -1 do stworzenia wektora
+				out.println(String.valueOf(serverGameState.get_posy())); //pozycja gracza *32 i albo + albo -1 do stworzenia wektora
+				out.println(String.valueOf(serverGameState.get_pos_player_x())); //to samo co wyżej tylko jest dodane albo odjęte 32
+				out.println(String.valueOf(serverGameState.get_pos_player_y())); //to samo co wyżej tylko jest dodane albo odjęte 32
 				
-				out.println(String.valueOf(serverGameState.get_lives_second()));
+				out.println(String.valueOf(serverGameState.get_lives_second())); //przekazanie ilości żyć gracza 2
 				
-				out.println(String.valueOf(serverGameState.get_player_1_fire_status()));
+				out.println(String.valueOf(serverGameState.get_player_1_fire_status())); // przekazanie statusu strzału gracza pierwszego
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_player_2_x_position(Integer.valueOf(in.readLine()));
+						serverGameState.set_player_2_x_position(Integer.valueOf(in.readLine())); //odczyt pozycji x gracza drugiego
 						break;
 					}
 				}
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_player_2_y_position(Integer.valueOf(in.readLine()));
+						serverGameState.set_player_2_y_position(Integer.valueOf(in.readLine())); //odczyt pozycji y gracza drugiego
 						break;
 					}
 				}
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_second_player_picture(in.readLine());
-						break;
-					}
-				}
-				
-				while (!Thread.currentThread().isInterrupted()) {
-					if (in.ready()) {
-						serverGameState.set_second_posx(Integer.valueOf(in.readLine()));
-						break;
-					}
-				}
-				while (!Thread.currentThread().isInterrupted()) {
-					if (in.ready()) {
-						serverGameState.set_second_posy(Integer.valueOf(in.readLine()));
+						serverGameState.set_second_player_picture(in.readLine()); //ustawienie rysunku gracza drugiego
 						break;
 					}
 				}
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_second_pos_player_x(Integer.valueOf(in.readLine()));
+						serverGameState.set_second_posx(Integer.valueOf(in.readLine())); //ustawienie second posx
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_second_posy(Integer.valueOf(in.readLine())); //ustawienie second posy 
 						break;
 					}
 				}
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_second_pos_player_y(Integer.valueOf(in.readLine()));
+						serverGameState.set_second_pos_player_x(Integer.valueOf(in.readLine())); //ustawienie second pos player x
 						break;
 					}
 				}
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_lives(Integer.valueOf(in.readLine()));
+						serverGameState.set_second_pos_player_y(Integer.valueOf(in.readLine())); //ustawienie second pos player y
 						break;
 					}
 				}
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
-						serverGameState.set_player_2_fire_status(Boolean.parseBoolean(in.readLine()));
+						serverGameState.set_lives(Integer.valueOf(in.readLine())); //ustawienie ilości żyć gracza 1
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_player_2_fire_status(Boolean.parseBoolean(in.readLine())); //ustawienie statusu strzału gracza drugiego
 						break;
 					}
 				}
