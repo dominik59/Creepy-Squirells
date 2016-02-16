@@ -26,6 +26,8 @@ import Core.Resources;
 import Core.Window;
 import States.MenuState;
 import States.Shooting;
+import States.ShootingClient;
+
 
 public class ServerGameState extends BasicGameState {
 	
@@ -59,8 +61,12 @@ public class ServerGameState extends BasicGameState {
 	// private Shooting shoot;
 	// private LinkedList<Shooting> shoot;
 	protected Shooting[] shoots;
+	protected ShootingClient[] shoots_client;
+
 	protected static int fire_rate = 100;
 	protected int actual_bullet = 0;
+	protected int actual_bullet_client = 0;
+
 	public int delta = 0;
 	protected int radius_squared;
 
@@ -135,6 +141,12 @@ public class ServerGameState extends BasicGameState {
 
 		for (int i = 0; i < shoots.length; i++) {
 			shoots[i] = new Shooting();
+		}
+		
+		shoots_client = new ShootingClient[20];
+
+		for (int i = 0; i < shoots_client.length; i++) {
+			shoots_client[i] = new ShootingClient();
 		}
 
 		flag_r = false;
@@ -221,6 +233,15 @@ public class ServerGameState extends BasicGameState {
 
 			s.render(gc, sbg, g);
 		}
+		
+		for (ShootingClient sc : shoots_client) {
+
+			sc.render(gc, sbg, g);
+		}
+		
+		
+		
+		
 		if(!(is_alive_first && is_alive_second))
 		{
 			g.drawString("KONIEC GRY", Window.width/2-80, Window.height/2-120);
@@ -268,9 +289,14 @@ public class ServerGameState extends BasicGameState {
 
 		delta = delta + alpha;
 
+		
 		for (Shooting s : shoots) {
 
 			s.update(alpha);
+		}
+		for (ShootingClient sc : shoots_client) {
+
+			sc.update(alpha);
 		}
 
 		int kolizje = mapa.getLayerIndex("Kolizje");
@@ -551,73 +577,74 @@ public class ServerGameState extends BasicGameState {
 		
 		checkShootingCollision(getShoots());
 		
-//		 if(did_second_player_fired){
-//			 
-//			 if(second_player_picture.equals("sqi_r")){
-//				 
-//				 	second_posx = second_player_x*32 + 1;
-//					second_posy = second_player_y*32;
-//
-//					second_pos_player_x = second_player_x*32 + 32;
-//					second_pos_player_y = second_player_y*32;
-//
-//					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
-//					setPosition_2(new Vector2f(second_posx, second_posy));
-//					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-//					
-//					 did_second_player_fired = false;
-//
-//			 }
-//			 if(second_player_picture.equals("sqi_l")){
-//				 
-//					second_posx = second_player_x*32 - 1;
-//					second_posy = second_player_y*32;
-//
-//					second_pos_player_x = second_player_x*32 - 32;
-//					second_pos_player_y = second_player_y*32;
-//
-//					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
-//					setPosition_2(new Vector2f(second_posx, second_posy));
-//					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-//					
-//					 did_second_player_fired = false;
-//
-//			 }
-//			 if(second_player_picture.equals("sqi_f")){
-//				 
-//				 
-//					second_posx = second_player_x*32;
-//					second_posy = second_player_y*32 + 1;
-//
-//					second_pos_player_x = second_player_x*32;
-//					second_pos_player_y = second_player_y*32 + 32;
-//
-//					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
-//					setPosition_2(new Vector2f(second_posx, second_posy));
-//					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-//					
-//					 did_second_player_fired = false;
-//
-//				 
-//			 }
-//			 if(second_player_picture.equals("sqi_b")){
-//				 
-//					second_posx = second_player_x*32;
-//					second_posy = second_player_y*32 - 1;
-//
-//					second_pos_player_x = second_player_x*32;
-//					second_pos_player_y = second_player_y*32 - 32;
-//
-//					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
-//					setPosition_2(new Vector2f(second_posx, second_posy));
-//					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-//					
-//					 did_second_player_fired = false;
-//
-//				 
-//			 }
-//		
-//		 }		
+		 if(did_second_player_fired){
+			 
+			 if(second_player_picture.equals("sqi_r")){
+				 
+				 	second_posx = second_player_x*32 + 1;
+					second_posy = second_player_y*32;
+
+					second_pos_player_x = second_player_x*32 + 32;
+					second_pos_player_y = second_player_y*32;
+
+					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
+					setPosition_2(new Vector2f(second_posx, second_posy));
+					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
+					
+					 did_second_player_fired = false;
+
+			 }
+			 if(second_player_picture.equals("sqi_l")){
+				 
+					second_posx = second_player_x*32 - 1;
+					second_posy = second_player_y*32;
+
+					second_pos_player_x = second_player_x*32 - 32;
+					second_pos_player_y = second_player_y*32;
+
+					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
+					setPosition_2(new Vector2f(second_posx, second_posy));
+					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
+					
+					 did_second_player_fired = false;
+
+			 }
+			 if(second_player_picture.equals("sqi_f")){
+				 
+				 
+					second_posx = second_player_x*32;
+					second_posy = second_player_y*32 + 1;
+
+					second_pos_player_x = second_player_x*32;
+					second_pos_player_y = second_player_y*32 + 32;
+
+					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
+					setPosition_2(new Vector2f(second_posx, second_posy));
+					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
+					
+					 did_second_player_fired = false;
+
+				 
+			 }
+			 if(second_player_picture.equals("sqi_b")){
+				 
+					second_posx = second_player_x*32;
+					second_posy = second_player_y*32 - 1;
+
+					second_pos_player_x = second_player_x*32;
+					second_pos_player_y = second_player_y*32 - 32;
+
+					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
+					setPosition_2(new Vector2f(second_posx, second_posy));
+					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
+					
+					 did_second_player_fired = false;
+
+				 
+			 }
+		
+		 }		
+			did_first_player_fired = false;
 
 
 	}
@@ -661,15 +688,15 @@ public class ServerGameState extends BasicGameState {
 			actual_bullet = 0;
 	}
 
-	public void fireBullet_2(Vector2f vector, Shooting s) {
+	public void fireBullet_2(Vector2f vector, ShootingClient sc) {
 		delta = 0;
 
 		vector.sub(second_position);
 		vector.normalise();
-		shoots[actual_bullet] = s.init(second_position.copy(), vector);
-		actual_bullet++;
-		if (actual_bullet >= shoots.length)
-			actual_bullet = 0;
+		shoots_client[actual_bullet_client] = sc.init(second_position.copy(), vector);
+		actual_bullet_client++;
+		if (actual_bullet_client >= shoots_client.length)
+			actual_bullet_client = 0;
 	}
 
 	public void setPositionofPlayer(Vector2f vector) {
