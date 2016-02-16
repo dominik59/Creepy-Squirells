@@ -406,11 +406,11 @@ public class ServerGameState extends BasicGameState {
 
 				if (flag_l) {
 
-					posx = first_player_x - 1;
-					posy = first_player_y;
+					posx = first_player_x*32 - 1;
+					posy = first_player_y*32;
 
-					pos_player_x = first_player_x - 32;
-					pos_player_y = first_player_y;
+					pos_player_x = first_player_x*32 - 32;
+					pos_player_y = first_player_y*32;
 
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
@@ -421,11 +421,11 @@ public class ServerGameState extends BasicGameState {
 
 				if (flag_u) {
 
-					posx = first_player_x;
-					posy = first_player_y - 1;
+					posx = first_player_x*32;
+					posy = first_player_y*32 - 1;
 
-					pos_player_x = first_player_x;
-					pos_player_y = first_player_y - 32;
+					pos_player_x = first_player_x*32;
+					pos_player_y = first_player_y*32 - 32;
 
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
@@ -436,11 +436,11 @@ public class ServerGameState extends BasicGameState {
 
 				if (flag_d) {
 
-					posx = first_player_x;
-					posy = first_player_y + 1;
+					posx = first_player_x*32;
+					posy = first_player_y*32 + 1;
 
-					pos_player_x = first_player_x;
-					pos_player_y = first_player_y + 32;
+					pos_player_x = first_player_x*32;
+					pos_player_y = first_player_y*32 + 32;
 
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));

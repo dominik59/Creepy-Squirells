@@ -129,11 +129,11 @@ public class ClientGameState extends ServerGameState {
 
 				if (flag_r_2) {
 
-					second_posx = second_player_x + 1;
-					second_posy = second_player_y;
+					second_posx = second_player_x*32 + 1;
+					second_posy = second_player_y*32;
 
-					second_pos_player_x = second_player_x + 32;
-					second_pos_player_y = second_player_y;
+					second_pos_player_x = second_player_x*32 + 32;
+					second_pos_player_y = second_player_y*32;
 
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
@@ -144,11 +144,11 @@ public class ClientGameState extends ServerGameState {
 
 				if (flag_l_2) {
 
-					second_posx = second_player_x - 1;
-					second_posy = second_player_y;
+					second_posx = second_player_x*32 - 1;
+					second_posy = second_player_y*32;
 
-					second_pos_player_x = second_player_x - 32;
-					second_pos_player_y = second_player_y;
+					second_pos_player_x = second_player_x*32 - 32;
+					second_pos_player_y = second_player_y*32;
 
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
@@ -159,11 +159,11 @@ public class ClientGameState extends ServerGameState {
 
 				if (flag_u_2) {
 
-					second_posx = second_player_x;
-					second_posy = second_player_y - 1;
+					second_posx = second_player_x*32;
+					second_posy = second_player_y*32 - 1;
 
-					second_pos_player_x = second_player_x;
-					second_pos_player_y = second_player_y - 32;
+					second_pos_player_x = second_player_x*32;
+					second_pos_player_y = second_player_y*32 - 32;
 
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
@@ -174,11 +174,11 @@ public class ClientGameState extends ServerGameState {
 
 				if (flag_d_2) {
 
-					second_posx = second_player_x;
-					second_posy = second_player_y + 1;
+					second_posx = second_player_x*32;
+					second_posy = second_player_y*32 + 1;
 
-					second_pos_player_x = second_player_x;
-					second_pos_player_y = second_player_y + 32;
+					second_pos_player_x = second_player_x*32;
+					second_pos_player_y = second_player_y*32 + 32;
 
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
