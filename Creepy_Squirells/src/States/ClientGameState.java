@@ -138,7 +138,8 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-					did_second_player_fired = true;
+					
+					set_player_2_fire_status(true);
 
 				}
 
@@ -153,7 +154,8 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-					did_second_player_fired = true;
+					
+					set_player_2_fire_status(true);
 
 				}
 
@@ -168,7 +170,8 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-					did_second_player_fired = true;
+					
+					set_player_2_fire_status(true);
 
 				}
 
@@ -183,7 +186,8 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new Shooting());
-					did_second_player_fired = true;
+					
+					set_player_2_fire_status(true);
 
 				}
 
@@ -198,7 +202,8 @@ public class ClientGameState extends ServerGameState {
 
 				setPosition_2(new Vector2f(second_player_x * 32, second_player_y * 32));
 				fireBullet_2(new Vector2f(gc.getInput().getMouseX(), gc.getInput().getMouseY()), new Shooting());
-				did_second_player_fired = true;
+				
+				set_player_2_fire_status(true);
 
 			}
 			checkShootingCollision_2(getShoots());
@@ -210,16 +215,73 @@ public class ClientGameState extends ServerGameState {
 
 
 
-		 if(did_first_player_fired){
-			 System.out.println("shoot first");
+		if(did_first_player_fired){
+			 
+			 if(first_player_picture.equals("sqi_r")){
+				 
+				 	posx = first_player_x*32 + 1;
+					posy = first_player_y*32;
 
-		 setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
-		 setPosition(new Vector2f(posx, posy));
-		 fireBullet(new Vector2f(position_of_player), new Shooting());
-		 did_first_player_fired = false;
-		 }
-		 did_first_player_fired = false;
-		did_second_player_fired = false;
+					pos_player_x = first_player_x*32 + 32;
+					pos_player_y = first_player_y*32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					 did_first_player_fired = false;
+
+			 }
+			 if(first_player_picture.equals("sqi_l")){
+				 
+					posx = first_player_x*32 - 1;
+					posy = first_player_y*32;
+
+					pos_player_x = first_player_x*32 - 32;
+					pos_player_y = first_player_y*32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					 did_first_player_fired = false;
+
+			 }
+			 if(first_player_picture.equals("sqi_f")){
+				 
+				 
+					posx = first_player_x*32;
+					posy = first_player_y*32 + 1;
+
+					pos_player_x = first_player_x*32;
+					pos_player_y = first_player_y*32 + 32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					 did_first_player_fired = false;
+
+				 
+			 }
+			 if(first_player_picture.equals("sqi_b")){
+				 
+					posx = first_player_x*32;
+					posy = first_player_y*32 - 1;
+
+					pos_player_x = first_player_x*32;
+					pos_player_y = first_player_y*32 - 32;
+
+					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
+					setPosition(new Vector2f(posx, posy));
+					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					 did_first_player_fired = false;
+
+				 
+			 }
+		
+		 }		
 
 
 	}
@@ -227,7 +289,7 @@ public class ClientGameState extends ServerGameState {
 	public void checkShootingCollision_2(Shooting[] shoots) {
 		for (Shooting s : shoots) {
 			if (s.BulletState()
-					&& (s.collission(new Vector2f(first_player_x * 32, first_player_y * 32), radius_squared) || s.collission(new Vector2f(second_player_x, second_player_y), radius_squared)))
+					&& (s.collission(new Vector2f(first_player_x * 32, first_player_y * 32), radius_squared) || s.collission(new Vector2f(first_player_x, first_player_y), radius_squared)))
 				if (s.BulletState()) {
 					s.setActive(false);
 					lives = lives - s.getDamage();
