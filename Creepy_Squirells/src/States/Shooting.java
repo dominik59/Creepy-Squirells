@@ -94,7 +94,7 @@ public class Shooting {
 		if(gamestate.getSelect2() || gamestate.getSelect2_2()){
 			
 			Vector2f actual_speed = direction.copy();
-			actual_speed.scale((time/2000.0f));
+			actual_speed.scale((time/1500.0f));
 			position.add(actual_speed);
 			position.add(physicalInfluence.airResistanceEffect(actual_speed, 1.0d));
 			position.add(physicalInfluence.gravityEffect(1.0d));
