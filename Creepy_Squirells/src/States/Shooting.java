@@ -23,7 +23,7 @@ public class Shooting {
 	private static int actual_life = 0;
 	private static int max_life = 2000; //czas zycia pocisku - 2000ms
 	private boolean is_active = true;
-	private int radius_squared = 1000 ;
+	private int radius_squared = 100 ;
 	
 	private int damage = 1;
 	
@@ -71,7 +71,7 @@ public class Shooting {
 			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
 			
 			Vector2f actual_speed = direction.copy();
-			actual_speed.scale((time/20000.0f));
+			actual_speed.scale((time/500.0f));
 			position.add(actual_speed);
 			
 			actual_life = actual_life + time;
@@ -117,7 +117,7 @@ public class Shooting {
 		if(is_active){
 			
 			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
-				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX()*32,position.getY()*32);
+				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX(),position.getY());
 
 			}
 			else if(gamestate.getSelect2() || gamestate.getSelect2_2()){

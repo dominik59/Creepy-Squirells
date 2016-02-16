@@ -203,17 +203,21 @@ public class ClientGameState extends ServerGameState {
 			}
 		}
 		
-		did_second_player_fired = false;
+	
 
 
-		 if(get_player_2_fire_status()){
-		
+
+		 if(did_first_player_fired){
+			 System.out.println("shoot first");
+
 		 setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 		 setPosition(new Vector2f(posx, posy));
 		 fireBullet(new Vector2f(position_of_player), new Shooting());
 		 did_first_player_fired = false;
 		 }
 		 did_first_player_fired = false;
+		did_second_player_fired = false;
+
 
 	}
 
@@ -233,6 +237,10 @@ public class ClientGameState extends ServerGameState {
 
 		this.second_position = vector;
 
+	}
+	
+	public Shooting[] getShoots() {
+		return shoots;
 	}
 
 	public Integer get_player_2_x_position() {

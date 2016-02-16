@@ -392,11 +392,11 @@ public class ServerGameState extends BasicGameState {
 
 				if (flag_r) {
 
-					posx = first_player_x + 1;
-					posy = first_player_y;
+					posx = first_player_x*32 + 1;
+					posy = first_player_y*32;
 
-					pos_player_x = first_player_x + 32;
-					pos_player_y = first_player_y;
+					pos_player_x = first_player_x*32 + 32;
+					pos_player_y = first_player_y*32;
 
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
@@ -464,9 +464,7 @@ public class ServerGameState extends BasicGameState {
 
 			}
 			
-			did_first_player_fired = false;
 
-			checkShootingCollision(getShoots());
 
 			//
 			// if (gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
@@ -547,16 +545,25 @@ public class ServerGameState extends BasicGameState {
 			// position.add( new Vector2f(0,-deltaLenght) );
 			// }
 
-			 if(did_second_player_fired){
-			
-			 setPositionofPlayer_2(new Vector2f(second_pos_player_x,
-			 second_pos_player_y));
-			 setPosition_2(new Vector2f(second_posx, second_posy));
-			 fireBullet_2(new Vector2f(second_position_of_player), new
-			 Shooting());
-			 did_second_player_fired = false;
-			 }
+			checkShootingCollision(getShoots());
+
 		}
+		
+		checkShootingCollision(getShoots());
+		
+		 if(did_second_player_fired){
+			 System.out.println("shoot second");
+		
+		 setPositionofPlayer_2(new Vector2f(second_pos_player_x,
+		 second_pos_player_y));
+		 setPosition_2(new Vector2f(second_posx, second_posy));
+		 fireBullet_2(new Vector2f(second_position_of_player), new
+		 Shooting());
+		 did_second_player_fired = false;
+		 }		
+		did_second_player_fired = false;
+		did_first_player_fired = false;
+
 
 	}
 
