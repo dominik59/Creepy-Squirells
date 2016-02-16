@@ -230,6 +230,7 @@ public class ClientGameState extends ServerGameState {
 						
 					setPosition_2(new Vector2f(second_player_x * 32,second_player_y * 32));
 					fireBullet_2(new Vector2f(gc.getInput().getMouseX(), gc.getInput().getMouseY()), new Shooting());
+					did_second_player_fired = true;
 					
 				}
 				}

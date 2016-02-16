@@ -313,6 +313,7 @@ public class ServerGameState extends BasicGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					did_first_player_fired = true;
 				}
 
 				if (flag_l) {
@@ -326,6 +327,8 @@ public class ServerGameState extends BasicGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					did_first_player_fired = true;
+
 				}
 
 				if (flag_u) {
@@ -339,6 +342,8 @@ public class ServerGameState extends BasicGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					did_first_player_fired = true;
+
 				}
 
 				if (flag_d) {
@@ -352,6 +357,8 @@ public class ServerGameState extends BasicGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					did_first_player_fired = true;
+
 				}
 
 			}
@@ -366,6 +373,8 @@ public class ServerGameState extends BasicGameState {
 				
 				setPosition(new Vector2f(first_player_x * 32,first_player_y * 32));
 			fireBullet(new Vector2f(gc.getInput().getMouseX(), gc.getInput().getMouseY()), new Shooting());
+			did_first_player_fired = true;
+
 			
 		}
 //
