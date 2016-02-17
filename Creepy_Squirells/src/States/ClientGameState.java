@@ -15,6 +15,13 @@ public class ClientGameState extends ServerGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 
+		if(time_client  >= 40){
+			did_second_player_fired = false;
+			time_client = 0;
+		}
+		
+
+		
 		if (lives <= 0) {
 			die_first();
 		}
@@ -287,7 +294,6 @@ public class ClientGameState extends ServerGameState {
 			 }
 		
 		 }		
-		 did_second_player_fired = false;
 
 
 	}

@@ -115,7 +115,6 @@ public class Shooting {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		if(is_active){
-			
 			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
 				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX(),position.getY());
 

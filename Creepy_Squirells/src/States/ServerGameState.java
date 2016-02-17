@@ -105,6 +105,10 @@ public class ServerGameState extends BasicGameState {
 
 	protected Shape enemy;
 	protected Shape shoot;
+	
+	protected  int time_serwer = 0;
+	protected int  time_client = 0;
+	
 
 	MenuState menustate = ClassesInstances.menuState;
 
@@ -262,6 +266,15 @@ public class ServerGameState extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
+		
+		if(time_serwer  >= 40){
+			did_first_player_fired = false;
+			time_serwer = 0;
+		}
+		
+		
+		
+		
 		// zmienna od strzalow
 		if (lives <= 0) {
 			die_first();
@@ -644,7 +657,6 @@ public class ServerGameState extends BasicGameState {
 			 }
 		
 		 }		
-			did_first_player_fired = false;
 
 
 	}
