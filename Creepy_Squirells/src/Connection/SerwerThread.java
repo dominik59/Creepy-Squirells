@@ -58,7 +58,10 @@ public class SerwerThread extends Thread {
 				
 				out.println(String.valueOf(serverGameState.get_lives_second())); //przekazanie ilości żyć gracza 2
 				
+				out.println(String.valueOf(serverGameState.get_first_player_currently_choosed_weapon()));
+				
 				out.println(String.valueOf(serverGameState.get_player_1_fire_status())); // przekazanie statusu strzału gracza pierwszego
+				out.println(String.valueOf(serverGameState.get_second_player_fire_render_status()));
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
@@ -115,7 +118,20 @@ public class SerwerThread extends Thread {
 				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
+						serverGameState.set_second_player_currently_choosed_weapon(Integer.valueOf(in.readLine())); //ustawienie ilości żyć gracza 1
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
 						serverGameState.set_player_2_fire_status(Boolean.parseBoolean(in.readLine())); //ustawienie statusu strzału gracza drugiego
+						break;
+					}
+				}
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_first_player_fire_render_status(Boolean.parseBoolean(in.readLine())); //ustawienie statusu strzału gracza drugiego
 						break;
 					}
 				}

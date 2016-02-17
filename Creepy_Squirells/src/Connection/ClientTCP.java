@@ -116,7 +116,20 @@ public class ClientTCP extends Thread {
 					
 					while (!Thread.currentThread().isInterrupted()) {
 						if (in.ready()) {
+							clientGameState.set_first_player_currently_choosed_weapon(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
 							clientGameState.set_player_1_fire_status(Boolean.parseBoolean(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_second_player_fire_render_status(Boolean.parseBoolean(in.readLine()));
 							break;
 						}
 					}
@@ -131,7 +144,10 @@ public class ClientTCP extends Thread {
 					
 					out.println(String.valueOf(clientGameState.get_lives()));
 					
+					out.println(String.valueOf(clientGameState.get_second_player_currently_choosed_weapon()));
+					
 					out.println(String.valueOf(clientGameState.get_player_2_fire_status()));
+					out.println(String.valueOf(clientGameState.get_first_player_fire_render_status()));
 				}
 
 				if (tekst.equals("koniec")) {

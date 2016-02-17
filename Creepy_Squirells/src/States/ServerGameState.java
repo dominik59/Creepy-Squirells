@@ -50,7 +50,10 @@ public class ServerGameState extends BasicGameState {
 	protected static Integer pos_player_y = 0;
 	protected static Integer second_pos_player_x = 0;
 	protected static Integer second_pos_player_y = 0;
-
+	
+	protected static Integer first_player_currently_choosed_weapon=1;
+	protected static Integer second_player_currently_choosed_weapon=1;
+	
 	protected Music sound;
 	protected Music music;
 	protected Sound wood_step;
@@ -108,6 +111,9 @@ public class ServerGameState extends BasicGameState {
 	
 	protected  int time_serwer = 0;
 	protected int  time_client = 0;
+	
+	protected Boolean end_of_first_player_shoot_rendering=false;
+	protected Boolean end_of_second_player_shoot_rendering=false;
 	
 
 	MenuState menustate = ClassesInstances.menuState;
@@ -869,6 +875,38 @@ public class ServerGameState extends BasicGameState {
 
 	public void set_second_pos_player_y(Integer value) {
 		second_pos_player_y = value;
+	}
+	public Boolean get_first_player_fire_render_status()
+	{
+		return end_of_first_player_shoot_rendering;
+	}
+	public void set_first_player_fire_render_status(Boolean status)
+	{
+		end_of_first_player_shoot_rendering=status;
+	}
+	public Boolean get_second_player_fire_render_status()
+	{
+		return end_of_second_player_shoot_rendering;
+	}
+	public void set_second_player_fire_render_status(Boolean status)
+	{
+		end_of_second_player_shoot_rendering=status;
+	}
+	public Integer get_first_player_currently_choosed_weapon()
+	{
+		return first_player_currently_choosed_weapon;
+	}
+	public void set_first_player_currently_choosed_weapon(Integer nr_of_weapon)
+	{
+		first_player_currently_choosed_weapon=nr_of_weapon;
+	}
+	public Integer get_second_player_currently_choosed_weapon()
+	{
+		return second_player_currently_choosed_weapon;
+	}
+	public void set_second_player_currently_choosed_weapon(Integer nr_of_weapon)
+	{
+		second_player_currently_choosed_weapon=nr_of_weapon;
 	}
 
 	@Override
