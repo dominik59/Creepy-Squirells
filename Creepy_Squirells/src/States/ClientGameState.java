@@ -136,6 +136,8 @@ public class ClientGameState extends ServerGameState {
 		}
 
 		if (select_1_2) {
+			
+			set_second_player_currently_choosed_weapon(1);
 
 			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 
@@ -209,6 +211,9 @@ public class ClientGameState extends ServerGameState {
 		// float deltaLenght = (float)alpha/5;
 
 		if (select_2_2) {
+			
+			set_second_player_currently_choosed_weapon(2);
+
 
 			if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
 
@@ -228,7 +233,7 @@ public class ClientGameState extends ServerGameState {
 
 
 		if(did_first_player_fired){
-			 
+			 if(first_player_currently_choosed_weapon == 1){
 			 if(first_player_picture.equals("sqi_r")){
 				 
 				 	posx = first_player_x*32 + 1;
@@ -240,6 +245,10 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					
+					end_of_first_player_shoot_rendering = true;
+
 					
 					 did_first_player_fired = false;
 
@@ -255,6 +264,9 @@ public class ClientGameState extends ServerGameState {
 					setPositionofPlayer(new Vector2f(pos_player_x, pos_player_y));
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
+					
+					end_of_first_player_shoot_rendering = true;
+
 					
 					 did_first_player_fired = false;
 
@@ -272,6 +284,9 @@ public class ClientGameState extends ServerGameState {
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
 					
+					end_of_first_player_shoot_rendering = true;
+
+					
 					 did_first_player_fired = false;
 
 				 
@@ -288,14 +303,24 @@ public class ClientGameState extends ServerGameState {
 					setPosition(new Vector2f(posx, posy));
 					fireBullet(new Vector2f(position_of_player), new Shooting());
 					
+					end_of_first_player_shoot_rendering = true;
+
+					
 					 did_first_player_fired = false;
 
 				 
 			 }
 		
 		 }		
-
-
+		}
+		
+		
+if(end_of_second_player_shoot_rendering){
+	did_second_player_fired = false;
+	end_of_second_player_shoot_rendering = false;
+}
+		
+		
 	}
 	
 	public void checkShootingCollision_2(ShootingClient[] shoots_client) {
