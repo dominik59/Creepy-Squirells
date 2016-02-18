@@ -56,6 +56,7 @@ public class MenuState extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		g.setFont(menuFont);
+		g.drawImage(Resources.getImage("menu_background"), 0, 0);
 		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
 		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
 		
@@ -66,7 +67,7 @@ public class MenuState extends BasicGameState{
 		g.drawString("3.Wyjdź z gry", Window.width/2-10, 285);
 		
 		g.setColor(Color.white);
-		g.setBackground(Color.gray);
+		
 	}
 
 	@Override

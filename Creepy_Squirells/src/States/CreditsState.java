@@ -15,6 +15,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import Core.ClassesInstances;
+import Core.Resources;
 import Core.Window;
 
 public class CreditsState extends BasicGameState{
@@ -39,6 +40,7 @@ public class CreditsState extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		g.setFont(creditsFont);
+		g.drawImage(Resources.getImage("menu_background"), 0, 0);
 		g.drawString("Dominik Pawlik", Window.width / 2, dominik_y);
 		g.drawString("Krzysztof Pęzioł", Window.width / 2, krzychu_y);
 		g.drawString("Grzegorz Mąka", Window.width / 2, grzesiek_y);
