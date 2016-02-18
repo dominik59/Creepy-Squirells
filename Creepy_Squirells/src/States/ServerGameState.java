@@ -198,11 +198,11 @@ public class ServerGameState extends BasicGameState {
 				// s.render(gc, sbg, g);
 
 		// do debudowania postaci przeciwnika
-		drawDebugLines(g, 32);
-		g.setColor(Color.cyan);
-		g.draw(enemy);
-		g.setColor(Color.yellow);
-		g.draw(shoot);
+//		drawDebugLines(g, 32);
+//		g.setColor(Color.cyan);
+//		g.draw(enemy);
+//		g.setColor(Color.yellow);
+//		g.draw(shoot);
 
 		/**
 		 * życie pierwszej postaci
