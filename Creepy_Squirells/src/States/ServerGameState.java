@@ -329,7 +329,7 @@ public class ServerGameState extends BasicGameState {
 
 		if (menustate.gamemusic) {
 			music.play();
-			music.loop(1.0f, 0.008f);
+			music.loop(1.0f, 0.1f);
 			menustate.gamemusic = false;
 		}
 

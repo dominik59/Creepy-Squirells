@@ -34,9 +34,9 @@ public class Resources {
 		
 		try {
 			maps.put("level1", new TiledMap("/level1.tmx"));
-			music.put("menuSound", new Music("/pink_panter.wav"));
+			music.put("menuSound", new Music("/pink_panter.ogg"));
 			music.put("level1_music", new Music("/inception.wav"));
-			music.put("level1_sound", new Music("/hehe.ogg"));
+			music.put("level1_sound", new Music("/main_theme.ogg"));
 			music.put("click_sound", new Music("/click_sound.wav"));	
 			sound.put("wood_step", new Sound("/wood_step.wav"));
 			sound.put("grass_step", new Sound("/grass_step.wav"));
