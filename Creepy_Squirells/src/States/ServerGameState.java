@@ -672,6 +672,8 @@ public class ServerGameState extends BasicGameState {
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
 
+					end_of_second_player_shoot_rendering = true;
+
 				 
 			 }
 		
@@ -684,12 +686,10 @@ public class ServerGameState extends BasicGameState {
 				end_of_first_player_shoot_rendering = false;
 			}
 		 
-		 if(end_of_second_player_shoot_rendering){
-			 
-			end_of_second_player_shoot_rendering = false;
-
-			
+		 if(!did_second_player_fired){
+			 end_of_second_player_shoot_rendering = false;
 		 }
+		 
 	}
 
 	public void checkShootingCollision(Shooting[] shoots) {

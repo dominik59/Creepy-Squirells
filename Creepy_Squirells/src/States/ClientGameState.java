@@ -250,7 +250,6 @@ public class ClientGameState extends ServerGameState {
 					end_of_first_player_shoot_rendering = true;
 
 					
-					 did_first_player_fired = false;
 
 			 }
 			 if(first_player_picture.equals("sqi_l")){
@@ -268,7 +267,6 @@ public class ClientGameState extends ServerGameState {
 					end_of_first_player_shoot_rendering = true;
 
 					
-					 did_first_player_fired = false;
 
 			 }
 			 if(first_player_picture.equals("sqi_f")){
@@ -287,7 +285,6 @@ public class ClientGameState extends ServerGameState {
 					end_of_first_player_shoot_rendering = true;
 
 					
-					 did_first_player_fired = false;
 
 				 
 			 }
@@ -306,7 +303,6 @@ public class ClientGameState extends ServerGameState {
 					end_of_first_player_shoot_rendering = true;
 
 					
-					 did_first_player_fired = false;
 
 				 
 			 }
@@ -320,12 +316,17 @@ if(end_of_second_player_shoot_rendering){
 	end_of_second_player_shoot_rendering = false;
 }
 
-time_second = time_second + alpha;
-System.out.println(time_second);
-if(time_second >= 80){
-	time_second = 0;
-	did_second_player_fired = false;
+
+if(!did_first_player_fired){
+	 end_of_first_player_shoot_rendering = false;
 }
+
+//time_second = time_second + alpha;
+//System.out.println(time_second);
+//if(time_second >= 80){
+//	time_second = 0;
+//	did_second_player_fired = false;
+//}
 
 
 		
