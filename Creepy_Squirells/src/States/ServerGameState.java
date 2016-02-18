@@ -54,6 +54,8 @@ public class ServerGameState extends BasicGameState {
 	protected static Integer first_player_currently_choosed_weapon=1;
 	protected static Integer second_player_currently_choosed_weapon=1;
 	
+	
+	
 	protected Music sound;
 	protected Music music;
 	protected Sound wood_step;
@@ -111,6 +113,11 @@ public class ServerGameState extends BasicGameState {
 	
 	protected  int time_serwer = 0;
 	protected int  time_client = 0;
+	
+	protected static Integer mouse_first_player_x=0;
+	protected static Integer mouse_first_player_y=0;
+	protected static Integer mouse_second_player_x=0;
+	protected static Integer mouse_second_player_y=0;
 	
 	protected Boolean end_of_first_player_shoot_rendering=false;
 	protected Boolean end_of_second_player_shoot_rendering=false;
@@ -934,7 +941,39 @@ public class ServerGameState extends BasicGameState {
 	{
 		second_player_currently_choosed_weapon=nr_of_weapon;
 	}
-
+	public Integer get_mouse_first_player_x()
+	{
+		return mouse_first_player_x;
+	}
+	public void set_mouse_first_player_x(Integer mouse_pos)
+	{
+		mouse_first_player_x=mouse_pos;
+	}
+	public Integer get_mouse_first_player_y()
+	{
+		return mouse_first_player_y;
+	}
+	public void set_mouse_first_player_y(Integer mouse_pos)
+	{
+		mouse_first_player_y=mouse_pos;
+	}
+	public Integer get_mouse_second_player_x()
+	{
+		return mouse_second_player_x;
+	}
+	public void set_mouse_second_player_x(Integer mouse_pos)
+	{
+		mouse_second_player_x=mouse_pos;
+	}
+	public Integer get_mouse_second_player_y()
+	{
+		return mouse_second_player_y;
+	}
+	public void set_mouse_second_player_y(Integer mouse_pos)
+	{
+		mouse_second_player_y=mouse_pos;
+	}
+	
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub

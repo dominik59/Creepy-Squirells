@@ -75,6 +75,18 @@ public class ClientTCP extends Thread {
 					}
 					while (!Thread.currentThread().isInterrupted()) {
 						if (in.ready()) {
+							clientGameState.set_mouse_first_player_x(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
+							clientGameState.set_mouse_first_player_y(Integer.valueOf(in.readLine()));
+							break;
+						}
+					}
+					while (!Thread.currentThread().isInterrupted()) {
+						if (in.ready()) {
 							clientGameState.set_first_player_picture(in.readLine());
 							break;
 						}
@@ -133,8 +145,11 @@ public class ClientTCP extends Thread {
 							break;
 						}
 					}
+					
 					out.println(String.valueOf(clientGameState.get_player_2_x_position()));
 					out.println(String.valueOf(clientGameState.get_player_2_y_position()));
+					out.println(String.valueOf(clientGameState.get_mouse_second_player_x()));
+					out.println(String.valueOf(clientGameState.get_mouse_second_player_y()));
 					out.println(String.valueOf(clientGameState.get_second_player_picture()));
 					
 					out.println(String.valueOf(clientGameState.get_second_posx()));

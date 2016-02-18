@@ -49,6 +49,8 @@ public class SerwerThread extends Thread {
 			{
 				out.println(String.valueOf(serverGameState.get_player_1_x_position()));
 				out.println(String.valueOf(serverGameState.get_player_1_y_position()));
+				out.println(String.valueOf(serverGameState.get_mouse_first_player_x()));
+				out.println(String.valueOf(serverGameState.get_mouse_first_player_y()));
 				out.println(String.valueOf(serverGameState.get_first_player_picture())); //rysunek gracza pierwszego
 				
 				out.println(String.valueOf(serverGameState.get_posx())); //pozycja gracza *32 i albo + albo -1 do stworzenia wektora
@@ -75,6 +77,21 @@ public class SerwerThread extends Thread {
 						break;
 					}
 				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_mouse_second_player_x(Integer.valueOf(in.readLine())); //odczyt pozycji y gracza drugiego
+						break;
+					}
+				}
+				
+				while (!Thread.currentThread().isInterrupted()) {
+					if (in.ready()) {
+						serverGameState.set_mouse_second_player_y(Integer.valueOf(in.readLine())); //odczyt pozycji y gracza drugiego
+						break;
+					}
+				}
+				
 				while (!Thread.currentThread().isInterrupted()) {
 					if (in.ready()) {
 						serverGameState.set_second_player_picture(in.readLine()); //ustawienie rysunku gracza drugiego
