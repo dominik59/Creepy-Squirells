@@ -13,16 +13,21 @@ import States.ClientGameState;
 
 public class ClientTCP extends Thread {
 	private ClientGameState clientGameState;
-	
+	private String host;
 	public ClientTCP() {
 		// TODO Auto-generated constructor stub
 		clientGameState = (ClientGameState) ClassesInstances.clientGameState;
+	}
+	public ClientTCP(String connection_adress) {
+		// TODO Auto-generated constructor stub
+		clientGameState = (ClientGameState) ClassesInstances.clientGameState;
+		this.host=connection_adress;
 	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
-			Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 4012);
+			Socket socket = new Socket(InetAddress.getByName(host), 4012);
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // zwraca
 																				// strumie�
 																				// wyj�ciowy
