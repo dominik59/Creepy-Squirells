@@ -15,7 +15,7 @@ public class ClientGameState extends ServerGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 
-		System.out.println("Shit from client: ");
+		System.out.println("Bullet stats from client: ");
 		System.out.println("Second player shoot status: " + did_second_player_fired);
 		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
 		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
@@ -218,7 +218,9 @@ public class ClientGameState extends ServerGameState {
 			if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
 
 				setPosition_2(new Vector2f(second_player_x * 32, second_player_y * 32));
-				fireBullet_2(new Vector2f(gc.getInput().getMouseX(), gc.getInput().getMouseY()), new ShootingClient());
+				mouse_second_player_x = gc.getInput().getMouseX();
+				mouse_second_player_y = gc.getInput().getMouseY();
+				fireBullet_2(new Vector2f(mouse_second_player_x, mouse_second_player_y), new ShootingClient());
 				
 				set_player_2_fire_status(true);
 
@@ -307,7 +309,14 @@ public class ClientGameState extends ServerGameState {
 				 
 			 }
 		
-		 }		
+		 }
+			 else if(first_player_currently_choosed_weapon == 2){
+				 
+					setPosition(new Vector2f(first_player_x * 32, first_player_y * 32));
+					fireBullet(new Vector2f(mouse_first_player_x , mouse_first_player_y ), new Shooting());
+					end_of_first_player_shoot_rendering = true;
+
+			 }
 		}
 		
 		
@@ -321,13 +330,6 @@ if(!did_first_player_fired){
 	 end_of_first_player_shoot_rendering = false;
 }
 
-//time_second = time_second + alpha;
-//System.out.println(time_second);
-//if(time_second >= 80){
-//	time_second = 0;
-//	did_second_player_fired = false;
-//}
-
 
 		
 	}
@@ -335,7 +337,7 @@ if(!did_first_player_fired){
 	public void checkShootingCollision_2(ShootingClient[] shoots_client) {
 		for (ShootingClient sc : shoots_client) {
 			if (sc.BulletState()
-					&& (sc.collission(new Vector2f(first_player_x * 32, first_player_y * 32), radius_squared) || sc.collission(new Vector2f(first_player_x, first_player_y), radius_squared)))
+					&& (sc.collission(new Vector2f(first_player_x * 32, first_player_y * 32), radius_squared) ))
 				if (sc.BulletState()) {
 					sc.setActive(false);
 					lives = lives - sc.getDamage();

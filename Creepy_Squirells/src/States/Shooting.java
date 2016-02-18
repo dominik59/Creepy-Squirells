@@ -68,7 +68,7 @@ public class Shooting {
 
 		if(is_active){
 			
-			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
+			if(gamestate.getSelect1() || gamestate.get_first_player_currently_choosed_weapon() == 1 ){
 			
 			Vector2f actual_speed = direction.copy();
 			actual_speed.scale((time/500.0f));
@@ -87,7 +87,7 @@ public class Shooting {
 					
 		}
 		
-		if(gamestate.getSelect2() || gamestate.getSelect2_2()){
+		if(gamestate.getSelect2() || gamestate.get_first_player_currently_choosed_weapon() == 2){
 			
 			Vector2f actual_speed = direction.copy();
 			actual_speed.scale((time/1500.0f));
@@ -115,11 +115,11 @@ public class Shooting {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		if(is_active){
-			if(gamestate.getSelect1() || gamestate.getSelect1_2() ){
+			if(gamestate.getSelect1() || gamestate.get_first_player_currently_choosed_weapon() == 1 ){
 				g.drawImage(Resources.getSpritesheet(bullet_1).getSubImage(0,0,32,32),position.getX(),position.getY());
 
 			}
-			else if(gamestate.getSelect2() || gamestate.getSelect2_2()){
+			else if(gamestate.getSelect2() || gamestate.get_first_player_currently_choosed_weapon()==2){
 				g.drawImage(Resources.getSpritesheet(bullet_2).getSubImage(0,0,32,32),position.getX(), position.getY());
 
 			}
