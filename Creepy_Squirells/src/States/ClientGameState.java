@@ -15,11 +15,11 @@ public class ClientGameState extends ServerGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 
-		if(time_client  >= 40){
-			did_second_player_fired = false;
-			time_client = 0;
-		}
-		
+		System.out.println("Shit from client: ");
+		System.out.println("Second player shoot status: " + did_second_player_fired);
+		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
+		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
+
 
 		
 		if (lives <= 0) {
@@ -153,7 +153,7 @@ public class ClientGameState extends ServerGameState {
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
 					
-					set_player_2_fire_status(true);
+					did_second_player_fired = true;
 
 				}
 
@@ -169,7 +169,7 @@ public class ClientGameState extends ServerGameState {
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
 					
-					set_player_2_fire_status(true);
+					did_second_player_fired = true;
 
 				}
 
@@ -185,7 +185,7 @@ public class ClientGameState extends ServerGameState {
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
 					
-					set_player_2_fire_status(true);
+					did_second_player_fired = true;
 
 				}
 
@@ -201,7 +201,7 @@ public class ClientGameState extends ServerGameState {
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
 					
-					set_player_2_fire_status(true);
+					did_second_player_fired = true;
 
 				}
 
@@ -319,7 +319,15 @@ if(end_of_second_player_shoot_rendering){
 	did_second_player_fired = false;
 	end_of_second_player_shoot_rendering = false;
 }
-		
+
+time_second = time_second + alpha;
+System.out.println(time_second);
+if(time_second >= 80){
+	time_second = 0;
+	did_second_player_fired = false;
+}
+
+
 		
 	}
 	

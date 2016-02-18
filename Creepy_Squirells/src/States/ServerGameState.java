@@ -115,6 +115,8 @@ public class ServerGameState extends BasicGameState {
 	protected Boolean end_of_first_player_shoot_rendering=false;
 	protected Boolean end_of_second_player_shoot_rendering=false;
 	
+	protected Integer time_second = 0;
+	
 
 	MenuState menustate = ClassesInstances.menuState;
 
@@ -273,10 +275,14 @@ public class ServerGameState extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 		
-		if(time_serwer  >= 40){
-			did_first_player_fired = false;
-			time_serwer = 0;
-		}
+		System.out.println("Shit from server: ");
+		System.out.println("Second player shoot status: " + did_second_player_fired);
+		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
+		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
+		
+		
+		
+		
 		
 		
 		
@@ -600,8 +606,8 @@ public class ServerGameState extends BasicGameState {
 		
 		checkShootingCollision(getShoots());
 		
-		 if(did_second_player_fired){
-			 if(second_player_currently_choosed_weapon==1){
+		 if(second_player_currently_choosed_weapon==1){
+			 if(did_second_player_fired){
 			 if(second_player_picture.equals("sqi_r")){
 				 
 				 	second_posx = second_player_x*32 + 1;
@@ -616,8 +622,7 @@ public class ServerGameState extends BasicGameState {
 					
 					end_of_second_player_shoot_rendering = true;
 
-					
-					 did_second_player_fired = false;
+
 
 			 }
 			 if(second_player_picture.equals("sqi_l")){
@@ -635,7 +640,6 @@ public class ServerGameState extends BasicGameState {
 					end_of_second_player_shoot_rendering = true;
 
 					
-					 did_second_player_fired = false;
 
 			 }
 			 if(second_player_picture.equals("sqi_f")){
@@ -653,7 +657,6 @@ public class ServerGameState extends BasicGameState {
 					
 					end_of_second_player_shoot_rendering = true;
 
-					 did_second_player_fired = false;
 
 				 
 			 }
@@ -668,7 +671,6 @@ public class ServerGameState extends BasicGameState {
 					setPositionofPlayer_2(new Vector2f(second_pos_player_x, second_pos_player_y));
 					setPosition_2(new Vector2f(second_posx, second_posy));
 					fireBullet_2(new Vector2f(second_position_of_player), new ShootingClient());
-					 did_second_player_fired = false;
 
 				 
 			 }
@@ -677,11 +679,17 @@ public class ServerGameState extends BasicGameState {
 		 }
 
 		 
-		 
 		 if(end_of_first_player_shoot_rendering){
 				did_first_player_fired = false;
 				end_of_first_player_shoot_rendering = false;
 			}
+		 
+		 if(end_of_second_player_shoot_rendering){
+			 
+			end_of_second_player_shoot_rendering = false;
+
+			
+		 }
 	}
 
 	public void checkShootingCollision(Shooting[] shoots) {
