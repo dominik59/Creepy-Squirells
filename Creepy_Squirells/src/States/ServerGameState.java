@@ -153,8 +153,7 @@ public class ServerGameState extends BasicGameState {
 
 		lives = 3;
 		lives_second = 3;
-		// shoot = new Shooting(new Vector2f(0,100), new Vector2f(200,100));
-		// shoot = new LinkedList<Shooting>();
+
 
 		shoots = new Shooting[20];
 
@@ -282,10 +281,10 @@ public class ServerGameState extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Bullet stats from server: ");
-		System.out.println("Second player shoot status: " + did_second_player_fired);
-		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
-		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
+//		System.out.println("Bullet stats from server: ");
+//		System.out.println("Second player shoot status: " + did_second_player_fired);
+//		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
+//		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
 		
 		
 		// zmienna od strzalow

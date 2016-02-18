@@ -15,10 +15,10 @@ public class ClientGameState extends ServerGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 
-		System.out.println("Bullet stats from client: ");
-		System.out.println("Second player shoot status: " + did_second_player_fired);
-		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
-		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
+//		System.out.println("Bullet stats from client: ");
+//		System.out.println("Second player shoot status: " + did_second_player_fired);
+//		System.out.println("Second player chosed weapon: " + second_player_currently_choosed_weapon);
+//		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
 
 
 		
