@@ -57,14 +57,14 @@ public class MenuState extends BasicGameState{
 		// TODO Auto-generated method stub
 		g.setFont(menuFont);
 		g.drawImage(Resources.getImage("menu_background"), 0, 0);
-		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 50);
-		g.drawString("1.Uruchomienie gry", Window.width/2, 85);
+		g.drawImage(Resources.getImage("button_play"), 50, Window.height-500);
+		g.drawString("1.Uruchomienie gry", 100, Window.height-465);
 		
-		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 150);
-		g.drawString("2.Wyświetlenie twórców", Window.width/2-10, 185);
+		g.drawImage(Resources.getImage("button_play"),50, Window.height-400);
+		g.drawString("2.Wyświetlenie twórców", 100, Window.height-365);
 
-		g.drawImage(Resources.getImage("button_play"), Window.width/2-50, 250);
-		g.drawString("3.Wyjdź z gry", Window.width/2-10, 285);
+		g.drawImage(Resources.getImage("button_play"), 50, Window.height-300);
+		g.drawString("3.Wyjdź z gry", 100, Window.height-265);
 		
 		g.setColor(Color.white);
 		

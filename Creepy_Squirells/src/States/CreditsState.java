@@ -53,7 +53,7 @@ public class CreditsState extends BasicGameState{
 		dominik_y++;
 		krzychu_y++;
 		grzesiek_y++;
-		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)||gc.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
 			dominik_y = -100;
 			krzychu_y = -200;
 			grzesiek_y = -300;
