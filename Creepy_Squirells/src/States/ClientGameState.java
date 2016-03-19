@@ -21,7 +21,7 @@ public class ClientGameState extends ServerGameState {
 //		System.out.println("Second player bullet render status: " + end_of_second_player_shoot_rendering);
 
 
-		
+		//mmm
 		if (lives <= 0) {
 			die_first();
 		}
